@@ -35,15 +35,24 @@ questionsRouter.put("/:id", async (request: Request, response: Response) => {
     response.status(404).json({ response: "Question not found" });
 
   const { titulo, autor, acessos } = request.body;
-  const classCreateQuestion = new UpdateQuestion();
-  const questionCreated = await classCreateQuestion.execute();
+  const classUpdateQuestion = new UpdateQuestion(String(request.params.id));
+  const questionCreated = await classUpdateQuestion.execute();
 
   response.status(200).json(questionCreated);
 });
 
-questionsRouter.delete(
-  "/:id",
-  async (request: Request, response: Response) => {}
-);
+questionsRouter.delete("/:id", async (request: Request, response: Response) => {
+  const repository = getRepository(Question);
+  const findQuestion = await repository.findOne({
+    where: {
+      id: request.params.id,
+    },
+  });
+
+  if (findQuestion) {
+    await repository.remove(findQuestion);
+    response.status(200).json({});
+  }
+});
 
 export default questionsRouter;
