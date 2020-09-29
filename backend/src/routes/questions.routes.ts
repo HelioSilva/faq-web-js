@@ -16,8 +16,8 @@ questionsRouter.get("/", async (request: Request, response: Response) => {
 });
 
 questionsRouter.post("/", async (request: Request, response: Response) => {
-  const { titulo, autor, acessos } = request.body;
-  const classCreateQuestion = new CreateQuestion();
+  const dados: DTOQuestion = request.body;
+  const classCreateQuestion = new CreateQuestion(dados);
   const questionCreated = await classCreateQuestion.execute();
 
   response.status(200).json(questionCreated);
