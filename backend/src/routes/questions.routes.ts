@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { Question } from "../entity/Question";
+import { DTOQuestion, Question } from "../entity/Question";
 import CreateQuestion from "../services/createQuestion";
 import UpdateQuestion from "../services/updateQuestion";
 
@@ -34,8 +34,11 @@ questionsRouter.put("/:id", async (request: Request, response: Response) => {
   if (!findQuestion)
     response.status(404).json({ response: "Question not found" });
 
-  const { titulo, autor, acessos } = request.body;
-  const classUpdateQuestion = new UpdateQuestion(String(request.params.id));
+  const requestQuestion: DTOQuestion = request.body;
+  const classUpdateQuestion = new UpdateQuestion(
+    String(request.params.id),
+    requestQuestion
+  );
   const questionCreated = await classUpdateQuestion.execute();
 
   response.status(200).json(questionCreated);
@@ -52,6 +55,8 @@ questionsRouter.delete("/:id", async (request: Request, response: Response) => {
   if (findQuestion) {
     await repository.remove(findQuestion);
     response.status(200).json({});
+  } else {
+    response.status(404).json({ response: "Question not found" });
   }
 });
 
