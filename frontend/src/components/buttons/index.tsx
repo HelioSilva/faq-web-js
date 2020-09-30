@@ -1,8 +1,11 @@
 import React from "react";
+import { Container } from "./style";
 
 const Button = ({ ...props }) => (
   <>
-    <p>{props.name}</p>
+    <Container>
+      <p>{props.name}</p>
+    </Container>
   </>
 );
 
