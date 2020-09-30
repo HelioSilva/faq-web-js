@@ -1,8 +1,8 @@
 import React from "react";
 
-const Button = (nam9e: String) => (
+const Button = ({ ...props }) => (
   <>
-    <p>${nam9e}</p>
+    <p>{props.name}</p>
   </>
 );
 

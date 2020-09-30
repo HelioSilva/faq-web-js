@@ -8,7 +8,9 @@ const Home: React.FC = () => (
     <Ronald />
 
     <h1>exemplo botão</h1>
-    {/* <BotaoPadrao props /> */}
+    <BotaoPadrao name="Testes" />
+
+    <BotaoPadrao name="Enviar" tamanho="350" cor="#fff" />
   </>
 );
 
