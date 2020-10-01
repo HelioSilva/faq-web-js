@@ -5,7 +5,6 @@ import Link from "next/link";
 const Home = () => {
   return (
     <div>
-      <Head />
       <Title>Home com aero function</Title>
     </div>
   );
