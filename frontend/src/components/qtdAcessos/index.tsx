@@ -1,9 +1,12 @@
 import React from "react";
+import { ContainerQtd } from "./style";
 
-const QtdAcessos = () => (
+const QtdAcessos = ({ ...props }) => (
   <>
-    <p>helio</p>
-    <p>helio</p>
+    <ContainerQtd>
+      <p>{props.notas}</p>
+      <h2>Acessos</h2>
+    </ContainerQtd>
   </>
 );
 
