@@ -1,18 +1,14 @@
 import Head from "next/head";
 import styled from "styled-components";
 import Link from "next/link";
+import Header from "../components/header/index";
 
 const Home = () => {
   return (
     <div>
-      <Title>Home com aero function</Title>
+      <Header />
     </div>
   );
 };
-
-const Title = styled.h1`
-  font-size: 55;
-  color: #2b6d8e;
-`;
 
 export default Home;
