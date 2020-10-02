@@ -3,6 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
   a {
     text-decoration: none;
+
+    &:hover {
+      color: #ffecec;
+      font-size: 14.5px;
+      transition: 0.6s;
+    }
   }
 `;
 
@@ -22,15 +28,21 @@ export const MenuInicial = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 400px) {
+    height: 70px;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 `;
 
 export const BGTopo = styled.div`
-  background: #960505;
-  height: 70px;
+  background: #c20b2e;
+  /* height: 70px; */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px 50px 0px 50px;
+  padding: 20px 50px 20px 50px;
 `;
 
 export const BGImage = styled.div`
