@@ -1,4 +1,5 @@
 import { Container, MenuInicial, BGTopo, BGImage, DivRow } from "./style";
+import Link from "next/link";
 
 const Header = () => (
   <Container>
@@ -9,12 +10,17 @@ const Header = () => (
           <h5>Base Conhecimento</h5>
         </div>
         <DivRow>
-          <p>Downloads</p>
-          <p>J. Alexandre</p>
+          <Link href="">Downloads</Link>
+          <Link href="">J. Alexandre</Link>
         </DivRow>
       </MenuInicial>
     </BGTopo>
-    <BGImage>ds</BGImage>
+    <BGImage>
+      <div>
+        <input placeholder="Pesquise aqui" />
+      </div>
+      <Link href="">Nova Questão</Link>
+    </BGImage>
   </Container>
 );
 
