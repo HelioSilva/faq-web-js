@@ -1,19 +1,30 @@
 import styled from "styled-components";
 
 export const ContainerQtd = styled.div`
-  background-color: #faf33a;
+  text-align: center;
+  color: #fff;
+  background-color: #c20b2e;
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 8px;
+  display: table-cell;
+  vertical-align: middle;
+
+  h2 {
+    display: inline-block;
+    margin: 0px;
+    font-weight: bold;
+  }
+
   p {
-    font-size: 12px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: center;
     color: #fff;
-    background-color: #ff0000;
-    border: 2px solid;
-    border-color: #000;
-    width: 200px;
-    height: 200px;
-    border-radius: 8px;
+    font-size: 12px;
+    padding: 0px;
+    margin: 0px;
+    /* margin-bottom: 4px; */
+  }
+  div {
+    padding: 10px;
+    box-sizing: border-box;
   }
 `;

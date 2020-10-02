@@ -4,8 +4,10 @@ import { ContainerQtd } from "./style";
 const QtdAcessos = ({ ...props }) => (
   <>
     <ContainerQtd>
-      <p>{props.notas}</p>
-      <h2>Acessos</h2>
+      <div>
+        <h2>{props.notas}</h2>
+        <p>Acesso</p>
+      </div>
     </ContainerQtd>
   </>
 );
