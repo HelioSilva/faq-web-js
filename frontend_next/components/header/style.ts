@@ -5,8 +5,7 @@ export const Container = styled.div`
     text-decoration: none;
 
     &:hover {
-      color: #ffecec;
-      font-size: 14.5px;
+      font-size: 14.2px;
       transition: 0.6s;
     }
   }
@@ -15,10 +14,28 @@ export const Container = styled.div`
 export const DivRow = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 160px;
-
+  align-items: center;
+  width: 200px;
   a {
     color: #fff;
+  }
+  div {
+    background: #fafafa;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 1s;
+
+    p {
+      color: #000;
+      font-weight: bold;
+    }
+    :hover {
+      background: #2c2c2c;
+      p {
+        color: #fff;
+      }
+    }
   }
 `;
 
@@ -30,7 +47,6 @@ export const MenuInicial = styled.div`
   align-items: center;
 
   @media (max-width: 400px) {
-    height: 70px;
     flex-direction: column;
     flex-wrap: wrap;
   }
@@ -38,7 +54,6 @@ export const MenuInicial = styled.div`
 
 export const BGTopo = styled.div`
   background: #c20b2e;
-  /* height: 70px; */
   display: flex;
   justify-content: center;
   align-items: center;

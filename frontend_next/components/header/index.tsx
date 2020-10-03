@@ -12,6 +12,9 @@ const Header = () => (
         <DivRow>
           <Link href="">Downloads</Link>
           <Link href="">J. Alexandre</Link>
+          <div>
+            <p>JA</p>
+          </div>
         </DivRow>
       </MenuInicial>
     </BGTopo>
@@ -19,7 +22,7 @@ const Header = () => (
       <div>
         <input placeholder="Pesquise aqui" />
       </div>
-      <Link href="">Nova Questão</Link>
+      <Link href="http:\\google.com.br">Nova Questão</Link>
     </BGImage>
   </Container>
 );
