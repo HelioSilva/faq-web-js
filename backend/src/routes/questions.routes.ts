@@ -23,6 +23,35 @@ questionsRouter.post("/", async (request: Request, response: Response) => {
   response.status(200).json(questionCreated);
 });
 
+questionsRouter.post(
+  "/:id/view",
+  async (request: Request, response: Response) => {
+    const repository = getRepository(Question);
+    const findQuestion = await repository.findOne({
+      where: {
+        id: request.params.id,
+      },
+    });
+
+    if (!findQuestion) {
+      response.status(404).json({ response: "Question not found" });
+    } else {
+      let dto: DTOQuestion = findQuestion;
+
+      const classUpdateQuestion = new UpdateQuestion(
+        String(request.params.id),
+        {
+          acessos: findQuestion.acessos + 1,
+          autor: findQuestion.autor,
+          titulo: findQuestion.titulo,
+        }
+      );
+      const questionCreated = await classUpdateQuestion.execute();
+      response.status(200).json({});
+    }
+  }
+);
+
 questionsRouter.put("/:id", async (request: Request, response: Response) => {
   const repository = getRepository(Question);
   const findQuestion = await repository.findOne({
