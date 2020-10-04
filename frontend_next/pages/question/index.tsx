@@ -41,7 +41,7 @@ const Home = () => {
             autor={itemDetail.autor}
             qtdRespostas="2"
             qtdAcesso={itemDetail.acessos}
-            url="http://globo.com.br"
+            url={`/question/${itemDetail.id}`}
           />
         ))}
       </BodyHome>

@@ -8,7 +8,10 @@ const questionsRouter = Router();
 
 questionsRouter.get("/", async (request: Request, response: Response) => {
   const repositoryQuestion = getRepository(Question);
-  const questionsAll = await repositoryQuestion.find({ cache: false });
+  const questionsAll = await repositoryQuestion.find({
+    cache: false,
+    order: { acessos: "DESC" },
+  });
 
   response.status(200).json({
     questions: questionsAll,
@@ -47,7 +50,7 @@ questionsRouter.post(
         }
       );
       const questionCreated = await classUpdateQuestion.execute();
-      response.status(200).json({});
+      return response.status(200).json({});
     }
   }
 );
