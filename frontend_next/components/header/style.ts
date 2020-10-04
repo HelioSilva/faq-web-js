@@ -46,6 +46,11 @@ export const MenuInicial = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  h3,
+  h5 {
+    color: #fff;
+  }
+
   @media (max-width: 400px) {
     flex-direction: column;
     flex-wrap: wrap;
@@ -57,7 +62,7 @@ export const BGTopo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 50px 20px 50px;
+  padding: 10px 20px 5px 20px;
 `;
 
 export const BGImage = styled.div`

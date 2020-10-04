@@ -50,6 +50,6 @@ export const Content = styled.div`
     transition: 0.8s;
   }
   h2:hover {
-    font-size: 1.32rem;
+    color: #c41a44;
   }
 `;

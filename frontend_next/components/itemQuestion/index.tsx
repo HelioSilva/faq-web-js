@@ -4,7 +4,10 @@ import Link from "next/link";
 
 interface Question {
   qtdAcesso: string;
+  qtdRespostas: string;
   url: string;
+  titulo: string;
+  autor: string;
 }
 
 const ItemQuestion = (props: Question) => (
@@ -14,15 +17,15 @@ const ItemQuestion = (props: Question) => (
       <Content>
         <div>
           <Link href={props.url}>
-            <h2>COMO FAZER AQUILO</h2>
+            <h2>{props.titulo}</h2>
           </Link>
         </div>
         <DivFlexRow>
           <p>
-            <span>2</span> respostas
+            <span>{props.qtdRespostas}</span> respostas
           </p>
           <p>
-            Autor: <span>Helio Silva</span>
+            Autor: <span>{props.autor}</span>
           </p>
         </DivFlexRow>
       </Content>
