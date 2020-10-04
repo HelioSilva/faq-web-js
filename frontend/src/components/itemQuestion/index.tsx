@@ -31,7 +31,7 @@ const QuestionBox = ({ ...props }) => (
       </Content>
     </div>
     <div>
-      <p>Estrelas</p>
+      <p>⭐️⭐️⭐️⭐️⭐️</p>
     </div>
   </Container>
 );
