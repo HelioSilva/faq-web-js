@@ -18,7 +18,7 @@ const Home = () => {
         />
         <ItemQuestion
           titulo="Como fazer isso ou aquilo"
-          autor="Helio Silva"
+          autor="Ronald Santos"
           qtdRespostas="2"
           qtdAcesso="24"
           url="http://globo.com.br"
