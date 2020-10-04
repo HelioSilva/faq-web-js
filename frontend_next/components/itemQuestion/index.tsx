@@ -31,7 +31,7 @@ const ItemQuestion = (props: Question) => (
       </Content>
     </div>
     <div>
-      <p>Componente de Estrela</p>
+      <p>⭐️⭐️⭐️⭐️⭐️</p>
     </div>
   </Container>
 );
