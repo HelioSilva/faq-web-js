@@ -6,7 +6,7 @@ const QtdAcessos = ({ ...props }) => (
     <ContainerQtd>
       <div>
         <h2>{props.notas}</h2>
-        <p>Acesso</p>
+        <p>Acessos</p>
       </div>
     </ContainerQtd>
   </>
