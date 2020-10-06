@@ -2,6 +2,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import api from "../../Services/api";
 
+import React, { Component } from "react";
+import CKEditor from "ckeditor4-react";
+
 const ViewQuestion = () => {
   const router = useRouter();
   const { id } = router.query;
@@ -22,6 +25,13 @@ const ViewQuestion = () => {
     <>
       <h1>{viewQuestion}</h1>
       <h4>{id}</h4>
+      <CKEditor
+        data="<p>Some initial data</p>"
+        type="classic"
+        onChange={(e, editor) => {
+          console.log(editor.getData());
+        }}
+      />
     </>
   );
 };
