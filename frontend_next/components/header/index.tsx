@@ -10,7 +10,7 @@ const Header = () => (
           <h5>Base Conhecimento</h5>
         </div>
         <DivRow>
-          <Link href="">Downloads</Link>
+          <Link href="/download">Downloads</Link>
           <Link href="">J. Alexandre</Link>
           <div>
             <p>JA</p>

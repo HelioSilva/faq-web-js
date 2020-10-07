@@ -2,8 +2,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import api from "../../Services/api";
 
-import React, { Component } from "react";
+import React from "react";
 import CKEditor from "ckeditor4-react";
+
+import { Form } from "@unform/web";
+import InputNext from "../../components/input/index";
 
 const ViewQuestion = () => {
   const router = useRouter();
@@ -32,6 +35,16 @@ const ViewQuestion = () => {
           console.log(editor.getData());
         }}
       />
+
+      <Form
+        initialData={{ nome: "test@example.com" }}
+        onSubmit={(data) => {
+          console.log(data);
+        }}
+      >
+        <InputNext name={"nome"} />
+        <button type="submit">Enviar</button>
+      </Form>
     </>
   );
 };

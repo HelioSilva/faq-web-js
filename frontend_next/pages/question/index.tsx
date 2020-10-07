@@ -5,7 +5,7 @@ import Header from "../../components/header/index";
 import ItemQuestion from "../../components/itemQuestion";
 import api from "../../Services/api";
 
-import { BodyHome } from "../../styles/Home/style";
+import { BodyHome } from "../../styles/home/style";
 
 interface opa {
   id: string;
