@@ -1,8 +1,8 @@
 import { Router, Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { DTOQuestion, Question } from "../entity/Question";
-import CreateQuestion from "../services/createQuestion";
-import UpdateQuestion from "../services/updateQuestion";
+import CreateQuestion from "../services/questions/createQuestion";
+import UpdateQuestion from "../services/questions/updateQuestion";
 
 const questionsRouter = Router();
 

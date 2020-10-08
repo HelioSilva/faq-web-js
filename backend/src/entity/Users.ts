@@ -6,12 +6,12 @@ import {
   BeforeUpdate,
 } from "typeorm";
 
-import {} from "bcrypt";
+import { hash } from "bcryptjs";
 
 export interface DTOUsers {
-  titulo: string;
-  acessos: number;
-  autor: string;
+  email: string;
+  password: string;
+  url_image: string;
 }
 
 @Entity()
@@ -29,10 +29,7 @@ export class User {
   url_image: string;
 
   @BeforeInsert()
-  @BeforeUpdate()
-  hashPassword() {
-    if (this.password) {
-      this.password = createHmac("sha256", this.password).digest("hex");
-    }
+  async generatePasswordHash(): Promise<void> {
+    this.password = await hash(this.password, 8);
   }
 }
