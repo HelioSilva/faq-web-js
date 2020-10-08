@@ -5,38 +5,41 @@ interface props {
   edited: boolean;
 }
 
-const colorBG = `#cfd8e7 `;
+const colorBG = "#cfd8e7";
 const colorBGActive = "#cacaca";
 const delay = "0.7s";
 
 const AreaInput = styled.div<props>`
   background: ${colorBG};
-  padding: 10px;
-  padding-top: 25px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5px;
+  padding-top: 15px;
+  height: 40px;
+  width: 100%;
   border-radius: 8px;
+  box-shadow: 1px 1px 1px #d9d9d9;
   transition: ${delay};
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  p {
+    display: none;
+    position: absolute;
+    color: #939393;
+    transition: ${"0.5s"};
+  }
 
   input {
-    width: 300px;
+    width: 100%;
+    height: 100%;
+
     border: none;
     color: #5d5d5d;
     background: ${colorBG};
 
     font-size: 16px;
     transition: ${delay};
-    z-index: 1;
-  }
-
-  p {
-    position: absolute;
-    color: #939393;
-    transition: ${"0.5s"};
-    margin-right: 5px;
-    z-index: 2;
   }
 
   ${(props) => {
@@ -46,18 +49,14 @@ const AreaInput = styled.div<props>`
         background: ${colorBGActive};
         /* border: 1px solid #ff4f53; */
 
-        label {
-          font-size: 2px;
-        }
         input {
           background: ${colorBGActive};
-          position: relative;
-          left: 0px;
         }
         p {
-          position: relative;
-          top: -20px;
+          display: block;
+          bottom: 15px;
           font-size: 11px;
+          color: #13708a;
         }
       `
     );

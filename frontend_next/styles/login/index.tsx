@@ -47,11 +47,18 @@ export const Content = styled.div`
   height: 100%;
 
   > div {
-    border: 1px solid #eae8e8;
-    padding: 80px 20px;
+    width: 90%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 40px;
+    box-shadow: 1px 1px 5px #eae8e8;
   }
 
   form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,11 +66,11 @@ export const Content = styled.div`
   }
 
   h2 {
-    font-family: "Roboto";
+    font-family: "Roboto" sans-serif;
     font-style: normal;
-    font-weight: lighter;
+    font-weight: 700;
     font-size: 18px;
-    line-height: 76px;
+    line-height: 75px;
     text-align: center;
 
     /* primaria */
@@ -78,7 +85,7 @@ export const Content = styled.div`
     margin-top: 10px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 700px) {
     width: 100%;
   }
 
@@ -88,5 +95,15 @@ export const Content = styled.div`
     padding: 10px 25px;
     border-radius: 25px;
     color: #fff;
+  }
+
+  hr {
+    margin-top: 30px;
+    color: #e5e5e5;
+    opacity: 0.5;
+  }
+
+  p {
+    margin-bottom: 10px;
   }
 `;
