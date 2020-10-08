@@ -51,7 +51,6 @@ export const Content = styled.div`
     padding: 80px 20px;
   }
 
-  div,
   form {
     display: flex;
     flex-direction: column;
@@ -81,5 +80,13 @@ export const Content = styled.div`
 
   @media (max-width: 500px) {
     width: 100%;
+  }
+
+  button {
+    background-color: #c20b2e;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    color: #fff;
   }
 `;

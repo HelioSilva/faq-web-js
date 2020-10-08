@@ -1,48 +1,67 @@
 import styled, { css } from "styled-components";
 
-interface a {
+interface props {
   focus: boolean;
+  edited: boolean;
 }
 
-const colorBG = "#ecf0f1";
-const colorBGActive = "#ffaa33";
-
+const colorBG = `#cfd8e7 `;
+const colorBGActive = "#cacaca";
 const delay = "0.7s";
 
-const AreaInput = styled.div<a>`
+const AreaInput = styled.div<props>`
   background: ${colorBG};
   padding: 10px;
   padding-top: 25px;
   border-radius: 8px;
-
-  background: #7c60c8;
-  display: flex;
-  flex-direction: column;
-
   transition: ${delay};
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
   input {
     width: 300px;
     border: none;
-    color: #7c6d6d;
+    color: #5d5d5d;
     background: ${colorBG};
 
     font-size: 16px;
     transition: ${delay};
+    z-index: 1;
   }
 
-  ${(props) =>
-    props.focus &&
-    css`
-      background: ${colorBGActive};
+  p {
+    position: absolute;
+    color: #939393;
+    transition: ${"0.5s"};
+    margin-right: 5px;
+    z-index: 2;
+  }
 
-      label {
-        font-size: 8px;
-      }
-      input {
+  ${(props) => {
+    return (
+      (props.focus || props.edited) &&
+      css`
         background: ${colorBGActive};
-      }
-    `}
+        /* border: 1px solid #ff4f53; */
+
+        label {
+          font-size: 2px;
+        }
+        input {
+          background: ${colorBGActive};
+          position: relative;
+          left: 0px;
+        }
+        p {
+          position: relative;
+          top: -20px;
+          font-size: 11px;
+        }
+      `
+    );
+  }}
 `;
 
 export default AreaInput;

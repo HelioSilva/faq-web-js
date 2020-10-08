@@ -4,6 +4,7 @@ import AreaInput from "./style";
 
 const InputNext = ({ name, ...rest }) => {
   const [focused, setFocus] = useState(false);
+  const [preenchido, setPreenchido] = useState(false);
   const inputRef = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
 
@@ -12,20 +13,23 @@ const InputNext = ({ name, ...rest }) => {
   }, [fieldName, registerField]);
 
   return (
-    <AreaInput focus={focused}>
-      <div>
-        <p>Teste</p>
-      </div>
-      <div>
-        <input
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          placeholder={rest.display ? rest.display : name}
-          ref={inputRef}
-          defaultValue={defaultValue}
-          {...rest}
-        />
-      </div>
+    <AreaInput focus={focused} edited={preenchido}>
+      <input
+        autoComplete={"false"}
+        onFocus={() => {
+          setFocus(true);
+          setPreenchido(true);
+        }}
+        onBlur={() => {
+          setFocus(false);
+          setPreenchido(inputRef.current.value != "");
+        }}
+        ref={inputRef}
+        defaultValue={defaultValue}
+        {...rest}
+      />
+
+      <p>{rest.display ? rest.display : name}</p>
     </AreaInput>
   );
 };

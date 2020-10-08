@@ -21,7 +21,7 @@ const Login = () => (
         <h2>Acesso ao Sistema</h2>
         <Form onSubmit={() => {}}>
           <Input display="Email" name={"email"} />
-          <Input display=" Senha" name={"senha"} />
+          <Input display=" Senha" name={"senha"} type="password" />
           <button type="submit">Acessar</button>
         </Form>
       </div>
