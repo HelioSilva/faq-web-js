@@ -1,5 +1,4 @@
 import { DTOUsers, User } from "../../entity/Users";
-import ServicesAbstractQuestion from "../abstractService";
 import { getRepository } from "typeorm";
 
 class CreateUser {
@@ -11,7 +10,8 @@ class CreateUser {
   async execute(): Promise<User> {
     const repository = getRepository(User);
     const createdUser = await repository.save(repository.create(this.DTOData));
-    createdUser && delete createdUser.password;
+
+    createdUser.password = "";
 
     return createdUser;
   }

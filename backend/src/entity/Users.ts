@@ -4,6 +4,7 @@ import {
   Column,
   BeforeInsert,
   BeforeUpdate,
+  Index,
 } from "typeorm";
 
 import { hash } from "bcryptjs";
@@ -11,7 +12,7 @@ import { hash } from "bcryptjs";
 export interface DTOUsers {
   email: string;
   password: string;
-  url_image: string;
+  url_image?: string;
 }
 
 @Entity()
@@ -19,10 +20,10 @@ export class User {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
-  @Column({ select: false })
+  @Column()
   password: string;
 
   @Column()
@@ -31,5 +32,9 @@ export class User {
   @BeforeInsert()
   async generatePasswordHash(): Promise<void> {
     this.password = await hash(this.password, 8);
+  }
+
+  getPassword(): string {
+    return this.password;
   }
 }
