@@ -1,5 +1,5 @@
 import { Form } from "@unform/web";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import AreaInput from "../../components/input/style";
 
 export const Container = styled.div`
@@ -69,7 +69,7 @@ export const Content = styled.div`
     font-family: "Roboto" sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 28px;
     line-height: 75px;
     text-align: center;
 
@@ -106,4 +106,22 @@ export const Content = styled.div`
   p {
     margin-bottom: 10px;
   }
+`;
+
+interface props {
+  hasMessage: boolean;
+}
+export const MensagemUser = styled.h5<props>`
+  color: #e23807;
+  transition: 2s;
+  font-size: 12px;
+
+  ${(props) => {
+    return (
+      props.hasMessage === false &&
+      css`
+        color: #fff;
+      `
+    );
+  }}
 `;

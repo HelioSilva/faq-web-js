@@ -18,8 +18,6 @@ class LoginUser {
 
     if (!dadosUser) return false;
 
-    console.log(dadosUser.getPassword());
-
     return await compare(this.DTOData.password, dadosUser.getPassword());
   }
 }

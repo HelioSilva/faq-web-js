@@ -37,6 +37,7 @@ const Home = () => {
       <BodyHome>
         {questions.map((itemDetail) => (
           <ItemQuestion
+            key={itemDetail.id}
             titulo={itemDetail.titulo}
             autor={itemDetail.autor}
             qtdRespostas="2"
