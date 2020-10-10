@@ -2,6 +2,7 @@ import React from "react";
 import Ronald from "../../components/qtdAcessos/index";
 import BotaoPadrao from "../../components/buttons/index";
 import QuestionBox from "../../components/itemQuestion/index";
+import Header from "../../components/header/index";
 
 const Home: React.FC = () => (
   <>
@@ -10,7 +11,7 @@ const Home: React.FC = () => (
     <Ronald notas="15" />
     <br />
     Example buttons
-    <BotaoPadrao name="Cancelar" tamanho="350" cor="#fff" />
+    <BotaoPadrao name="Nova Questão" tamanho="350" cor="#fff" />
     <br />
     QuestionBox
     <QuestionBox
@@ -21,6 +22,9 @@ const Home: React.FC = () => (
       qtdAcesso="214"
       autor="Ronald Santos"
     />
+    <br />
+    Header
+    <Header />
   </>
 );
 
