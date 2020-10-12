@@ -38,7 +38,7 @@ const AreaInput = styled.div<props>`
     color: #5d5d5d;
     background: ${colorBG};
 
-    font-size: 16px;
+    font-size: 13.5px;
     transition: ${delay};
   }
 

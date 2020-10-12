@@ -1,5 +1,7 @@
 import { Container, MenuInicial, BGTopo, BGImage, DivRow } from "./style";
 import Link from "next/link";
+import { useContext } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 const Header = () => (
   <Container>
@@ -11,9 +13,9 @@ const Header = () => (
         </div>
         <DivRow>
           <Link href="/download">Downloads</Link>
-          <Link href="">J. Alexandre</Link>
+          <Link href="">{useAuth().name}</Link>
           <div>
-            <p>JA</p>
+            <img src={useAuth().urlImagem} />
           </div>
         </DivRow>
       </MenuInicial>

@@ -7,6 +7,8 @@ import api from "../../Services/api";
 
 import { BodyHome } from "../../styles/home/style";
 
+// verificar o useCallback e useContext para procegir avancando
+
 interface opa {
   id: string;
   titulo: string;

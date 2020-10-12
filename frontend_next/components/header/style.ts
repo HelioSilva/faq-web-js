@@ -20,20 +20,24 @@ export const DivRow = styled.div`
     color: #fff;
   }
   div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #fafafa;
-    padding: 10px;
+    max-width: 30px;
+    /* padding: 10px; */
     border-radius: 20px;
     cursor: pointer;
     transition: 1s;
 
-    p {
-      color: #000;
-      font-weight: bold;
+    img {
+      width: 30px;
+      border-radius: 20px;
     }
     :hover {
       background: #2c2c2c;
-      p {
-        color: #fff;
+      img {
+        width: 40px;
       }
     }
   }
