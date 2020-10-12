@@ -3,7 +3,7 @@ import {
   Aside,
   Content,
   MensagemUser,
-} from "../../styles/login/index";
+} from "../../styles/signup/index";
 import { Form } from "@unform/web";
 import Input from "../../components/input/index";
 import Link from "next/link";

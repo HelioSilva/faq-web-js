@@ -1,5 +1,6 @@
 import GlobalStyle from "../styles/globals";
 import Head from "next/head";
+import { ContextAuth } from "../context/AuthContext";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -12,7 +13,9 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <ContextAuth>
+        <Component {...pageProps} />
+      </ContextAuth>
     </>
   );
 }

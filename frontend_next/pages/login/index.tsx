@@ -17,9 +17,11 @@ import {
 } from "react-google-login";
 import api from "../../Services/api";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
   const [mensagem, setMensagem] = useState("");
+  const { signIn, name } = useAuth();
 
   async function requestLoginGoogle(dados: GoogleLoginResponse) {
     if (dados as GoogleLoginResponse) {
@@ -36,16 +38,26 @@ const Login = () => {
     }
   }
 
-  async function requestLogin({ ...dados }) {
-    const resp = await api.post("/users/login", {
-      email: dados.email,
-      password: dados.password,
-    });
+  // async function requestLogin({ ...dados }) {
+  //   const resp = await api.post("/users/login", {
+  //     email: dados.email,
+  //     password: dados.password,
+  //   });
 
-    if (resp.data.acesso) {
+  //   if (resp.data.acesso) {
+  //     Router.push("/");
+  //   } else {
+  //     setMensagem(resp.data.message);
+  //   }
+  // }
+
+  async function requestLogin({ ...dados }) {
+    const resp = await signIn(dados);
+
+    if (resp) {
       Router.push("/");
     } else {
-      setMensagem(resp.data.message);
+      setMensagem("resp.data.message");
     }
   }
 
@@ -66,11 +78,11 @@ const Login = () => {
       <Content>
         <div>
           <h2>Acesso ao Sistema</h2>
+          <p>{name}</p>
 
           <Form
-            onSubmit={async (d) => {
-              console.log(d);
-              await requestLogin(d);
+            onSubmit={async (dataForm) => {
+              await requestLogin(dataForm);
             }}
           >
             <Input display="Email" name={"email"} />
