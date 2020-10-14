@@ -7,7 +7,7 @@ class LoginUser {
   constructor(dadosRequest: DTOUsers) {
     this.DTOData = dadosRequest;
   }
-  async execute(): Promise<Boolean> {
+  async execute(): Promise<User> {
     const repository = getRepository(User);
 
     const dadosUser = await repository.findOne({
@@ -16,9 +16,16 @@ class LoginUser {
       },
     });
 
-    if (!dadosUser) return false;
+    if (dadosUser == undefined) return {} as User;
 
-    return await compare(this.DTOData.password, dadosUser.getPassword());
+    const comparePass = await compare(
+      this.DTOData.password,
+      dadosUser.getPassword()
+    );
+
+    if (!comparePass) return {} as User;
+
+    return dadosUser;
   }
 }
 

@@ -29,13 +29,14 @@ usersRouter.post("/", async (request: Request, response: Response) => {
 
 usersRouter.post("/login", async (request: Request, response: Response) => {
   const dados: DTOUsers = request.body;
-  const classLoginUser = new LoginUser(dados);
-  const logeed = await classLoginUser.execute();
 
-  logeed
+  const classLoginUser = new LoginUser(dados);
+  const userLogged = await classLoginUser.execute();
+
+  userLogged.name
     ? response
         .status(200)
-        .json({ acesso: true, message: "Login feito com sucesso" })
+        .json({ acesso: true, message: "Login feito com sucesso", userLogged })
     : response
         .status(200)
         .json({ acesso: false, message: "Email ou Senha incorreto" });

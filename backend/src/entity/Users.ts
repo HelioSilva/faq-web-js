@@ -20,13 +20,16 @@ export class User {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
+  @Column({ nullable: true })
+  name: string;
+
   @Column({ unique: true })
   email: string;
 
   @Column()
   password: string;
 
-  @Column()
+  @Column({ default: "/user.png" })
   url_image: string;
 
   @BeforeInsert()
