@@ -9,13 +9,7 @@ import Input from "../../components/input/index";
 import Link from "next/link";
 import Router from "next/router";
 
-import {
-  GoogleLogin,
-  GoogleLoginResponse,
-  GoogleLoginResponseOffline,
-  GoogleLogout,
-} from "react-google-login";
-import api from "../../Services/api";
+import { GoogleLogin, GoogleLoginResponse } from "react-google-login";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 
@@ -23,41 +17,13 @@ const Login = () => {
   const [mensagem, setMensagem] = useState("");
   const { signIn, name } = useAuth();
 
-  async function requestLoginGoogle(dados: GoogleLoginResponse) {
-    if (dados as GoogleLoginResponse) {
-      const resp = await api.post("/users/login", {
-        email: dados.profileObj.email,
-        password: dados.profileObj.googleId,
-      });
-
-      if (resp.data.acesso) {
-        Router.push("/");
-      }
-
-      console.log(resp);
-    }
-  }
-
-  // async function requestLogin({ ...dados }) {
-  //   const resp = await api.post("/users/login", {
-  //     email: dados.email,
-  //     password: dados.password,
-  //   });
-
-  //   if (resp.data.acesso) {
-  //     Router.push("/");
-  //   } else {
-  //     setMensagem(resp.data.message);
-  //   }
-  // }
-
   async function requestLogin({ ...dados }) {
     const resp = await signIn(dados);
 
-    if (resp) {
+    if (resp.logged) {
       Router.push("/");
     } else {
-      setMensagem("resp.data.message");
+      setMensagem("Usuário ou senha inválido");
     }
   }
 
@@ -78,7 +44,6 @@ const Login = () => {
       <Content>
         <div>
           <h2>Acesso ao Sistema</h2>
-          <p>{name}</p>
 
           <Form
             onSubmit={async (dataForm) => {
@@ -100,8 +65,13 @@ const Login = () => {
           <GoogleLogin
             clientId="816612335723-1gs7rj050q5ir09krrpgp59rpjdjdrv8.apps.googleusercontent.com"
             buttonText="Login com conta Google"
-            onSuccess={(res) => {
-              requestLoginGoogle(res as GoogleLoginResponse);
+            onSuccess={async (res: GoogleLoginResponse) => {
+              if (res) {
+                await requestLogin({
+                  email: res.profileObj.email,
+                  password: res.profileObj.googleId,
+                });
+              }
             }}
             onFailure={(res) => {}}
             cookiePolicy={"single_host_origin"}

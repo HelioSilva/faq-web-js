@@ -19,26 +19,52 @@ export const DivRow = styled.div`
   a {
     color: #fff;
   }
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fafafa;
-    max-width: 30px;
-    /* padding: 10px; */
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 1s;
+`;
 
-    img {
-      width: 30px;
-      border-radius: 20px;
+export const Lista = styled.div`
+  position: relative;
+  display: inline-block;
+  div {
+    display: none;
+    position: absolute;
+    background-color: #f2f2f2;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    border-radius: 15px;
+
+    a {
+      color: #304946;
     }
-    :hover {
-      background: #2c2c2c;
-      img {
-        width: 40px;
-      }
+  }
+  :hover div {
+    display: block;
+  }
+  :hover div:hover {
+    background-color: #fcaa83;
+  }
+`;
+
+export const ImageRaduis = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  max-width: 30px;
+  padding: 1px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 1s;
+
+  img {
+    width: "100%";
+    border-radius: 20px;
+  }
+  :hover {
+    background: #930924;
+    img {
+      width: 40px;
     }
   }
 `;

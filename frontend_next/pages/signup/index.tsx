@@ -10,7 +10,8 @@ import Link from "next/link";
 import Router from "next/router";
 
 import api from "../../Services/api";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import GoogleLogin, { GoogleLoginResponse } from "react-google-login";
 
 const Login = () => {
   const [mensagem, setMensagem] = useState("");
@@ -19,7 +20,8 @@ const Login = () => {
     const resp = await api.post("/users", {
       email: dados.email,
       password: dados.password,
-      url_image: "",
+      name: dados.name,
+      url_image: dados.urlImage,
     });
 
     if (resp.data.created === true) {
@@ -55,6 +57,26 @@ const Login = () => {
           <hr />
           <MensagemUser hasMessage={mensagem !== ""}>{mensagem}</MensagemUser>
           <hr />
+
+          <p>
+            <Link href={"/login"}>Login</Link>
+          </p>
+          <GoogleLogin
+            clientId="816612335723-1gs7rj050q5ir09krrpgp59rpjdjdrv8.apps.googleusercontent.com"
+            buttonText="Cadastrar-se com conta Google"
+            onSuccess={async (res: GoogleLoginResponse) => {
+              if (res) {
+                await requestSignup({
+                  email: res.profileObj.email,
+                  name: res.profileObj.name,
+                  password: res.profileObj.googleId,
+                  urlImage: res.profileObj.imageUrl,
+                });
+              }
+            }}
+            onFailure={(res) => {}}
+            cookiePolicy={"single_host_origin"}
+          />
         </div>
       </Content>
       <Aside>

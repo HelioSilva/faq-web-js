@@ -1,71 +1,88 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Cookie from "js-cookie";
-import api from "../Services/api";
-// import { Router } from "next/router";
 import Router from "next/router";
+import SignService from "../Services/serviceSign";
 
-interface dadosAuth {
+export interface dataContext {
   name: string;
-  urlImagem?: string;
-  signIn(data: Object): Promise<boolean>;
+  logged: boolean;
+  email: string;
+  urlImage: string;
+  signIn(data: Object): Promise<dataUserLogged>;
+  signOut(): void;
 }
 
-const AuthContext = createContext<dadosAuth>({} as dadosAuth);
+export interface dataUserLogged {
+  email: string;
+  name: string;
+  logged: boolean;
+  urlImage: string;
+}
+
+const AuthContext = createContext<dataContext>({} as dataContext);
 
 const ContextAuth = ({ children }) => {
-  const teste = async ({ ...dados }) => {
-    const resp = await api.post("/users/login", {
-      email: dados.email,
-      password: dados.password,
-    });
-
-    if (resp.data.acesso) {
-      const { ...resto } = data;
-      resto.name = "Login OK";
-      setData(resto);
-      return true;
-    } else {
-      const { ...resto } = data;
-      resto.name = "Login fail";
-      setData(resto);
-      return false;
+  const functionLogout = async () => {
+    const { ...resto } = data;
+    resto.logged = false;
+    setData(resto);
+    Cookie.remove("@faqweb:user");
+    Router.push("/login");
+  };
+  const functionAuth = async ({ ...params }) => {
+    const respUserLogged = await SignService(params);
+    if (respUserLogged.logged) {
+      setData({
+        logged: true,
+        email: respUserLogged.email,
+        name: respUserLogged.name,
+        urlImage: respUserLogged.urlImage,
+        signIn: functionAuth,
+        signOut: functionLogout,
+      });
     }
+    return respUserLogged;
   };
 
-  const [data, setData] = useState<dadosAuth>({
-    name: "Anonimo",
-    urlImagem: "/user.png",
-    signIn: teste,
+  const [data, setData] = useState<dataContext>(() => {
+    const cookie = Cookie.get("@faqweb:user");
+    if (cookie) {
+      const cookieParsed: dataContext = JSON.parse(cookie);
+
+      return {
+        logged: cookieParsed.logged,
+        name: cookieParsed.name,
+        email: cookieParsed.email,
+        urlImage: cookieParsed.urlImage,
+        signIn: functionAuth,
+        signOut: functionLogout,
+      };
+    } else {
+      return {
+        logged: false,
+        email: "",
+        name: "Anonimo",
+        urlImage: "/user.png",
+        signIn: functionAuth,
+        signOut: functionLogout,
+      };
+    }
   });
 
   useEffect(() => {
-    console.log("asa");
-    const cookie = Cookie.get("@faqweb:user");
-    if (cookie) {
-      const meuOBJ = JSON.parse(cookie);
-      const { ...resto }: dadosAuth = data;
-      resto.name = meuOBJ.name;
-      setData(resto as dadosAuth);
-      console.log(resto);
-    } else {
+    if (!data.logged) {
       Router.push("/login");
     }
-  }, []);
-
-  useEffect(() => {
-    Cookie.set("@faqweb:user", JSON.stringify(data), {
-      expires: 7,
-    });
   }, [data]);
 
   return (
-    <AuthContext.Provider value={data as dadosAuth}>
+    <AuthContext.Provider value={data as dataContext}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-function useAuth(): dadosAuth {
+function useAuth(): dataContext {
   const context = useContext(AuthContext);
 
   if (!context) {
