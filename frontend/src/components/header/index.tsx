@@ -10,10 +10,10 @@ const Header = () => (
           <h5>Base de conhecimento</h5>
         </div>
         <DivRow>
-          <a href="/download">Downloads</a>
+          <a href="/download">Download</a>
           <a href="">Ronald SS</a>
           <div>
-            <p>RD</p>
+            <img src="/user.png" alt="ok" />
           </div>
         </DivRow>
       </MenuInicial>

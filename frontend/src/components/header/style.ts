@@ -15,7 +15,6 @@ export const BGTopo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: #abc123; */
   padding: 10px 20px 5px 20px;
 `;
 
@@ -25,7 +24,6 @@ export const MenuInicial = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background: #123acb; */
 
   h3,
   h5 {
@@ -42,11 +40,21 @@ export const DivRow = styled.div`
     color: #fff;
   }
   div {
-    background: #fafafa;
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background: #bbbbfa;
+    padding: 2px;
     border-radius: 25px;
     cursor: pointer;
     transition: 1s;
+
+    img {
+      width: 100%;
+      border-radius: 100%;
+    }
 
     p {
       color: #000;
@@ -60,7 +68,6 @@ export const DivRow = styled.div`
       }
     }
   }
-  /* background: orange; */
 `;
 
 export const BGImage = styled.div`
