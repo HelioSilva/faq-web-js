@@ -58,13 +58,13 @@ export const ImageRaduis = styled.div`
   transition: 1s;
 
   img {
-    width: "100%";
+    width: 100%;
     border-radius: 20px;
   }
   :hover {
     background: #930924;
     img {
-      width: 40px;
+      /* width: 30px; */
     }
   }
 `;
