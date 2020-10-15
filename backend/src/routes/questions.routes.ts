@@ -1,6 +1,8 @@
 import { Router, Request, Response } from "express";
 import { getRepository } from "typeorm";
+import { DTOItemQuestion } from "../entity/ItemQuestion";
 import { DTOQuestion, Question } from "../entity/Question";
+import CreateItemQuestion from "../services/questions/createItemQuestion";
 import CreateQuestion from "../services/questions/createQuestion";
 import UpdateQuestion from "../services/questions/updateQuestion";
 
@@ -11,10 +13,26 @@ questionsRouter.get("/", async (request: Request, response: Response) => {
   const questionsAll = await repositoryQuestion.find({
     cache: false,
     order: { acessos: "DESC" },
+    skip: 0,
+    take: 10,
   });
 
   response.status(200).json({
     questions: questionsAll,
+  });
+});
+
+questionsRouter.get("/:id", async (request: Request, response: Response) => {
+  const repositoryQuestion = getRepository(Question);
+  const question = await repositoryQuestion.find({
+    where: {
+      id: request.params.id,
+    },
+    cache: false,
+  });
+
+  response.status(200).json({
+    questions: question,
   });
 });
 
@@ -25,6 +43,30 @@ questionsRouter.post("/", async (request: Request, response: Response) => {
 
   response.status(200).json(questionCreated);
 });
+
+questionsRouter.post(
+  "/:id/answer",
+  async (request: Request, response: Response) => {
+    const repository = getRepository(Question);
+    const findQuestion = await repository.findOne({
+      where: {
+        id: request.params.id,
+      },
+    });
+
+    if (!findQuestion)
+      return response.status(404).json({ response: "Question not found" });
+
+    const dados: DTOItemQuestion = request.body;
+    const classCreateItemQuestion = new CreateItemQuestion(
+      dados,
+      findQuestion.id
+    );
+    const itemQuestionCreate = await classCreateItemQuestion.execute();
+
+    return response.status(200).json(itemQuestionCreate);
+  }
+);
 
 questionsRouter.post(
   "/:id/view",

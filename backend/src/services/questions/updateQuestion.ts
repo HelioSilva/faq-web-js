@@ -2,7 +2,7 @@ import { DTOQuestion, Question } from "../../entity/Question";
 import ServicesAbstractQuestion from "../abstractService";
 import { getRepository } from "typeorm";
 
-class UpdateQuestion extends ServicesAbstractQuestion {
+class UpdateQuestion extends ServicesAbstractQuestion<Question> {
   id: string;
   data: DTOQuestion;
   constructor(id: string, data: DTOQuestion) {

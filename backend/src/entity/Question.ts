@@ -1,4 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  JoinTable,
+  ManyToOne,
+} from "typeorm";
+import { ItemQuestion } from "./ItemQuestion";
 
 export interface DTOQuestion {
   titulo: string;
@@ -19,4 +27,7 @@ export class Question {
 
   @Column()
   autor: string;
+
+  @OneToMany(() => ItemQuestion, (item) => item.question, { eager: true })
+  answers: ItemQuestion[];
 }
