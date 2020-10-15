@@ -1,4 +1,3 @@
-import { GetServerSideProps } from "next";
 import { useState, useEffect } from "react";
 import Header from "../../components/header/index";
 
@@ -7,21 +6,23 @@ import api from "../../Services/api";
 
 import { BodyHome } from "../../styles/home/style";
 
-// verificar o useCallback e useContext para procegir avancando
-
-interface opa {
+export interface iQuestion {
   id: string;
   titulo: string;
   acessos: string;
   autor: string;
+  answers: iAnswers[];
 }
 
-interface dataQuestions {
-  dados: opa[];
+interface iAnswers {
+  id: string;
+  text: string;
+  autor: string;
+  question_id: string;
 }
 
 const Home = () => {
-  const [questions, setQuestions] = useState<opa[]>([]);
+  const [questions, setQuestions] = useState<iQuestion[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -42,7 +43,7 @@ const Home = () => {
             key={itemDetail.id}
             titulo={itemDetail.titulo}
             autor={itemDetail.autor}
-            qtdRespostas="2"
+            qtdRespostas={itemDetail.answers.length}
             qtdAcesso={itemDetail.acessos}
             url={`/question/${itemDetail.id}`}
           />
@@ -51,17 +52,5 @@ const Home = () => {
     </div>
   );
 };
-
-// export const getServerSideProps: GetServerSideProps<dataQuestions> = async () => {
-//   const res = await api.get("/questions");
-
-//   const questions = res.data;
-
-//   return {
-//     props: {
-//       dados: questions,
-//     },
-//   };
-// };
 
 export default Home;

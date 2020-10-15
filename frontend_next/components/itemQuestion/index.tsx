@@ -4,7 +4,7 @@ import Link from "next/link";
 
 interface Question {
   qtdAcesso: string;
-  qtdRespostas: string;
+  qtdRespostas: number;
   url: string;
   titulo: string;
   autor: string;
