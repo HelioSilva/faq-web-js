@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, BGTopo, MenuInicial, DivRow, BGImage } from "./style";
 import ImgUser from "../../components/ImgUser";
+import ButtonFaq from "../../components/buttons";
 
 const Header = () => (
   <Container>
@@ -14,7 +15,6 @@ const Header = () => (
           <a href="/download">Download</a>
           <a href="">Ronald SS</a>
           <div>
-            {/* <img src="/user.png" alt="ok" /> */}
             <ImgUser />
           </div>
         </DivRow>
@@ -24,7 +24,8 @@ const Header = () => (
       <div>
         <input placeholder="Pesquise aqui" />
       </div>
-      <a href="http://debian.org">Nova Questão</a>
+      {/* <a href="http://debian.org">Nova Questão</a> */}
+      <ButtonFaq>New question</ButtonFaq>
     </BGImage>
   </Container>
 );
