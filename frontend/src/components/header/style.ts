@@ -99,7 +99,9 @@ export const DivRow = styled.div`
 
 export const BGImage = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)),
-    url("https://img2.goodfon.com/wallpaper/nbig/1/79/workgroup-teamwork-desk-office.jpg");
+    url("https://cdn.pixabay.com/photo/2012/03/04/00/43/architecture-22039_960_720.jpg");
+  /* background-repeat: no-repeat;
+  -webkit-background-size: cover; */
   height: 220px;
   display: flex;
   flex-direction: column;
