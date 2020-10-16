@@ -14,6 +14,15 @@ const Home: React.FC = () => (
       titulos="Como gerar SPED FISCAL"
       qtdRespostas="8"
       qtdAcesso="214"
+      autor="Helio Silva"
+    />
+    <br />
+    <QuestionBox
+      qtdAcessos="23"
+      url="https:google.com"
+      titulos="Erro: verifique parâmetro 99!"
+      qtdRespostas="2"
+      qtdAcesso="7"
       autor="Ronald Santos"
     />
   </>
