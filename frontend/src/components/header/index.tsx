@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, BGTopo, MenuInicial, DivRow, BGImage } from "./style";
+import ImgUser from "../../components/ImgUser";
 
 const Header = () => (
   <Container>
@@ -13,7 +14,8 @@ const Header = () => (
           <a href="/download">Download</a>
           <a href="">Ronald SS</a>
           <div>
-            <img src="/user.png" alt="ok" />
+            {/* <img src="/user.png" alt="ok" /> */}
+            <ImgUser />
           </div>
         </DivRow>
       </MenuInicial>
