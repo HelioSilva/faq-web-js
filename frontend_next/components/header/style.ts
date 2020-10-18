@@ -5,7 +5,7 @@ export const Container = styled.div`
     text-decoration: none;
 
     &:hover {
-      font-size: 14.2px;
+      color: #60c4be;
       transition: 0.6s;
     }
   }
@@ -13,9 +13,9 @@ export const Container = styled.div`
 
 export const DivRow = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  width: 200px;
+  width: 300px;
   a {
     color: #fff;
   }

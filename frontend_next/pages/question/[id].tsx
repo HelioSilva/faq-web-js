@@ -7,7 +7,11 @@ import Header from "../../components/header";
 import { BodyHome } from "../../styles/home/style";
 import { iQuestion } from ".";
 
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
+
 const ViewQuestion = () => {
+  const [editorText, setEditoText] = useState(``);
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
     answers: [],
   } as iQuestion);
@@ -33,10 +37,33 @@ const ViewQuestion = () => {
     setViewPage();
     getRequestQuestion();
   }, []);
+
+  const onEditorStateChange = (editorState) => {
+    setEditoText(editorState);
+    console.log(JSON.stringify(convertToRaw(editorState.getCurrentContent())));
+  };
+
   return (
     <>
       <Header />
       <BodyHome>
+        <Editor
+          readOnly={true}
+          toolbarHidden={true}
+          editorState={editorText}
+          toolbarClassName="hide-toolbar"
+          wrapperClassName="wrapperClassName"
+          editorClassName="editorClassName"
+          onEditorStateChange={onEditorStateChange}
+          placeholder={"Digite aqui"}
+          editorStyle={{
+            backgroundColor: "#dcfecd",
+            padding: 0,
+            borderWidth: 0,
+            borderColor: "#ccc",
+            height: 500,
+          }}
+        />
         {dataQuestion.answers.length > 0 ? (
           dataQuestion.answers.map((itemDetail) => (
             <div key={itemDetail.id}>
@@ -49,6 +76,12 @@ const ViewQuestion = () => {
         ) : (
           <p>Lista vazia</p>
         )}
+
+        <hr></hr>
+
+        <hr></hr>
+
+        {/* <RichText data={"<p>oidadiai</p>"} entryMap={} /> */}
       </BodyHome>
     </>
   );

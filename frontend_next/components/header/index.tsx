@@ -22,6 +22,7 @@ const Header = () => {
             <h5>Base Conhecimento</h5>
           </div>
           <DivRow>
+            <Link href="/">Home</Link>
             <Link href="/download">Download</Link>
             <Lista>
               <Link href="">{name}</Link>
