@@ -36,9 +36,36 @@ export const DivRow = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 200px;
-  a {
+  /* a {
     color: #fff;
+  } */
+
+  a {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
   }
+
+  a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+  }
+  a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+
   div {
     display: flex;
     justify-content: center;
@@ -72,7 +99,9 @@ export const DivRow = styled.div`
 
 export const BGImage = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)),
-    url("https://img2.goodfon.com/wallpaper/nbig/1/79/workgroup-teamwork-desk-office.jpg");
+    url("https://cdn.pixabay.com/photo/2012/03/04/00/43/architecture-22039_960_720.jpg");
+  /* background-repeat: no-repeat;
+  -webkit-background-size: cover; */
   height: 220px;
   display: flex;
   flex-direction: column;
