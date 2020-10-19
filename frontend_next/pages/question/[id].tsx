@@ -6,12 +6,12 @@ import React from "react";
 import Header from "../../components/header";
 import { BodyHome } from "../../styles/home/style";
 import { iQuestion } from ".";
+import { ContentQuestion } from "../../styles/question/index";
 
-import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
+import ReactQuill from "react-quill";
+import Link from "next/link";
 
 const ViewQuestion = () => {
-  const [editorText, setEditoText] = useState(``);
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
     answers: [],
   } as iQuestion);
@@ -19,7 +19,7 @@ const ViewQuestion = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const setViewPage = useCallback(async () => {
+  const countViewPage = useCallback(async () => {
     const res = await api.post(`/questions/${id}/view`);
     console.log(res.status === 200 ? "View count ok" : "View count fail");
   }, []);
@@ -34,54 +34,81 @@ const ViewQuestion = () => {
   }, []);
 
   useEffect(() => {
-    setViewPage();
+    countViewPage();
     getRequestQuestion();
   }, []);
 
-  const onEditorStateChange = (editorState) => {
-    setEditoText(editorState);
-    console.log(JSON.stringify(convertToRaw(editorState.getCurrentContent())));
+  const modules = {
+    toolbar: [
+      [{ header: "1" }, { header: "2" }, { font: [] }],
+      [{ size: [] }],
+      ["bold", "italic", "underline", "strike", "blockquote", "code-block"],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
+      ["link", "image", "video"],
+      [{ align: [] }],
+      ["clean"],
+    ],
+    clipboard: {
+      // toggle to add extra line breaks when pasting HTML:
+      matchVisual: false,
+    },
   };
+
+  const formats = [
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "video",
+    "align",
+    "code-block",
+  ];
 
   return (
     <>
       <Header />
       <BodyHome>
-        <Editor
-          readOnly={true}
-          toolbarHidden={true}
-          editorState={editorText}
-          toolbarClassName="hide-toolbar"
-          wrapperClassName="wrapperClassName"
-          editorClassName="editorClassName"
-          onEditorStateChange={onEditorStateChange}
-          placeholder={"Digite aqui"}
-          editorStyle={{
-            backgroundColor: "#dcfecd",
-            padding: 0,
-            borderWidth: 0,
-            borderColor: "#ccc",
-            height: 500,
-          }}
-        />
+        <ContentQuestion>
+          <div>
+            <h2>{dataQuestion.titulo}</h2>
+            <h5>{dataQuestion.autor}</h5>
+            <p>{dataQuestion.answers.length}</p>
+          </div>
+          <div>
+            <Link href="#">Adicionar resposta</Link>
+          </div>
+        </ContentQuestion>
+
         {dataQuestion.answers.length > 0 ? (
           dataQuestion.answers.map((itemDetail) => (
-            <div key={itemDetail.id}>
-              <h1>Resposta:{itemDetail.text}</h1>
-              <h4>
-                Autor: <b>{itemDetail.autor}</b>
-              </h4>
-            </div>
+            <>
+              <ReactQuill
+                theme="snow"
+                readOnly={true}
+                modules={modules}
+                formats={formats}
+                value={itemDetail.text}
+              />
+              <p>Autor: {itemDetail.autor}</p>
+            </>
           ))
         ) : (
-          <p>Lista vazia</p>
+          <p>Nenhuma resposta encontrada!</p>
         )}
-
-        <hr></hr>
-
-        <hr></hr>
-
-        {/* <RichText data={"<p>oidadiai</p>"} entryMap={} /> */}
       </BodyHome>
     </>
   );

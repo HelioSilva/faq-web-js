@@ -1,7 +1,8 @@
 import GlobalStyle from "../styles/globals";
 import Head from "next/head";
 import { ContextAuth } from "../context/AuthContext";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "react-quill/dist/quill.snow.css";
 
 function MyApp({ Component, pageProps }) {
   return (
