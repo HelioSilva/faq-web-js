@@ -8,7 +8,13 @@ import { BodyHome } from "../../styles/home/style";
 import { iQuestion } from ".";
 import { ContentQuestion } from "../../styles/question/index";
 
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+
+const QuillNoSSRWrapper = dynamic(import("react-quill"), {
+  ssr: false,
+  loading: () => <p>Loading ...</p>,
+});
+
 import Link from "next/link";
 
 const ViewQuestion = () => {
@@ -96,7 +102,7 @@ const ViewQuestion = () => {
         {dataQuestion.answers.length > 0 ? (
           dataQuestion.answers.map((itemDetail) => (
             <>
-              <ReactQuill
+              <QuillNoSSRWrapper
                 theme="snow"
                 readOnly={true}
                 modules={modules}
