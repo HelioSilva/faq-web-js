@@ -3,7 +3,6 @@ import Header from "../../components/header/index";
 
 import ItemQuestion from "../../components/itemQuestion";
 import api from "../../Services/api";
-
 import { BodyHome } from "../../styles/home/style";
 
 export interface iQuestion {
