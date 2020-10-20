@@ -3,7 +3,6 @@ import { Container, BGTopo, MenuInicial, DivRow, BGImage } from "./style";
 import ImgUser from "../../components/ImgUser";
 import ButtonFaq from "../../components/buttons";
 import Button from "../buttons/index_old";
-import LinkFaq from "../LinkFaq";
 
 const Header = () => (
   <>
@@ -35,7 +34,6 @@ const Header = () => (
       </BGImage>
     </Container>
     <br />
-    <LinkFaq>Teste de Link</LinkFaq>
   </>
 );
 export default Header;
