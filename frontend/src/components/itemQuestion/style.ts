@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   max-width: 1000px;
-  background-color: #f0f0f0;
+  background-color: #fff;
   border-radius: 10px;
   padding: 10px;
 

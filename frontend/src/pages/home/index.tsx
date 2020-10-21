@@ -1,11 +1,11 @@
 import React from "react";
 import QuestionBox from "../../components/itemQuestion/index";
 import Header from "../../components/header/index";
-import { Topo } from "./style";
+import { Topo, BodyFullFaq } from "./style";
 import BodyFaq from "../../components/BodyFaq";
 
 const Home: React.FC = () => (
-  <>
+  <BodyFullFaq style={{ background: "#f0f0f0" }}>
     <Topo>
       <Header />
     </Topo>
@@ -42,7 +42,15 @@ const Home: React.FC = () => (
         qtdAcesso="7"
         autor="Ronald Santos"
       />
+      <QuestionBox
+        qtdAcessos="50"
+        url="https:google.com"
+        titulos="Coisado"
+        qtdRespostas="1"
+        qtdAcesso="70"
+        autor="Helio Silva"
+      />
     </BodyFaq>
-  </>
+  </BodyFullFaq>
 );
 export default Home;

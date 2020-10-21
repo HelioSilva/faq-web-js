@@ -102,7 +102,7 @@ export const BGImage = styled.div`
     url("https://cdn.pixabay.com/photo/2012/03/04/00/43/architecture-22039_960_720.jpg");
   /* background-repeat: no-repeat;
   -webkit-background-size: cover; */
-  height: 220px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
