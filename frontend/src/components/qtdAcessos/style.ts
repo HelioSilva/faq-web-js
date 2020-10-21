@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ContainerQtd = styled.div`
   text-align: center;
+  justify-content: center;
   color: #fff;
   background-color: #c20b2e;
   max-width: 60px;
