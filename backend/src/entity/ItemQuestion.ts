@@ -19,7 +19,7 @@ export class ItemQuestion {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column()
+  @Column({ type: "text" })
   text: string;
 
   @Column()
