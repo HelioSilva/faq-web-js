@@ -2,7 +2,6 @@ import React from "react";
 import { Container, BGTopo, MenuInicial, DivRow, BGImage } from "./style";
 import ImgUser from "../../components/ImgUser";
 import ButtonFaq from "../../components/buttons";
-import Button from "../buttons/index_old";
 
 const Header = () => (
   <>

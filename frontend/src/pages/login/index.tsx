@@ -1,8 +1,11 @@
 import React from "react";
+import ButtonFaq from "../../components/buttons/index";
+import CenterFaq from "../../components/CenterFaq";
 import {
   ContainerLogin,
   Aside,
   Content,
+  FormLogin,
 } from "../../components/ContainerLogin";
 
 function Login() {
@@ -21,9 +24,22 @@ function Login() {
         </div>
       </Aside>
       <Content>
-        <div>
-          <h1>Login</h1>
-        </div>
+        <CenterFaq>
+          <FormLogin>
+            <h1>Login</h1>
+            <div>
+              <input placeholder="Email" />
+            </div>
+            <div>
+              <input placeholder="Senha" />
+            </div>
+            <ButtonFaq>Acessar</ButtonFaq>
+            <hr />
+            <div>
+              <a href="/">Cadastre-se</a>
+            </div>
+          </FormLogin>
+        </CenterFaq>
       </Content>
     </ContainerLogin>
   );
