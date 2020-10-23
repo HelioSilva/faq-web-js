@@ -22,7 +22,8 @@ const ItemQuestion = (props: Question) => (
         </div>
         <DivFlexRow>
           <p>
-            <span>{props.qtdRespostas}</span> respostas
+            <span>{props.qtdRespostas}</span>
+            {props.qtdRespostas > 1 ? ` respostas` : ` resposta`}
           </p>
           <p>
             Autor: <span>{props.autor}</span>

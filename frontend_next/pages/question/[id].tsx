@@ -6,9 +6,11 @@ import React from "react";
 import Header from "../../components/header";
 import { BodyHome } from "../../styles/home/style";
 import { iQuestion } from ".";
-import { ContentQuestion } from "../../styles/question/index";
+import { ContentQuestion, HeaderItemAnswer } from "../../styles/question/index";
 
 import dynamic from "next/dynamic";
+
+import { ItemAnswer } from "../../styles/question/index";
 
 const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
@@ -35,7 +37,6 @@ const ViewQuestion = () => {
 
     if (questionData.status === 200) {
       setDataquestion(questionData.data.questions[0] as iQuestion);
-      console.log("data >  ", dataQuestion);
     }
   }, []);
 
@@ -45,20 +46,7 @@ const ViewQuestion = () => {
   }, []);
 
   const modules = {
-    toolbar: [
-      [{ header: "1" }, { header: "2" }, { font: [] }],
-      [{ size: [] }],
-      ["bold", "italic", "underline", "strike", "blockquote", "code-block"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
-      ["link", "image", "video"],
-      [{ align: [] }],
-      ["clean"],
-    ],
+    toolbar: false,
     clipboard: {
       // toggle to add extra line breaks when pasting HTML:
       matchVisual: false,
@@ -95,22 +83,34 @@ const ViewQuestion = () => {
             <p>{dataQuestion.answers.length}</p>
           </div>
           <div>
-            <Link href="#">Adicionar resposta</Link>
+            <Link href={`/question/new/${dataQuestion.id}`}>
+              Adicionar resposta
+            </Link>
           </div>
         </ContentQuestion>
 
         {dataQuestion.answers.length > 0 ? (
           dataQuestion.answers.map((itemDetail) => (
-            <>
+            <ItemAnswer>
+              <HeaderItemAnswer>
+                <p>Resposta</p>
+                <p>Autor: {itemDetail.autor}</p>
+                <p>Modo:Preview</p>
+              </HeaderItemAnswer>
               <QuillNoSSRWrapper
+                className=""
+                blurred-editor
                 theme="snow"
                 readOnly={true}
                 modules={modules}
                 formats={formats}
                 value={itemDetail.text}
+                style={{
+                  margin: 0,
+                  background: "#ffffff",
+                }}
               />
-              <p>Autor: {itemDetail.autor}</p>
-            </>
+            </ItemAnswer>
           ))
         ) : (
           <p>Nenhuma resposta encontrada!</p>

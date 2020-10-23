@@ -6,8 +6,7 @@ export const BodyHome = styled.div`
   max-width: 900px;
   height: auto;
   margin: 0 auto;
-  padding: 10px;
-  padding-top: 20px;
+  padding: 20px 10px;
 
   div + div {
     margin-top: 5px;

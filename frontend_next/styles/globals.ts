@@ -10,6 +10,11 @@ export default createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     font-size:14px;
   }
+
+  a {
+    text-decoration: none;
+  }
+  
   body{
     background:#fafafa;
     /* color:#fff; */
