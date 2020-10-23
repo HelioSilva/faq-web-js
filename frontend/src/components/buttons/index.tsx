@@ -1,21 +1,22 @@
 import styled from "styled-components";
 
-const ButtonFaq = styled.a.attrs({ href: "http://debian.org" })`
-  cursor: pointer;
-  width: 200px;
+const ButtonFaq = styled.button.attrs({ href: "http://debian.org" })`
+  margin: 10px 0;
+  width: 214px;
   height: 35px;
-  background-color: #d9462d;
-  border-radius: 5px;
+  border-radius: 10px;
+  background: #c20b2e;
+  color: #fff;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  margin: 5px;
-  transition-duration: 0.6;
+  transition: 1s;
 
-  &:hover {
-    background-color: #12f4aa;
+  :hover {
+    background: #9d0926;
+    color: #fff;
   }
 `;
 

@@ -5,7 +5,7 @@ const BodyFaq = styled.div`
   margin: 0 auto;
   padding-top: 20px;
   margin-bottom: 20px;
-  background: #f0f0f0;
+  padding: 0 10px;
 `;
 
 export default BodyFaq;

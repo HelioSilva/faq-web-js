@@ -1,21 +1,6 @@
 import styled from "styled-components";
 
 const LinkFaq = styled.a.attrs({ href: "/" })`
-  /* font-size: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: underline overline;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin-top: 10px;
-  &:hover {
-    background-color: #12f4aa;
-    text-decoration: underline;
-    color: #0f0;
-  } */
   position: relative;
   color: #000;
   text-decoration: none;

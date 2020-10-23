@@ -12,7 +12,7 @@ const Global = createGlobalStyle`
     font-size:14px;
   }
   body{
-    background:#fafafa;
+    background:#f0f0f0;
     /* color:#fff; */
     
     -webkit-font-smoothing: antialiased;
