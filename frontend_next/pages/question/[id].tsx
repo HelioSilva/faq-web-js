@@ -107,7 +107,8 @@ const ViewQuestion = () => {
                 value={itemDetail.text}
                 style={{
                   margin: 0,
-                  background: "#ffffff",
+                  minHeight: "75px",
+                  // background: "#ffffff",
                 }}
               />
             </ItemAnswer>

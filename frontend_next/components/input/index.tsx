@@ -16,7 +16,7 @@ const InputNext = ({ name, ...rest }) => {
     <AreaInput focus={focused} edited={preenchido}>
       <input
         autoComplete={"false"}
-        placeholder={!focused && (rest.display ? rest.display : name)}
+        placeholder={!focused && (rest.display ? rest.display : "")}
         onFocus={() => {
           setFocus(true);
           setPreenchido(true);

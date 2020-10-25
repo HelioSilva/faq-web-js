@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const BodyHome = styled.div`
-  background-color: #f9f9f9;
+  background-color: #f8f8f8;
   width: 80%;
   max-width: 900px;
   height: auto;

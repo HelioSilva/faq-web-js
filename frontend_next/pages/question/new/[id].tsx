@@ -124,7 +124,7 @@ const ViewQuestion = () => {
             onChange={setData}
             placeholder={"Digite aqui a resolução desse problema"}
             style={{
-              height: "500px",
+              minHeight: "300px",
             }}
           />
         </ItemAnswer>

@@ -10,17 +10,17 @@ const colorBGActive = "#cacaca";
 const delay = "0.7s";
 
 const AreaInput = styled.div<props>`
-  background: ${colorBG};
+  /* background: ${colorBG}; */
   display: flex;
   position: relative;
   flex-direction: column;
   justify-content: space-around;
-  padding: 5px;
+  padding: 1px 5px;
   padding-top: 15px;
   height: 40px;
   width: 100%;
-  border-radius: 8px;
-  box-shadow: 1px 1px 1px #d9d9d9;
+  /* border-radius: 8px; */
+  border-bottom: 1px solid #635179;
   transition: ${delay};
 
   p {
@@ -36,7 +36,7 @@ const AreaInput = styled.div<props>`
 
     border: none;
     color: #5d5d5d;
-    background: ${colorBG};
+    /* background: ${colorBG}; */
 
     font-size: 13.5px;
     transition: ${delay};
@@ -46,11 +46,11 @@ const AreaInput = styled.div<props>`
     return (
       (props.focus || props.edited) &&
       css`
-        background: ${colorBGActive};
+        /* background: ${colorBGActive}; */
         /* border: 1px solid #ff4f53; */
 
         input {
-          background: ${colorBGActive};
+          /* background: ${colorBGActive}; */
         }
         p {
           display: block;
