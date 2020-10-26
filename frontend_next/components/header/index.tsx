@@ -18,8 +18,12 @@ const Header = () => {
       <BGTopo>
         <MenuInicial>
           <div>
-            <h3>FAQ</h3>
-            <h5>Base Conhecimento</h5>
+            <h3>
+              <Link href="/">FAQ</Link>
+            </h3>
+            <h5>
+              <Link href="/">Base de Conhecimento</Link>
+            </h5>
           </div>
           <DivRow>
             <Link href="/">Home</Link>
