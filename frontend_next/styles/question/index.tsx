@@ -54,7 +54,7 @@ export const ItemAnswer = styled.div`
 export const HeaderItemAnswer = styled.div`
   display: flex;
   justify-content: space-between;
-  background: #df0d4b;
+  background: #938c8f;
   color: #fff;
   padding: 5px 3px;
 

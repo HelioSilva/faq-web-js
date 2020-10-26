@@ -12,7 +12,7 @@ export const Container = styled.button<props>`
   color: ${(props) => (props.primary ? corSecundary : corPrimary)};
   background: ${(props) => (props.primary ? corPrimary : corSecundary)};
   border: 1px solid ${(props) => (props.primary ? corSecundary : corPrimary)};
-  padding: 5px;
+  padding: 5px 8px;
   border-radius: 10px;
   transition: 0.5s;
   height: 40px;

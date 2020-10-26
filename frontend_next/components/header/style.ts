@@ -99,8 +99,7 @@ export const MenuInicial = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  h3,
-  h5 {
+  a {
     color: #fff;
   }
 

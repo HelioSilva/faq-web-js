@@ -5,12 +5,9 @@ interface props {
   edited: boolean;
 }
 
-const colorBG = "#cfd8e7";
-const colorBGActive = "#cacaca";
 const delay = "0.7s";
 
 const AreaInput = styled.div<props>`
-  /* background: ${colorBG}; */
   display: flex;
   position: relative;
   flex-direction: column;
@@ -33,10 +30,10 @@ const AreaInput = styled.div<props>`
   input {
     width: 100%;
     height: 100%;
+    background: none;
 
     border: none;
     color: #5d5d5d;
-    /* background: ${colorBG}; */
 
     font-size: 13.5px;
     transition: ${delay};
@@ -46,11 +43,7 @@ const AreaInput = styled.div<props>`
     return (
       (props.focus || props.edited) &&
       css`
-        /* background: ${colorBGActive}; */
-        /* border: 1px solid #ff4f53; */
-
         input {
-          /* background: ${colorBGActive}; */
         }
         p {
           display: block;
