@@ -1,5 +1,6 @@
 import Header from "../../components/header/index";
 import { BodyHome } from "../../styles/home/style";
+import { Container } from "../../styles/question/style_newQuestion";
 
 import { Form } from "@unform/web";
 import Input from "../../components/input/index";
@@ -12,6 +13,8 @@ import api from "../../Services/api";
 import { useAuth } from "../../context/AuthContext";
 
 function postQuestion(titulo: string, user: string) {
+  if (titulo === "") return;
+
   const response = api.post("/questions", {
     titulo,
     autor: user,
@@ -22,34 +25,35 @@ function postQuestion(titulo: string, user: string) {
 
 const newQuestion = () => {
   const user = useAuth();
-  const [value, setValue] = useState("");
 
   return (
     <div>
       <Header />
       <BodyHome>
-        <h3>Instruções</h3>
-        <ul>
-          <li>
-            Antes de criar um novo tópico, verifique que se não existe outro
+        <Container>
+          <h3>Instruções</h3>
+
+          <p>
+            - Antes de criar um novo tópico, verifique que se não existe outro
             igual.
-          </li>
-          <li>
-            Todos os tópicos devem iniciar com as palavras: "Como ...", "Qual
+          </p>
+          <p>
+            - Todos os tópicos devem iniciar com as palavras: "Como ...", "Qual
             ..."
-          </li>
-        </ul>
-        <Form
-          onSubmit={async (dataForm) => {
-            const resp = await postQuestion(dataForm.titulo, user.name);
-            if (resp.status == 200) {
-              Router.push("/");
-            }
-          }}
-        >
-          <Input display="Dúvida" name={"titulo"} />
-          <Btn primary width={"10%"} value={"Cadastrar"} />
-        </Form>
+          </p>
+
+          <Form
+            onSubmit={async (dataForm) => {
+              const resp = await postQuestion(dataForm.titulo, user.name);
+              if (resp.status == 200) {
+                Router.push("/");
+              }
+            }}
+          >
+            <Input display="Dúvida" name={"titulo"} />
+            <Btn primary width={"10%"} value={"Cadastrar"} />
+          </Form>
+        </Container>
       </BodyHome>
     </div>
   );

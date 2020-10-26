@@ -83,7 +83,7 @@ const ViewQuestion = () => {
             <p>{dataQuestion.answers.length}</p>
           </div>
           <div>
-            <Link href={`/question/new/${dataQuestion.id}`}>
+            <Link href={`/question/answer/${dataQuestion.id}`}>
               Adicionar resposta
             </Link>
           </div>
@@ -95,11 +95,8 @@ const ViewQuestion = () => {
               <HeaderItemAnswer>
                 <p>Resposta</p>
                 <p>Autor: {itemDetail.autor}</p>
-                <p>Modo:Preview</p>
               </HeaderItemAnswer>
               <QuillNoSSRWrapper
-                className=""
-                blurred-editor
                 theme="snow"
                 readOnly={true}
                 modules={modules}
@@ -107,8 +104,8 @@ const ViewQuestion = () => {
                 value={itemDetail.text}
                 style={{
                   margin: 0,
-                  minHeight: "75px",
-                  // background: "#ffffff",
+                  // minHeight: "75px",
+                  background: "#eeeeee",
                 }}
               />
             </ItemAnswer>

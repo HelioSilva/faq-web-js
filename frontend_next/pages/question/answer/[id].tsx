@@ -12,6 +12,7 @@ import dynamic from "next/dynamic";
 
 import { ItemAnswer } from "../../../styles/question/index";
 import { useAuth } from "../../../context/AuthContext";
+import Btn from "../../../components/button";
 
 const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
@@ -31,7 +32,8 @@ const ViewQuestion = () => {
   const { id } = router.query;
 
   const setAnswer = useCallback(async (texto: string) => {
-    console.log("oi");
+    if (texto === "") return;
+
     const response = await api.post(`/questions/${id}/answer`, {
       text: texto,
       autor: user.name,
@@ -102,19 +104,9 @@ const ViewQuestion = () => {
             <h5>{dataQuestion.autor}</h5>
             <p>{dataQuestion.answers.length}</p>
           </div>
-          {/* <div>
-            <Link href="#">Adicionar resposta</Link>
-          </div> */}
         </ContentQuestion>
 
         <ItemAnswer>
-          <button
-            onClick={async () => {
-              await setAnswer(data);
-            }}
-          >
-            Salvar
-          </button>
           <QuillNoSSRWrapper
             theme="snow"
             readOnly={false}
@@ -123,8 +115,17 @@ const ViewQuestion = () => {
             value={data}
             onChange={setData}
             placeholder={"Digite aqui a resolução desse problema"}
-            style={{
-              minHeight: "300px",
+            style={
+              {
+                // minHeight: "300px",
+              }
+            }
+          />
+          <Btn
+            value="Salvar"
+            width="250px"
+            onClick={async () => {
+              await setAnswer(data);
             }}
           />
         </ItemAnswer>
