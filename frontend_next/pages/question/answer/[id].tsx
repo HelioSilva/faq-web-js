@@ -115,13 +115,12 @@ const ViewQuestion = () => {
             value={data}
             onChange={setData}
             placeholder={"Digite aqui a resolução desse problema"}
-            style={
-              {
-                // minHeight: "300px",
-              }
-            }
+            style={{
+              marginBottom: "40px",
+            }}
           />
           <Btn
+            primary
             value="Salvar"
             width="250px"
             onClick={async () => {

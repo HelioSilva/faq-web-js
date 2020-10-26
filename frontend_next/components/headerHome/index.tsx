@@ -40,6 +40,12 @@ const Header = () => {
           </DivRow>
         </MenuInicial>
       </BGTopo>
+      <BGImage>
+        <div>
+          <input placeholder="Pesquise aqui" />
+        </div>
+        <Link href="/question/newQuestion">Nova Questão</Link>
+      </BGImage>
     </Container>
   );
 };
