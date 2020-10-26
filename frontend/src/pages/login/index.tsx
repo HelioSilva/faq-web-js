@@ -1,6 +1,6 @@
 import React from "react";
+import ButtonGmail from "../../components/buttons/ButtonGmail";
 import ButtonFaq from "../../components/buttons/index";
-import CenterFaq from "../../components/CenterFaq";
 import {
   ContainerLogin,
   Aside,
@@ -12,6 +12,7 @@ function Login() {
   return (
     <ContainerLogin>
       <Aside>
+        Computek Comercio e Servicos LTDA
         <div>
           <h2>FAQweb</h2>
         </div>
@@ -24,22 +25,23 @@ function Login() {
         </div>
       </Aside>
       <Content>
-        <CenterFaq>
-          <FormLogin>
+        <FormLogin>
+          <>
             <h1>Login</h1>
             <div>
               <input placeholder="Email" />
-            </div>
-            <div>
               <input placeholder="Senha" />
             </div>
             <ButtonFaq>Acessar</ButtonFaq>
-            <hr />
+            <div>
+              <hr />
+            </div>
             <div>
               <a href="/">Cadastre-se</a>
             </div>
-          </FormLogin>
-        </CenterFaq>
+            <ButtonGmail>Acessar com Gmail</ButtonGmail>
+          </>
+        </FormLogin>
       </Content>
     </ContainerLogin>
   );
