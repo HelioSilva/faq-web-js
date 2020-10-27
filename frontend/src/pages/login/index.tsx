@@ -1,5 +1,4 @@
 import React from "react";
-import ButtonGmail from "../../components/buttons/ButtonGmail";
 import ButtonFaq from "../../components/buttons/index";
 import {
   ContainerLogin,
@@ -7,6 +6,8 @@ import {
   Content,
   FormLogin,
 } from "../../components/ContainerLogin";
+import logogmail from "../../assets/img/gmail.png";
+import WrapperGmail from "../../components/WrapperGmail";
 
 function Login() {
   return (
@@ -39,7 +40,7 @@ function Login() {
             <div>
               <a href="/">Cadastre-se</a>
             </div>
-            <ButtonGmail>Acessar com Gmail</ButtonGmail>
+            <WrapperGmail src={logogmail} alt="logo Gmail" />
           </>
         </FormLogin>
       </Content>
