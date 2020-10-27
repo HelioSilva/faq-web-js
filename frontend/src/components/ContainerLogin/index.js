@@ -60,9 +60,9 @@ export const FormLogin = styled.div`
   align-items: center;
   border: 1px solid #dcd5d5;
   border-radius: 5px;
-  padding: 50px;
+  padding: 30px;
   margin: 0;
-  width: 80%;
+  width: 75%;
 
   hr {
     margin: 35px;

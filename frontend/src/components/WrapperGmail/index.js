@@ -6,7 +6,7 @@ function WrapperGmail({ src, alt }) {
   return (
     <ButtonGmail>
       <ImgButton src={src} alt={alt} />
-      Entrar com Gmail
+      <p>Acessar com Gmail</p>
     </ButtonGmail>
   );
 }
