@@ -31,7 +31,7 @@ function Login() {
             <h1>Login</h1>
             <div>
               <input placeholder="Email" />
-              <input placeholder="Senha" />
+              <input type="password" placeholder="Senha" />
             </div>
             <ButtonFaq>Acessar</ButtonFaq>
             <div>

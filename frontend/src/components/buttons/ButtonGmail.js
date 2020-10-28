@@ -5,7 +5,7 @@ const ButtonGmail = styled.figure`
   border-radius: 12px;
   color: #fff;
   border-radius: 5px;
-  padding: 10px 90px 10px 90px;
+  padding: 8px 70px 8px 70px;
   box-shadow: 5px 10px 18px #888888;
   margin: 20px;
 

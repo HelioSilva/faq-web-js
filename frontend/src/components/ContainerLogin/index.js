@@ -60,9 +60,9 @@ export const FormLogin = styled.div`
   align-items: center;
   border: 1px solid #dcd5d5;
   border-radius: 5px;
-  padding: 30px;
+  padding: 10px;
   margin: 0;
-  width: 75%;
+  width: 70%;
 
   hr {
     margin: 35px;
@@ -76,17 +76,17 @@ export const FormLogin = styled.div`
     margin: 55px;
   }
   div {
-    width: 100%;
-    /* background: #1c5; */
+    width: 80%;
 
     input {
-      display: flex;
+      /* display: flex; */
       background: #ecf0f1;
       border-radius: 15px;
       margin-bottom: 20px;
       padding: 18px;
       border-style: none;
-      width: 100%;
+      align-items: center;
+      width: 90%;
 
       color: #737373;
     }
