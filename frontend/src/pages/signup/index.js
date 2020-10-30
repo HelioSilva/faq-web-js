@@ -9,13 +9,37 @@ import {
 import logogmail from "../../assets/img/gmail.png";
 import WrapperGmail from "../../components/WrapperGmail";
 
-function Login() {
+function Signup() {
   return (
     <ContainerLogin>
-      <Aside>
+      <Content style={{ width: "50%" }}>
+        <FormLogin>
+          <>
+            <h2>Formulário de cadastro</h2>
+            <div>
+              <input placeholder="Nome" />
+              <input placeholder="Email" />
+              <input type="password" placeholder="Senha" />
+            </div>
+            <ButtonFaq>Acessar</ButtonFaq>
+            <div>
+              <hr />
+            </div>
+            <div>
+              <a href="/">Login</a>
+            </div>
+            <WrapperGmail
+              src={logogmail}
+              alt="logo Gmail"
+              cont="Cadastre-se com conta Google"
+            />
+          </>
+        </FormLogin>
+      </Content>
+      <Aside style={{ width: "50%" }}>
         Computek Comercio e Servicos LTDA
         <div>
-          <h2>FAQweb</h2>
+          <h2>Cadastre-se agora</h2>
         </div>
         <div>
           <p>
@@ -25,31 +49,8 @@ function Login() {
           </p>
         </div>
       </Aside>
-      <Content>
-        <FormLogin>
-          <>
-            <h1>Login</h1>
-            <div>
-              <input placeholder="Email" />
-              <input type="password" placeholder="Senha" />
-            </div>
-            <ButtonFaq>Acessar</ButtonFaq>
-            <div>
-              <hr />
-            </div>
-            <div>
-              <a href="/">Cadastre-se</a>
-            </div>
-            <WrapperGmail
-              src={logogmail}
-              alt="logo Gmail"
-              cont="Acessar com Gmail"
-            />
-          </>
-        </FormLogin>
-      </Content>
     </ContainerLogin>
   );
 }
 
-export default Login;
+export default Signup;
