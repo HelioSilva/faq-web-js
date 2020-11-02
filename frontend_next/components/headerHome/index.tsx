@@ -44,7 +44,7 @@ const Header = () => {
         <div>
           <input placeholder="Pesquise aqui" />
         </div>
-        <Link href="/question/newQuestion">Nova Questão</Link>
+        <Link href="/question/create">Nova Questão</Link>
       </BGImage>
     </Container>
   );

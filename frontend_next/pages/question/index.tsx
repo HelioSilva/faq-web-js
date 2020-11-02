@@ -44,7 +44,7 @@ const Home = () => {
             autor={itemDetail.autor}
             qtdRespostas={itemDetail.answers.length}
             qtdAcesso={itemDetail.acessos}
-            url={`/question/${itemDetail.id}`}
+            url={`/question/${itemDetail.id}/`}
           />
         ))}
       </BodyHome>

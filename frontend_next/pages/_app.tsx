@@ -1,10 +1,25 @@
 import GlobalStyle from "../styles/globals";
 import Head from "next/head";
+import Router from "next/router";
 import { ContextAuth } from "../context/AuthContext";
-// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "react-quill/dist/quill.snow.css";
+import { useState } from "react";
 
 function MyApp({ Component, pageProps }) {
+  const [loading, setLoading] = useState(false);
+
+  Router.events.on("routeChangeStart", (url) => {
+    setLoading(true);
+  });
+
+  Router.events.on("routeChangeComplete", (url) => {
+    setLoading(false);
+  });
+
+  Router.events.on("routeChangeError", (url) => {
+    setLoading(false);
+  });
+
   return (
     <>
       <Head>
@@ -17,7 +32,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <GlobalStyle />
       <ContextAuth>
-        <Component {...pageProps} />
+        {loading === false ? <Component {...pageProps} /> : <h1>Teste</h1>}
       </ContextAuth>
     </>
   );

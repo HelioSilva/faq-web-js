@@ -1,16 +1,19 @@
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
-import api from "../../Services/api";
+import api from "../../../Services/api";
 
 import React from "react";
-import Header from "../../components/header";
-import { BodyHome } from "../../styles/home/style";
-import { iQuestion } from ".";
-import { ContentQuestion, HeaderItemAnswer } from "../../styles/question/index";
+import Header from "../../../components/header";
+import { BodyHome } from "../../../styles/home/style";
+import { iQuestion } from "..";
+import {
+  ContentQuestion,
+  HeaderItemAnswer,
+} from "../../../styles/question/index";
 
 import dynamic from "next/dynamic";
 
-import { ItemAnswer } from "../../styles/question/index";
+import { ItemAnswer } from "../../../styles/question/index";
 
 const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
@@ -20,24 +23,27 @@ const QuillNoSSRWrapper = dynamic(import("react-quill"), {
 import Link from "next/link";
 
 const ViewQuestion = () => {
+  const [loading, setLoading] = useState(true);
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
     answers: [],
   } as iQuestion);
 
   const router = useRouter();
-  const { id } = router.query;
+  const { question } = router.query;
+  console.log(router.query);
 
   const countViewPage = useCallback(async () => {
-    const res = await api.post(`/questions/${id}/view`);
+    const res = await api.post(`/questions/${question}/view`);
     console.log(res.status === 200 ? "View count ok" : "View count fail");
   }, []);
 
   const getRequestQuestion = useCallback(async () => {
-    const questionData = await api.get(`/questions/${id}`);
+    const questionData = await api.get(`/questions/${question}`);
 
     if (questionData.status === 200) {
       setDataquestion(questionData.data.questions[0] as iQuestion);
     }
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -110,6 +116,8 @@ const ViewQuestion = () => {
               />
             </ItemAnswer>
           ))
+        ) : loading == true ? (
+          <p>loading!</p>
         ) : (
           <p>Nenhuma resposta encontrada!</p>
         )}
