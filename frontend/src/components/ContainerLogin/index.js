@@ -75,6 +75,12 @@ export const FormLogin = styled.div`
     margin-top: 0px;
     margin: 55px;
   }
+  h2 {
+    color: #c20b2e;
+    font-size: 35px;
+    text-align: center;
+    margin: 45px;
+  }
   div {
     width: 80%;
 
