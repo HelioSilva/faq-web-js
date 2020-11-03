@@ -89,8 +89,14 @@ const ViewQuestion = () => {
             <p>{dataQuestion.answers.length}</p>
           </div>
           <div>
-            <Link href={`/question/answer/${dataQuestion.id}`}>
+            <Link href={`/question/${dataQuestion.id}/answer/create`}>
               Adicionar resposta
+            </Link>
+            <Link href={`/question/${dataQuestion.id}/edit`}>
+              Editar pergunta
+            </Link>
+            <Link href={`/question/${dataQuestion.id}/delete`}>
+              Remover dúvida
             </Link>
           </div>
         </ContentQuestion>
