@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* a {
-    text-decoration: none;
+  height: 50px;
+`;
 
-    &:hover {
-      color: #60c4be;
-      transition: 0.6s;
-    }
-  } */
+export const BGTopo = styled.div`
+  background: #c20b2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px 5px 20px;
+  height: 50px;
 `;
 
 export const DivRow = styled.div`
@@ -73,7 +75,7 @@ export const ImageRaduis = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fafafa;
+  background: #930924;
   max-width: 30px;
   padding: 1px;
   border-radius: 20px;
@@ -85,7 +87,7 @@ export const ImageRaduis = styled.div`
     border-radius: 20px;
   }
   :hover {
-    background: #930924;
+    background: #2d2d2d;
     img {
       /* width: 30px; */
     }
@@ -107,14 +109,6 @@ export const MenuInicial = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
   }
-`;
-
-export const BGTopo = styled.div`
-  background: #c20b2e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px 5px 20px;
 `;
 
 export const BGImage = styled.div`
