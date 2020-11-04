@@ -15,6 +15,8 @@ import dynamic from "next/dynamic";
 
 import { ItemAnswer } from "../../../styles/question/index";
 
+import { IoMdCreate } from "react-icons/io";
+
 const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading ...</p>,
@@ -87,11 +89,13 @@ const ViewQuestion = () => {
             <h2>{dataQuestion.titulo}</h2>
             <h5>{dataQuestion.autor}</h5>
             <p>{dataQuestion.answers.length}</p>
+            <IoMdCreate href={"/"}>Editar</IoMdCreate>
           </div>
           <div>
             <Link href={`/question/${dataQuestion.id}/answer/create`}>
               Adicionar resposta
             </Link>
+
             <Link href={`/question/${dataQuestion.id}/edit`}>
               Editar pergunta
             </Link>
