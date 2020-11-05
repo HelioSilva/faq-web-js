@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, BGTopo, MenuInicial, DivRow, BGImage } from "./style";
-import ImgUser from "../../components/ImgUser";
-import ButtonFaq from "../../components/buttons";
+import ImgUser from "../ImgUser";
+import ButtonFaq from "../buttons";
 
 const Header = () => (
   <>
@@ -25,10 +25,6 @@ const Header = () => (
         <div>
           <input placeholder="Pesquise aqui" />
         </div>
-        {/* <Button name="Helio" numero={50} cor="#3ac" />
-
-      <Button name="Ronald" numero={50} cor="#4a7" />
-      <a href="http://debian.org">Nova Questão</a> */}
         <ButtonFaq>Nova Questão</ButtonFaq>
       </BGImage>
     </Container>
