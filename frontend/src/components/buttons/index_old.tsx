@@ -33,7 +33,7 @@ const Container = styled.button<Cor>`
   transition-duration: 0.6;
 
   &:hover {
-    background-color: #12f4aa;
+    background-color: #000;
   }
 
   p {
