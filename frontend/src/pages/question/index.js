@@ -1,13 +1,9 @@
 import React from "react";
-import { BGTopo } from "../../components/header/style";
-import { Topo } from "../home/style";
+import Topo from "../../components/Topo";
+
 
 function Question() {
-  return (
-    <Topo>
-      <BGTopo />
-    </Topo>
-  );
+  return <Topo />;
 }
 
 export default Question;

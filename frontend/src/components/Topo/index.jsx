@@ -1,9 +1,11 @@
 import React from "react";
-import { DivRow, MenuInicial } from "../header/style";
+import { BGTopo, MenuInicial, DivRow } from "./style";
 import ImgUser from "../ImgUser";
 
-function BGTopo() {
-  return (
+
+function Topo(){
+  return(
+    <BGTopo>
     <MenuInicial>
       <div>
         <h3>FAQ</h3>
@@ -17,7 +19,8 @@ function BGTopo() {
         </div>
       </DivRow>
     </MenuInicial>
-  );
-}
+  </BGTopo>
+  )
+};
 
-export default BGTopo;
+export default Topo;

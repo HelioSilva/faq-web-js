@@ -1,14 +1,11 @@
 import React from "react";
 import QuestionBox from "../../components/itemQuestion/index";
 import Header from "../../components/header/index";
-import { Topo } from "./style";
 import BodyFaq from "../../components/BodyFaq";
 
 const Home: React.FC = () => (
   <>
-    <Topo>
-      <Header />
-    </Topo>
+    <Header />
     <BodyFaq>
       <QuestionBox
         qtdAcessos="3"
