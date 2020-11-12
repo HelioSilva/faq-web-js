@@ -11,7 +11,9 @@ const Header = () => (
         <div>
           <input placeholder="Pesquise aqui" />
         </div>
-        <ButtonFaq>Nova Questão</ButtonFaq>
+        <ButtonFaq>
+          Nova Questão
+        </ButtonFaq>
       </BGImage>
     </Container>
     <br />
