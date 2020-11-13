@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, BGImage } from "./style";
 import Topo from '../Topo/index';
-import ButtonFaq from "../buttons";
+import ButtonFaq from "../buttons/";
 
 const Header = () => (
   <>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ButtonFaq = styled.button.attrs({ href: "http://debian.org" })`
+const ButtonFaq = styled.button`
   display:flex;
   position:relative;
   overflow: hidden;
@@ -16,10 +16,10 @@ const ButtonFaq = styled.button.attrs({ href: "http://debian.org" })`
 
   transition: 1s;
 
-  :hover {
-    background: #9d0926;
+  /* :hover {
+    background: #a20d2b;
     color: #fff;
-  }
+  } */
 
 
   &::before {
@@ -28,7 +28,7 @@ const ButtonFaq = styled.button.attrs({ href: "http://debian.org" })`
     opacity: 1;
     width: 100%;
     height:100%;
-    background-color: #fa1a43;
+    background-color: #dd1c40;
     transform-origin: bottom left;
     transform: translateX(100%) scale(1.5) skew(-30deg);
     transition: transform 200ms linear;
@@ -37,6 +37,7 @@ const ButtonFaq = styled.button.attrs({ href: "http://debian.org" })`
   &::after{
     content: "${(props) => props.children}";
     position: absolute;
+    color: #fff;
   }
 
   &:hover::before{
