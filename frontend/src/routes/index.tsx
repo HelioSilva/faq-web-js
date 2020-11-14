@@ -6,6 +6,7 @@ import Login from "../pages/login/index";
 import Question from "../pages/question";
 import Signup from "../pages/signup/index";
 import Ronald from "../pages/question";
+import Helio from "../pages/question";
 
 const Routes: React.FC = () => (
   <Switch>
@@ -14,6 +15,7 @@ const Routes: React.FC = () => (
     <Route exact path="/signup" component={Signup} />
     <Route exact path="/question" component={Question} />
     <Route exact path="/ronald" component={Ronald} />
+    <Route exact path="/helio" component={Helio} />
   </Switch>
 );
 

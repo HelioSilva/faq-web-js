@@ -51,7 +51,8 @@ const Home: React.FC = () => (
       />
     </BodyFaq>
     <Cards>
-      <Card href="/ronald" img_url="https://avatars3.githubusercontent.com/u/33934560?s=400&u=f0be2b4c2705f65658ae5899869d98465e3846cd&v=4" img_alt="GitHub Ronaldss" title="Ronald" description="Esta é a description." />
+      <Card href="/ronald" img_url="https://avatars3.githubusercontent.com/u/33934560?s=400&u=f0be2b4c2705f65658ae5899869d98465e3846cd&v=4" img_alt="GitHub Ronaldss" title="GitHub" description="Ronaldss." />
+      <Card href="/helio" img_url="https://avatars2.githubusercontent.com/u/12967010?s=400&u=896f6a60dad07044c0ad1d14c03597992933eb23&v=4" img_alt="Helio foto" title="GitHub" description="HelioSilva" />
     </Cards>
   </>
 );
