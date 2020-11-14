@@ -1,6 +1,7 @@
 .cards{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    /* align-items: center; */
+    justify-content: end;
     background-color:#c20b2e;
 }
