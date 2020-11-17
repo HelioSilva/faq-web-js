@@ -23,8 +23,7 @@ const QuillNoSSRWrapper = dynamic(import("react-quill"), {
 });
 
 import Link from "next/link";
-import Btn from "../../../components/button";
-import Badge from "react-bootstrap/Badge";
+import Badge, { ColorButtom } from "../../../components/badge/index";
 
 const ViewQuestion = () => {
   const [loading, setLoading] = useState(true);
@@ -88,19 +87,6 @@ const ViewQuestion = () => {
       <BodyHome>
         <ContentQuestion>
           <div>
-            <div>
-              <Link href={`/question/${dataQuestion.id}/edit`}>
-                <Badge style={{ cursor: "pointer" }} variant="primary">
-                  Editar
-                </Badge>
-              </Link>
-              {"  "}
-              <Link href={`/question/${dataQuestion.id}/delete`}>
-                <Badge style={{ cursor: "pointer" }} variant="danger">
-                  Remover
-                </Badge>
-              </Link>
-            </div>
             <h2>{dataQuestion.titulo}</h2>
 
             <h5>{dataQuestion.autor}</h5>

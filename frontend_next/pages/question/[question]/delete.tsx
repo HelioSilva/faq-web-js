@@ -2,26 +2,24 @@ import Header from "../../../components/header/index";
 import { BodyHome } from "../../../styles/home/style";
 import { Container } from "../../../styles/question/style_newQuestion";
 
-import { Form } from "@unform/web";
-import Input from "../../../components/input/index";
-import Link from "next/link";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
-import { useEffect, useState } from "react";
-import Btn from "../../../components/button";
+import { useEffect } from "react";
 import api from "../../../Services/api";
-import { useAuth } from "../../../context/AuthContext";
 
 const newQuestion = () => {
   const router = useRouter();
   const { question } = router.query;
 
   useEffect(() => {
+    console.log("inicia");
     (async () => {
       const questionData = await api.delete(`/questions/${question}`);
+      console.log(questionData);
       router.push("/");
     })();
   }, []);
+
   return (
     <div>
       <Header />

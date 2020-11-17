@@ -12,7 +12,7 @@ export const Container = styled.div`
   > div {
     display: flex;
     > div {
-      padding: 0px 20px 0px 20px;
+      padding: 0px 24px 0px 24px;
     }
   }
 `;
@@ -30,7 +30,7 @@ export const DivFlexRow = styled.div`
     font-size: 0.8rem;
   }
   p + p {
-    padding-left: 15px;
+    padding-left: 16px;
   }
 `;
 
