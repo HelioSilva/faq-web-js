@@ -10,7 +10,7 @@ export const Container = styled.div`
   }
 `;
 
-export const BGTopoHeader = styled.div`
+export const BGTopo = styled.div`
   background: #c20b2e;
   display: flex;
   justify-content: center;

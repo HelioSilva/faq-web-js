@@ -1,16 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  a {
-    text-decoration: none;
-    &:hover {
-      font-size: 14.2px;
-      transition: 0.6s;
-    }
-  }
-`;
-
-export const BGTopoHeader = styled.div`
+export const BGTopo = styled.div`
   background: #c20b2e;
   display: flex;
   justify-content: center;
@@ -93,56 +83,6 @@ export const DivRow = styled.div`
       p {
         color: #fff;
       }
-    }
-  }
-`;
-
-export const BGImage = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)),
-    url("https://cdn.pixabay.com/photo/2012/03/04/00/43/architecture-22039_960_720.jpg");
-  /* background-repeat: no-repeat;
-  -webkit-background-size: cover; */
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  div {
-    display: flex;
-    width: 600px;
-    height: 38px;
-    background: #fff;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 5px;
-    padding-left: 10px;
-
-    input {
-      border-style: none;
-      width: 100%;
-      color: #737373;
-    }
-
-    @media (max-width: 800px) {
-      width: 80%;
-    }
-  }
-  a {
-    width: 214px;
-    height: 35px;
-    border-radius: 10px;
-    background: #c20b2e;
-    color: #fff;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition: 1s;
-
-    :hover {
-      background: #9d0926;
     }
   }
 `;

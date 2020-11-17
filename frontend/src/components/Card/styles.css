@@ -1,0 +1,19 @@
+.card{
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    text-align: center;
+    padding:0 0 13px 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid grey;
+    border-radius: 13px;
+    width: 20%;
+    margin: 32px auto;
+    background-color:#f0f0f0;
+}
+.card nav img{
+    border-radius: 13px;
+    width: 100%;
+}
