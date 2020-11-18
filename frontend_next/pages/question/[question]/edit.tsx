@@ -59,6 +59,8 @@ const newQuestion = () => {
           >
             <Input display={pergunta} name={"titulo"} />
             <Btn primary width={"10%"} value={"Atualizar"} />
+            {"  "}
+            <Btn primary={false} width={"10%"} value={"Cancelar"} />
           </Form>
         </Container>
       </BodyHome>

@@ -89,6 +89,7 @@ questionsRouter.post(
           acessos: findQuestion.acessos + 1,
           autor: findQuestion.autor,
           titulo: findQuestion.titulo,
+          autor_id: findQuestion.autor_id,
         }
       );
       const questionCreated = await classUpdateQuestion.execute();

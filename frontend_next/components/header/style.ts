@@ -75,7 +75,7 @@ export const ImageRaduis = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #930924;
+  background: #2d2d2d;
   max-width: 30px;
   padding: 1px;
   border-radius: 20px;
@@ -85,12 +85,6 @@ export const ImageRaduis = styled.div`
   img {
     width: 100%;
     border-radius: 20px;
-  }
-  :hover {
-    background: #2d2d2d;
-    img {
-      /* width: 30px; */
-    }
   }
 `;
 

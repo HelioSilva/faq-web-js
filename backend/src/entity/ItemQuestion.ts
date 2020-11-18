@@ -4,7 +4,6 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
-  JoinTable,
 } from "typeorm";
 import { Question } from "./Question";
 
@@ -12,6 +11,7 @@ export interface DTOItemQuestion {
   text: string;
   autor: string;
   question_id: string;
+  autor_id: string;
 }
 
 @Entity()
@@ -24,6 +24,9 @@ export class ItemQuestion {
 
   @Column()
   autor: string;
+
+  @Column()
+  autor_id: string;
 
   @Column()
   question_id: string;

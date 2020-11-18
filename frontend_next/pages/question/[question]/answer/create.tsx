@@ -37,7 +37,10 @@ const ViewQuestion = () => {
     const response = await api.post(`/questions/${question}/answer`, {
       text: texto,
       autor: user.name,
+      autor_id: user.id,
     });
+
+    console.log(response);
 
     router.push(`/question/${question}`);
   }, []);

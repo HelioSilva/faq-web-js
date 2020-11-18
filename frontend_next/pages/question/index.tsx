@@ -10,6 +10,7 @@ export interface iQuestion {
   titulo: string;
   acessos: string;
   autor: string;
+  autor_id: string;
   answers: iAnswers[];
 }
 
@@ -28,7 +29,6 @@ const Home = () => {
       const res = await api.get("/questions");
 
       const dados = res.data;
-      console.log(dados);
       setQuestions(dados.questions);
     })();
   }, []);
@@ -43,6 +43,7 @@ const Home = () => {
             key={itemDetail.id}
             titulo={itemDetail.titulo}
             autor={itemDetail.autor}
+            autor_id={itemDetail.autor_id}
             qtdRespostas={itemDetail.answers.length}
             qtdAcesso={itemDetail.acessos}
             url={`/question/${itemDetail.id}/`}

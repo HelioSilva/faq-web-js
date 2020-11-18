@@ -4,6 +4,7 @@ import Link from "next/link";
 import Badge, { ColorButtom } from "../badge/index";
 import { MdCreate, MdDelete } from "react-icons/md";
 import { useRouter } from "next/router";
+import { useAuth } from "../../context/AuthContext";
 
 interface Question {
   qtdAcesso: string;
@@ -11,10 +12,12 @@ interface Question {
   url: string;
   titulo: string;
   autor: string;
+  autor_id: string;
   id: string;
 }
 
 const ItemQuestion = (props: Question) => {
+  const { id } = useAuth();
   const route = useRouter();
   const handleEdite = (path: string) => {
     route.push(path);
@@ -41,35 +44,37 @@ const ItemQuestion = (props: Question) => {
         </Content>
       </div>
       <div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-            width: "170px",
-          }}
-        >
-          <Badge
-            fun={() => {
-              handleEdite(`/question/${props.id}/edit`);
+        {props.autor_id === id && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+              alignItems: "center",
+              width: "170px",
             }}
-            variant={ColorButtom.primary}
           >
-            <MdCreate />
-            <p>Editar</p>
-          </Badge>
+            <Badge
+              fun={() => {
+                handleEdite(`/question/${props.id}/edit`);
+              }}
+              variant={ColorButtom.primary}
+            >
+              <MdCreate />
+              <p>Editar</p>
+            </Badge>
 
-          <Badge
-            disable={props.qtdRespostas > 0}
-            variant={ColorButtom.danger}
-            fun={() => {
-              handleEdite(`/question/${props.id}/delete`);
-            }}
-          >
-            <MdDelete />
-            <p>Remover</p>
-          </Badge>
-        </div>
+            <Badge
+              disable={props.qtdRespostas > 0}
+              variant={ColorButtom.danger}
+              fun={() => {
+                handleEdite(`/question/${props.id}/delete`);
+              }}
+            >
+              <MdDelete />
+              <p>Remover</p>
+            </Badge>
+          </div>
+        )}
       </div>
     </Container>
   );

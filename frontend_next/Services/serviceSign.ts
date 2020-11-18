@@ -16,6 +16,7 @@ const SignService = async ({ ...dados }) => {
       name: infoUser.name,
       urlImage: infoUser.url_image,
       logged: true,
+      id: infoUser.id,
     };
 
     Cookie.set("@faqweb:user", JSON.stringify(resposta), {
@@ -29,6 +30,7 @@ const SignService = async ({ ...dados }) => {
       name: "",
       urlImage: "",
       logged: false,
+      id: "",
     };
 
     return resposta;

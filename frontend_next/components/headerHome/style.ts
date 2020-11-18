@@ -73,7 +73,7 @@ export const ImageRaduis = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fafafa;
+  background: #930924;
   max-width: 30px;
   padding: 1px;
   border-radius: 20px;

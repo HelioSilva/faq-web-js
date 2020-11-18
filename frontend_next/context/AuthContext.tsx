@@ -8,6 +8,7 @@ export interface dataContext {
   logged: boolean;
   email: string;
   urlImage: string;
+  id: string;
   signIn(data: Object): Promise<dataUserLogged>;
   signOut(): void;
 }
@@ -17,6 +18,7 @@ export interface dataUserLogged {
   name: string;
   logged: boolean;
   urlImage: string;
+  id: string;
 }
 
 const AuthContext = createContext<dataContext>({} as dataContext);
@@ -37,6 +39,7 @@ const ContextAuth = ({ children }) => {
         email: respUserLogged.email,
         name: respUserLogged.name,
         urlImage: respUserLogged.urlImage,
+        id: respUserLogged.id,
         signIn: functionAuth,
         signOut: functionLogout,
       });
@@ -54,6 +57,7 @@ const ContextAuth = ({ children }) => {
         name: cookieParsed.name,
         email: cookieParsed.email,
         urlImage: cookieParsed.urlImage,
+        id: cookieParsed.id,
         signIn: functionAuth,
         signOut: functionLogout,
       };
@@ -63,6 +67,7 @@ const ContextAuth = ({ children }) => {
         email: "",
         name: "Anonimo",
         urlImage: "/user.png",
+        id: "",
         signIn: functionAuth,
         signOut: functionLogout,
       };

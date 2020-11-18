@@ -12,19 +12,20 @@ import Btn from "../../components/button";
 import api from "../../Services/api";
 import { useAuth } from "../../context/AuthContext";
 
-function postQuestion(titulo: string, user: string) {
+function postQuestion(titulo: string, username: string, userid: string) {
   if (titulo === "") return;
 
   const response = api.post("/questions", {
     titulo,
-    autor: user,
+    autor_id: userid,
+    autor: username,
     acessos: 0,
   });
   return response;
 }
 
 const newQuestion = () => {
-  const user = useAuth();
+  const { name, id } = useAuth();
 
   return (
     <div>
@@ -44,7 +45,7 @@ const newQuestion = () => {
 
           <Form
             onSubmit={async (dataForm) => {
-              const resp = await postQuestion(dataForm.titulo, user.name);
+              const resp = await postQuestion(dataForm.titulo, name, id);
               if (resp.status == 200) {
                 Router.push("/");
               }
