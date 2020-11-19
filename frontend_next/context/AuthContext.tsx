@@ -65,7 +65,7 @@ const ContextAuth = ({ children }) => {
       return {
         logged: false,
         email: "",
-        name: "Anonimo",
+        name: "",
         urlImage: "/user.png",
         id: "",
         signIn: functionAuth,

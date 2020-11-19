@@ -50,7 +50,7 @@ const ItemQuestion = (props: Question) => {
               display: "flex",
               justifyContent: "space-around",
               alignItems: "center",
-              width: "170px",
+              width: "160px",
             }}
           >
             <Badge

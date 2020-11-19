@@ -22,7 +22,6 @@ function putQuestion(titulo: string, idQuestion: string | string[]) {
 }
 
 const newQuestion = () => {
-  const user = useAuth();
   const [pergunta, setPergunta] = useState("padrao");
   const router = useRouter();
   const { question } = router.query;

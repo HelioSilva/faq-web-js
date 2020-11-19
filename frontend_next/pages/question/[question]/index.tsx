@@ -10,20 +10,14 @@ import {
   ContentQuestion,
   HeaderItemAnswer,
 } from "../../../styles/question/index";
-
 import dynamic from "next/dynamic";
-
 import { ItemAnswer } from "../../../styles/question/index";
-
-import { IoMdCreate } from "react-icons/io";
+import Link from "next/link";
 
 const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading ...</p>,
 });
-
-import Link from "next/link";
-import Badge, { ColorButtom } from "../../../components/badge/index";
 
 const ViewQuestion = () => {
   const [loading, setLoading] = useState(true);
@@ -101,7 +95,7 @@ const ViewQuestion = () => {
 
         {dataQuestion.answers.length > 0 ? (
           dataQuestion.answers.map((itemDetail) => (
-            <ItemAnswer>
+            <ItemAnswer key={itemDetail.id}>
               <HeaderItemAnswer>
                 <p>Resposta</p>
                 <p>Autor: {itemDetail.autor}</p>
@@ -114,7 +108,6 @@ const ViewQuestion = () => {
                 value={itemDetail.text}
                 style={{
                   margin: 0,
-                  // minHeight: "75px",
                   background: "#eeeeee",
                 }}
               />

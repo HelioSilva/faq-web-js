@@ -29,7 +29,7 @@ const Header = () => {
             <Link href="/">Home</Link>
             <Link href="/download">Download</Link>
             <Lista>
-              <Link href="">{name}</Link>
+              <Link href="">{name || ""}</Link>
               <div>
                 <Link href={"/logout"}>Sair</Link>
               </div>

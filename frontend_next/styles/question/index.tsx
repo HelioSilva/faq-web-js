@@ -1,19 +1,18 @@
 import styled from "styled-components";
-import ItemQuestion from "../../components/itemQuestion";
 
 export const ContentQuestion = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 35px 0px;
+  margin: 32px 0px;
 
   h2 {
     font-family: "roboto";
     font-weight: "300";
     font-size: 24px;
     color: #bb1c27;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 
   h5 {
@@ -36,12 +35,12 @@ export const ContentQuestion = styled.div`
 `;
 
 export const ItemAnswer = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   text-align: center;
 
   hr {
     width: 50%;
-    margin: 15px 0px;
+    margin: 14px 0px;
     background: #e0e0e0;
     color: #e4e4e4;
   }
@@ -56,7 +55,7 @@ export const HeaderItemAnswer = styled.div`
   justify-content: space-between;
   background: #938c8f;
   color: #fff;
-  padding: 5px 3px;
+  padding: 8px 4px;
 
   p {
     font-size: 12px;

@@ -6,13 +6,14 @@ export const Container = styled.div`
   justify-content: space-between;
 
   background-color: #f3f3f3;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 12px;
+  padding: 8px;
 
   > div {
     display: flex;
+
     > div {
-      padding: 0px 24px 0px 24px;
+      padding: 0px 16px;
     }
   }
 `;
@@ -20,7 +21,8 @@ export const Container = styled.div`
 export const DivFlexRow = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 0.2rem;
+  margin-top: 8px;
+
   span {
     color: #666666;
     font-weight: bold;
@@ -30,7 +32,7 @@ export const DivFlexRow = styled.div`
     font-size: 0.8rem;
   }
   p + p {
-    padding-left: 16px;
+    padding-left: 24px;
   }
 `;
 
