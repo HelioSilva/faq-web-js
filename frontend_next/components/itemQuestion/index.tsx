@@ -50,6 +50,7 @@ const ItemQuestion = (props: Question) => {
               display: "flex",
               justifyContent: "space-around",
               alignItems: "center",
+              flexWrap: "wrap",
               width: "160px",
             }}
           >

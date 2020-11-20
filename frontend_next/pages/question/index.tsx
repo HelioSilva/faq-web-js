@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Footer from "../../components/footer";
 import Header from "../../components/headerHome/index";
 
 import ItemQuestion from "../../components/itemQuestion";
@@ -50,6 +51,7 @@ const Home = () => {
           />
         ))}
       </BodyHome>
+      <Footer />
     </div>
   );
 };

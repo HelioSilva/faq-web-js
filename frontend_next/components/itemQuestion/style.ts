@@ -26,10 +26,10 @@ export const DivFlexRow = styled.div`
   span {
     color: #666666;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
   p {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   p + p {
     padding-left: 24px;

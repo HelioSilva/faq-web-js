@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const BodyHome = styled.div`
   background-color: #fafafa;
-  width: 80%;
+  width: 90%;
   max-width: 800px;
-  height: auto;
+  min-height: 64vh;
+
   margin: 0 auto;
   padding: 24px 12px;
 
