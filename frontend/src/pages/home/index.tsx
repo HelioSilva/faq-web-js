@@ -1,20 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuestionBox from "../../components/itemQuestion/index";
 import Header from "../../components/header/index";
 import BodyFaq from "../../components/BodyFaq";
 import Cards from  '../../components/Cards';
 import Card from "../../components/Card";
-import Button from "../../components/buttons/index_old";
+import Api from "../../Services/api";
 
 const Home: React.FC = () => {
 
-  const[title, setTitle] = useState("Erro de GT");
+  // useState
   const[qtdAcessos, setqtdAcessos] = useState(0);  
+  const[titulo, setTitulo] = useState("Sem titulo");  
+
+
+  async function BuscaApi() {
+    const {data}= await Api.get("/questions");
+    
+    console.log(data.questions[0].titulo);
+
+    setTitulo(data.questions[0].titulo);
+    setqtdAcessos(data.questions[0].acessos);
+
+    return data;
+  }
+
+  //useEffect
+  useEffect(()=>{
+    // AddQtd()
+    BuscaApi();
+   
+  } , [])
   
   function AddQtd(){
     let newQtd = qtdAcessos+1;
     setqtdAcessos(newQtd)
-  }
+  } 
 
   return(
     <>
@@ -23,7 +43,7 @@ const Home: React.FC = () => {
       <QuestionBox
         qtdAcessos={ qtdAcessos }
         url="https:debian.org"
-        titulos={ title }
+        titulos= { titulo }
         qtdRespostas="8"
         qtdAcesso="214"
         autor="Helio Silva"
