@@ -1,4 +1,5 @@
 import * as S from "./cssContainer";
+import React from "react";
 
 export type propsContainer = {
   children: React.ReactNode;
@@ -13,9 +14,12 @@ export type propsContainer = {
   itemGrow?: number;
   spacing?: number;
   basis?: string;
+  wrap?: boolean;
 
   width?: string;
   height?: string;
+
+  style?: React.CSSProperties;
 };
 
 const Container = ({ children, ...others }: propsContainer) => {
