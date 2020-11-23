@@ -6,6 +6,15 @@ import Cards from  '../../components/Cards';
 import Card from "../../components/Card";
 import Api from "../../Services/api";
 
+interface iQuestions {
+  id:string;
+  acessos:number;
+  titulo: string;
+  qtdAcessos: string;
+  autor: string;
+  answers: [];
+}
+
 const Home: React.FC = () => {
 
   // useState
@@ -35,9 +44,17 @@ const Home: React.FC = () => {
       {/* <a onClick={()=>{AddQtd()}}>ok</a> */}
 
       {
-        questions.map(()=>{
-          console.log("oi");
-        })
+        questions.map((item:iQuestions)=>
+          (
+            <QuestionBox key={item.id}
+              qtdAcessos={ item.acessos }
+              url="https:debian.org"
+              titulos= { item.titulo }
+              qtdRespostas={ item.answers.length }
+              autor= { item.autor }
+            />
+          )
+        )
       }
       
     </BodyFaq>
