@@ -4,10 +4,11 @@ import { propsBadge } from ".";
 export const Badge = styled.button<propsBadge>`
   * {
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 5 00;
     font-family: "roboto";
   }
-  width: 60px;
+  width: 56px;
   border: 0;
 
   background: ${(props) => props.variant};
@@ -16,6 +17,7 @@ export const Badge = styled.button<propsBadge>`
 
   :hover {
     opacity: 0.8;
+    rotate: 10;
   }
 
   ${({ disabled }) =>
