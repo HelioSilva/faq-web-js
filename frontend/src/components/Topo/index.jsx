@@ -13,7 +13,7 @@ function Topo(){
       </div>
       <DivRow>
         <a href="/download">Download</a>
-        <a href="">Ronald SS</a>
+        <a href="/">Ronald SS</a>
         <div>
           <ImgUser />
         </div>
