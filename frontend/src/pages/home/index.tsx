@@ -31,7 +31,7 @@ const Home: React.FC = () => {
 
   //useEffect
   useEffect(()=>{
-    // AddQtd()
+    // AddQtd()F
     BuscaApi();
    
   } , [])
