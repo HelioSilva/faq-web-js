@@ -37,7 +37,7 @@ const App = () => {
   const ListaEspecializada = withEmailLista(Lista);
   const ListaComBotao = withBottom(Lista);
   return (
-    <Container flex row pAside={"20%"}>
+    <Container flex row flexCenter>
       <Lista dados={dados2} />
 
       <ListaEspecializada dados={dados2} />
