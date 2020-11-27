@@ -1,8 +1,7 @@
 // const Download = () => <h1>Tela de Download</h1>;
+// export default Download;
 
 import Container from "../../components/_systemUI/container";
-
-// export default Download;
 
 const dados = {
   nome: "Helio",
