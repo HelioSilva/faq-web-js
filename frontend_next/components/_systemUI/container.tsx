@@ -4,7 +4,7 @@ import React from "react";
 export type propsContainer = {
   children: React.ReactNode;
 
-  flex: boolean;
+  flex?: boolean;
   row?: boolean;
   col?: boolean;
   order?: number;

@@ -2,8 +2,15 @@ import Container from "../_systemUI/container";
 
 const Footer = () => {
   return (
-    <Container flex row wrap pAside={"20%"} bgColor={"#313"}>
-      <Container flex bgColor={"#32be1f"} order={3} itemGrow={12} spacing={3}>
+    <Container flex row wrap height={"50vh"} pAside={"20%"} bgColor={"#313"}>
+      <Container
+        flex
+        height={"150px"}
+        bgColor={"#32be1f"}
+        order={3}
+        itemGrow={12}
+        spacing={3}
+      >
         <p>Teste1</p>
       </Container>
       <Container
