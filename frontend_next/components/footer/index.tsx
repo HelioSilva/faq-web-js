@@ -5,6 +5,7 @@ const Footer = () => {
     <Container flex row wrap height={"50vh"} pAside={"20%"} bgColor={"#313"}>
       <Container
         flex
+        row
         height={"150px"}
         bgColor={"#32be1f"}
         order={3}
@@ -12,6 +13,9 @@ const Footer = () => {
         spacing={3}
       >
         <p>Teste1</p>
+        <p>Teste2</p>
+        <p>Teste3</p>
+        <p>Teste4</p>
       </Container>
       <Container
         flex

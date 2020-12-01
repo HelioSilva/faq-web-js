@@ -13,6 +13,10 @@ import {
 import dynamic from "next/dynamic";
 import { ItemAnswer } from "../../../styles/question/index";
 import Link from "next/link";
+import { MdCreate, MdDelete } from "react-icons/md";
+import Container from "../../../components/_systemUI/container";
+import { ImageRaduis } from "../../../components/header/style";
+import { useAuth } from "../../../context/AuthContext";
 
 const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
@@ -20,6 +24,7 @@ const QuillNoSSRWrapper = dynamic(import("react-quill"), {
 });
 
 const ViewQuestion = () => {
+  const { urlImage } = useAuth();
   const [loading, setLoading] = useState(true);
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
     answers: [],
@@ -81,10 +86,26 @@ const ViewQuestion = () => {
       <BodyHome>
         <ContentQuestion>
           <div>
-            <h2>{dataQuestion.titulo}</h2>
-
-            <h5>{dataQuestion.autor}</h5>
-            <p>{dataQuestion.answers.length}</p>
+            <Container flex row style={{ justifyContent: "space-evenly" }}>
+              <>
+                <h1>{dataQuestion.titulo}</h1>
+              </>
+              <>
+                <MdCreate color={"#3d98c2"} />
+                <MdDelete color={"#ce4f4f"} />
+              </>
+            </Container>
+            <Container>
+              <ImageRaduis>
+                <img src={urlImage} />
+              </ImageRaduis>
+              <>
+                <h5>{`${dataQuestion.autor}`}</h5>
+              </>
+              <>
+                <p>{dataQuestion.answers.length}</p>
+              </>
+            </Container>
           </div>
           <div>
             <Link href={`/question/${dataQuestion.id}/answer/create`}>

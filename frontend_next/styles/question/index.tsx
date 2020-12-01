@@ -7,30 +7,41 @@ export const ContentQuestion = styled.div`
   align-items: center;
   margin: 32px 0px;
 
-  h2 {
-    font-family: "roboto";
-    font-weight: "300";
-    font-size: 24px;
-    color: #bb1c27;
-    margin-bottom: 8px;
+  h1 {
+    font-family: "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+
+    font-size: 28px;
+    font-weight: normal;
+    margin: 0px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    min-height: 35px;
+    line-height: 35px;
+    padding-top: 5px;
+    color: rgb(150, 23, 23);
   }
 
   h5 {
     ::before {
-      content: "Autor: ";
+      content: "Criado por: ";
     }
-    font-family: "roboto";
+    font-family: "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans",
+      "Helvetica Neue", sans-serif;
     font-size: 12px;
-    color: #949494;
+    line-height: 1.5;
+    color: rgb(150, 23, 23);
   }
 
   p {
     ::after {
       content: " Respostas";
     }
-    font-family: "roboto";
+    font-family: "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans",
+      "Helvetica Neue", sans-serif;
     font-size: 12px;
-    color: #a8a8a8;
+    line-height: 1.5;
+    color: rgb(150, 23, 23);
   }
 `;
 

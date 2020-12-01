@@ -84,4 +84,7 @@ export const Container = styled.div<propsContainer>`
     css`
       margin: ${(props.spacing * 8) / 2}px ${props.spacing * 8}px;
     `};
+
+  /* display: grid;
+  grid-template-columns: 200px repeat(15, "auto "); */
 `;
