@@ -86,7 +86,7 @@ const ViewQuestion = () => {
       <BodyHome>
         <ContentQuestion>
           <div>
-            <Container flex row style={{ justifyContent: "space-evenly" }}>
+            <Container flex col style={{ justifyContent: "space-evenly" }}>
               <>
                 <h1>{dataQuestion.titulo}</h1>
               </>
@@ -95,16 +95,16 @@ const ViewQuestion = () => {
                 <MdDelete color={"#ce4f4f"} />
               </>
             </Container>
-            <Container>
-              <ImageRaduis>
-                <img src={urlImage} />
-              </ImageRaduis>
-              <>
+            <Container flex row style={{ alignItems: "center" }}>
+              <Container spacing={0}>
+                <ImageRaduis>
+                  <img src={urlImage} />
+                </ImageRaduis>
+              </Container>
+              <Container spacing={1}>
                 <h5>{`${dataQuestion.autor}`}</h5>
-              </>
-              <>
                 <p>{dataQuestion.answers.length}</p>
-              </>
+              </Container>
             </Container>
           </div>
           <div>

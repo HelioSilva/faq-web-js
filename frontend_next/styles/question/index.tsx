@@ -19,7 +19,7 @@ export const ContentQuestion = styled.div`
     min-height: 35px;
     line-height: 35px;
     padding-top: 5px;
-    color: rgb(150, 23, 23);
+    color: rgb(25, 75, 109);
   }
 
   h5 {
