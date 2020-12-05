@@ -86,24 +86,30 @@ const ViewQuestion = () => {
       <BodyHome>
         <ContentQuestion>
           <div>
-            <Container flex col style={{ justifyContent: "space-evenly" }}>
-              <>
-                <h1>{dataQuestion.titulo}</h1>
-              </>
-              <>
+            <Container flex row style={{ justifyContent: "space-evenly" }}>
+              <h1>{dataQuestion.titulo}</h1>
+
+              <Container
+                flex
+                style={{ marginLeft: "10px", alignItems: "center" }}
+              >
                 <MdCreate color={"#3d98c2"} />
                 <MdDelete color={"#ce4f4f"} />
-              </>
-            </Container>
-            <Container flex row style={{ alignItems: "center" }}>
-              <Container spacing={0}>
-                <ImageRaduis>
-                  <img src={urlImage} />
-                </ImageRaduis>
               </Container>
-              <Container spacing={1}>
-                <h5>{`${dataQuestion.autor}`}</h5>
-                <p>{dataQuestion.answers.length}</p>
+            </Container>
+            <Container flex row>
+              <Container
+                flex
+                col
+                bgColor={"#ccc"}
+                style={{
+                  alignItems: "flex-start",
+                  justifyContent: "stretch",
+                  marginLeft: "10px",
+                }}
+              >
+                <p>{`Criado por:  ${dataQuestion.autor} há 4min`}</p>
+                <p>{`${dataQuestion.answers.length} respostas`} </p>
               </Container>
             </Container>
           </div>

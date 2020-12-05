@@ -22,26 +22,12 @@ export const ContentQuestion = styled.div`
     color: rgb(25, 75, 109);
   }
 
-  h5 {
-    ::before {
-      content: "Criado por: ";
-    }
-    font-family: "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans",
-      "Helvetica Neue", sans-serif;
-    font-size: 12px;
-    line-height: 1.5;
-    color: rgb(150, 23, 23);
-  }
-
   p {
-    ::after {
-      content: " Respostas";
-    }
     font-family: "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans",
       "Helvetica Neue", sans-serif;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 1.5;
-    color: rgb(150, 23, 23);
+    color: rgb(99, 96, 96);
   }
 `;
 
