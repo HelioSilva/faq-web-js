@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { propsBadge } from ".";
 
 export const Badge = styled.button<propsBadge>`
@@ -17,8 +17,20 @@ export const Badge = styled.button<propsBadge>`
   justify-content: center;
   align-items: center;
 
-  /* width: 48px;
-  max-height: 24px; */
+  transition-duration: 0.5s;
+
+  ${(propsBadge) =>
+    propsBadge.width &&
+    css`
+      width: ${propsBadge.width};
+    `};
+
+  ${(propsBadge) =>
+    propsBadge.height &&
+    css`
+      height: ${propsBadge.height};
+    `};
+
   border: 0;
 
   background: ${(props) => props.variant};
@@ -38,6 +50,11 @@ export const Badge = styled.button<propsBadge>`
   :hover {
     opacity: 0.8;
     rotate: 10;
+
+    background: ${(props) => props.variant};
+    * {
+      color: #fff;
+    }
   }
 
   ${({ disabled }) =>

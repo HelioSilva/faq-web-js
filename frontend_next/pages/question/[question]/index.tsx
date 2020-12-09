@@ -33,14 +33,29 @@ const QuillNoSSRWrapper = dynamic(import("react-quill"), {
 });
 
 const ViewQuestion = () => {
-  const { urlImage } = useAuth();
+  const { urlImage, id } = useAuth();
   const [loading, setLoading] = useState(true);
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
     answers: [],
   } as iQuestion);
-
   const router = useRouter();
   const { question } = router.query;
+
+  const actionDelete = () => {
+    if (dataQuestion.autor_id === id && dataQuestion.answers.length === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  const handleCreateAnswer = (path: string) => {
+    router.push(path);
+  };
+
+  const handleEdite = (path: string) => {
+    router.push(path);
+  };
   console.log(router.query);
 
   const countViewPage = useCallback(async () => {
@@ -95,16 +110,35 @@ const ViewQuestion = () => {
       <BodyHome>
         <ContentQuestion>
           <div>
-            <GridContainer col={3} spacing={10}>
-              <Badge variant={ColorButtom.primary} light>
+            <GridContainer col={3} spacing={1} width={"300px"}>
+              <Badge
+                variant={ColorButtom.primary}
+                fun={() => {
+                  handleEdite(`/question/${question}/edit`);
+                }}
+                light
+                disabled={dataQuestion.autor_id !== id}
+              >
                 <MdCreate color={"#3d98c2"} />
                 <p>Editar</p>
               </Badge>
-              <Badge variant={ColorButtom.danger} light>
+              <Badge
+                variant={ColorButtom.danger}
+                disabled={actionDelete()}
+                light
+              >
                 <MdDelete color={"#ce4f4f"} />
                 <p>Deletar</p>
               </Badge>
-              <Badge variant={ColorButtom.add} light>
+              <Badge
+                variant={ColorButtom.add}
+                light
+                fun={() => {
+                  handleCreateAnswer(
+                    `/question/${dataQuestion.id}/answer/create`
+                  );
+                }}
+              >
                 <MdCreate color={ColorButtom.add} />
                 <p>Nova Resposta</p>
               </Badge>
@@ -129,11 +163,11 @@ const ViewQuestion = () => {
               </Container>
             </Container>
           </div>
-          <div>
+          {/* <div>
             <Link href={`/question/${dataQuestion.id}/answer/create`}>
               Adicionar resposta
             </Link>
-          </div>
+          </div> */}
         </ContentQuestion>
 
         {dataQuestion.answers.length > 0 ? (

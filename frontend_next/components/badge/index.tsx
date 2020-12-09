@@ -11,26 +11,18 @@ export type propsBadge = {
   light?: Boolean;
   spacing?: Number;
   fun?: Function;
-  disable?: boolean;
+  disabled?: boolean;
+  width?: string;
+  height?: string;
 };
 
-const Badge = ({
-  children,
-  variant,
-  light,
-  spacing,
-  fun,
-  disable,
-}: propsBadge) => {
+const Badge = ({ children, fun, ...others }: propsBadge) => {
   return (
     <S.Badge
-      disabled={disable || false}
-      variant={variant}
-      spacing={spacing}
-      light={light}
       onClick={() => {
         fun();
       }}
+      {...others}
     >
       {children}
     </S.Badge>

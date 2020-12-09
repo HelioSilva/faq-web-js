@@ -1,10 +1,6 @@
 import { Container, DivFlexRow, Content } from "./style";
 import QtdAcesso from "../qtdAcesso/index";
 import Link from "next/link";
-import Badge, { ColorButtom } from "../badge/index";
-import { MdCreate, MdDelete } from "react-icons/md";
-import { useRouter } from "next/router";
-import { useAuth } from "../../context/AuthContext";
 
 interface Question {
   qtdAcesso: string;
@@ -17,11 +13,6 @@ interface Question {
 }
 
 const ItemQuestion = (props: Question) => {
-  const { id } = useAuth();
-  const route = useRouter();
-  const handleEdite = (path: string) => {
-    route.push(path);
-  };
   return (
     <Container>
       <div>
@@ -43,40 +34,7 @@ const ItemQuestion = (props: Question) => {
           </DivFlexRow>
         </Content>
       </div>
-      <div>
-        {props.autor_id === id && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              alignItems: "center",
-              flexWrap: "wrap",
-              width: "160px",
-            }}
-          >
-            <Badge
-              fun={() => {
-                handleEdite(`/question/${props.id}/edit`);
-              }}
-              variant={ColorButtom.primary}
-            >
-              <MdCreate />
-              <p>Editar</p>
-            </Badge>
-
-            <Badge
-              disable={props.qtdRespostas > 0}
-              variant={ColorButtom.danger}
-              fun={() => {
-                handleEdite(`/question/${props.id}/delete`);
-              }}
-            >
-              <MdDelete />
-              <p>Remover</p>
-            </Badge>
-          </div>
-        )}
-      </div>
+      <div></div>
     </Container>
   );
 };

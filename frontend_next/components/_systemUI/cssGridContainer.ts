@@ -4,6 +4,7 @@ import { props } from "./gridContainer";
 export const GridContainer = styled.div<props>`
   display: grid;
   grid-column-gap: ${(props) => props.spacing && `${props.spacing * 8}px`};
+  grid-row-gap: ${(props) => props.spacing && `${props.spacing * 8}px`};
 
   ${(props) =>
     props.width &&
