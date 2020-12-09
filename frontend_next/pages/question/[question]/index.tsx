@@ -15,8 +15,17 @@ import { ItemAnswer } from "../../../styles/question/index";
 import Link from "next/link";
 import { MdCreate, MdDelete } from "react-icons/md";
 import Container from "../../../components/_systemUI/container";
-import { ImageRaduis } from "../../../components/header/style";
 import { useAuth } from "../../../context/AuthContext";
+import Badge, { ColorButtom } from "../../../components/badge";
+import { GridContainer } from "../../../components/_systemUI/cssGridContainer";
+
+import TimeAgo from "javascript-time-ago";
+
+// Portugues BR
+import br from "javascript-time-ago/locale/br";
+
+TimeAgo.addLocale(br);
+const timeAgo = new TimeAgo("br-BR");
 
 const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
@@ -86,29 +95,36 @@ const ViewQuestion = () => {
       <BodyHome>
         <ContentQuestion>
           <div>
+            <GridContainer col={3} spacing={10}>
+              <Badge variant={ColorButtom.primary} light>
+                <MdCreate color={"#3d98c2"} />
+                <p>Editar</p>
+              </Badge>
+              <Badge variant={ColorButtom.danger} light>
+                <MdDelete color={"#ce4f4f"} />
+                <p>Deletar</p>
+              </Badge>
+              <Badge variant={ColorButtom.add} light>
+                <MdCreate color={ColorButtom.add} />
+                <p>Nova Resposta</p>
+              </Badge>
+            </GridContainer>
+
             <Container flex row style={{ justifyContent: "space-evenly" }}>
               <h1>{dataQuestion.titulo}</h1>
-
-              <Container
-                flex
-                style={{ marginLeft: "10px", alignItems: "center" }}
-              >
-                <MdCreate color={"#3d98c2"} />
-                <MdDelete color={"#ce4f4f"} />
-              </Container>
             </Container>
             <Container flex row>
               <Container
                 flex
                 col
-                bgColor={"#ccc"}
                 style={{
                   alignItems: "flex-start",
                   justifyContent: "stretch",
-                  marginLeft: "10px",
                 }}
               >
-                <p>{`Criado por:  ${dataQuestion.autor} há 4min`}</p>
+                <p>{`Criado por:  ${dataQuestion.autor} ${timeAgo.format(
+                  Date.now() - 360 * 60 * 60 * 1000
+                )}`}</p>
                 <p>{`${dataQuestion.answers.length} respostas`} </p>
               </Container>
             </Container>
