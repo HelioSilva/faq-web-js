@@ -4,6 +4,8 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from "typeorm";
 import { Question } from "./Question";
 
@@ -30,6 +32,25 @@ export class ItemQuestion {
 
   @Column()
   question_id: string;
+
+  /**
+   * DB insert time.
+   */
+  @CreateDateColumn({
+    type: "timestamp without time zone",
+    default: () => "CURRENT_TIMESTAMP",
+  })
+  createdAt: Date;
+
+  /**
+   * DB last update time.
+   */
+  @UpdateDateColumn({
+    type: "timestamp without time zone",
+    default: () => "CURRENT_TIMESTAMP",
+    onUpdate: "CURRENT_TIMESTAMP",
+  })
+  updatedAt: Date;
 
   @ManyToOne(() => Question, (item) => item.id)
   @JoinColumn({ name: "question_id" })

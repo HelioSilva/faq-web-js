@@ -5,6 +5,8 @@ import {
   BeforeInsert,
   BeforeUpdate,
   Index,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from "typeorm";
 
 import { hash } from "bcryptjs";
@@ -40,4 +42,23 @@ export class User {
   getPassword(): string {
     return this.password;
   }
+
+  /**
+   * DB insert time.
+   */
+  @CreateDateColumn({
+    type: "timestamp without time zone",
+    default: () => "CURRENT_TIMESTAMP",
+  })
+  createdAt: Date;
+
+  /**
+   * DB last update time.
+   */
+  @UpdateDateColumn({
+    type: "timestamp without time zone",
+    default: () => "CURRENT_TIMESTAMP",
+    onUpdate: "CURRENT_TIMESTAMP",
+  })
+  updatedAt: Date;
 }
