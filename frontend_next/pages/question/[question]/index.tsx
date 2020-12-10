@@ -14,6 +14,7 @@ import dynamic from "next/dynamic";
 import { ItemAnswer } from "../../../styles/question/index";
 import Link from "next/link";
 import { MdCreate, MdDelete } from "react-icons/md";
+import { BiArrowBack } from "react-icons/bi";
 import Container from "../../../components/_systemUI/container";
 import { useAuth } from "../../../context/AuthContext";
 import Badge, { ColorButtom } from "../../../components/badge";
@@ -22,10 +23,10 @@ import { GridContainer } from "../../../components/_systemUI/cssGridContainer";
 import TimeAgo from "javascript-time-ago";
 
 // Portugues BR
-import br from "javascript-time-ago/locale/br";
+import pt from "javascript-time-ago/locale/pt";
 
-TimeAgo.addLocale(br);
-const timeAgo = new TimeAgo("br-BR");
+TimeAgo.addLocale(pt);
+const timeAgo = new TimeAgo("pt-PT");
 
 const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
@@ -110,7 +111,12 @@ const ViewQuestion = () => {
       <BodyHome>
         <ContentQuestion>
           <div>
-            <GridContainer col={3} spacing={1} width={"300px"}>
+            <GridContainer col={4} spacing={1} width={"300px"}>
+              <BiArrowBack
+                onClick={() => {
+                  router.push("/");
+                }}
+              />
               <Badge
                 variant={ColorButtom.primary}
                 fun={() => {
@@ -157,7 +163,7 @@ const ViewQuestion = () => {
                 }}
               >
                 <p>{`Criado por:  ${dataQuestion.autor} ${timeAgo.format(
-                  Date.now() - 360 * 60 * 60 * 1000
+                  new Date(dataQuestion.createdAt ? dataQuestion.createdAt : 0)
                 )}`}</p>
                 <p>{`${dataQuestion.answers.length} respostas`} </p>
               </Container>

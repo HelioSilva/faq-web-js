@@ -13,6 +13,8 @@ export interface iQuestion {
   autor: string;
   autor_id: string;
   answers: iAnswers[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface iAnswers {
