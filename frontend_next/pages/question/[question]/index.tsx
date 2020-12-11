@@ -113,6 +113,7 @@ const ViewQuestion = () => {
           <div>
             <GridContainer col={4} spacing={1} width={"300px"}>
               <BiArrowBack
+                style={{ cursor: "pointer" }}
                 onClick={() => {
                   router.push("/");
                 }}
