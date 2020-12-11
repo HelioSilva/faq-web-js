@@ -1,44 +1,31 @@
 import Container from "../_systemUI/container";
+import GridContainer from "../_systemUI/gridContainer";
 
 const Footer = () => {
   return (
-    <Container flex row wrap height={"50vh"} pAside={"20%"} bgColor={"#313"}>
-      <Container
-        flex
-        row
-        height={"150px"}
-        bgColor={"#32be1f"}
-        order={3}
-        itemGrow={12}
-        spacing={3}
-      >
-        <p>Teste1</p>
-        <p>Teste2</p>
-        <p>Teste3</p>
-        <p>Teste4</p>
+    <GridContainer
+      col={3}
+      spacing={2}
+      style={{
+        height: "32vh",
+        background: "#313131",
+        padding: "10px",
+      }}
+    >
+      <Container flex col flexCenter wrap>
+        <h3>Desenvolvedores</h3>
+        <p>Helio Silva</p>
+        <p>Ronald Santos</p>
       </Container>
-      <Container
-        flex
-        bgColor={"#db0606"}
-        order={-3}
-        basis={"500px"}
-        spacing={1}
-      >
-        <p>Teste2</p>
+      <Container flex col flexCenter wrap>
+        <h3>Projeto Open Source</h3>
+        <p>Projeto com código livre no Github</p>
       </Container>
-      <Container flex bgColor={"#661eec"} itemGrow={5} spacing={1}>
-        <p>Teste3</p>
+      <Container flex col flexCenter wrap>
+        <h3>Redes sociais</h3>
+        <p>Linkedin, Github, Instagran e outros</p>
       </Container>
-      <Container
-        flex
-        order={-1}
-        itemGrow={1}
-        spacing={1}
-        style={{ background: "#000", color: "#fff" }}
-      >
-        <p>Teste4</p>
-      </Container>
-    </Container>
+    </GridContainer>
   );
 };
 

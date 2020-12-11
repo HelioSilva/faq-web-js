@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
-import { getRepository } from "typeorm";
+import { Connection, FindOperator, FindOperatorType, Raw } from "typeorm";
+import { getRepository, Like } from "typeorm";
 import { DTOItemQuestion } from "../entity/ItemQuestion";
 import { DTOQuestion, Question } from "../entity/Question";
 import CreateItemQuestion from "../services/questions/createItemQuestion";
@@ -12,7 +13,7 @@ questionsRouter.get("/", async (request: Request, response: Response) => {
   const repositoryQuestion = getRepository(Question);
   const questionsAll = await repositoryQuestion.find({
     cache: false,
-    order: { acessos: "DESC" },
+    order: { acessos: "DESC", createdAt: "ASC" },
     skip: 0,
     take: 10,
   });
@@ -21,6 +22,30 @@ questionsRouter.get("/", async (request: Request, response: Response) => {
     questions: questionsAll,
   });
 });
+
+questionsRouter.get(
+  "/search/:text",
+  async (request: Request, response: Response) => {
+    const repositoryQuestion = getRepository(Question);
+    const questionsAll = await repositoryQuestion.find({
+      // where: {
+      //   titulo: Like(`%${request.params.text}%`),
+      // },
+      where: {
+        titulo: Raw(
+          (alias) =>
+            `LOWER(${alias}) LIKE '%${request.params.text.toLowerCase()}%'`
+        ),
+      },
+
+      order: { acessos: "DESC", createdAt: "ASC" },
+    });
+
+    response.status(200).json({
+      questions: questionsAll,
+    });
+  }
+);
 
 questionsRouter.get("/:id", async (request: Request, response: Response) => {
   const repositoryQuestion = getRepository(Question);

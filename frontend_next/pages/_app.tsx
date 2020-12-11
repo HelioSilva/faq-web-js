@@ -6,6 +6,7 @@ import Router from "next/router";
 import { ContextAuth } from "../context/AuthContext";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
+import { ContextQuestion } from "../context/QuestionContext";
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
@@ -34,7 +35,9 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <GlobalStyle />
       <ContextAuth>
-        {loading === false ? <Component {...pageProps} /> : <h1>Teste</h1>}
+        <ContextQuestion>
+          {loading === false ? <Component {...pageProps} /> : <h1>Teste</h1>}
+        </ContextQuestion>
       </ContextAuth>
     </>
   );

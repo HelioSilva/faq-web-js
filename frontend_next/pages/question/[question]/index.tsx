@@ -150,7 +150,7 @@ const ViewQuestion = () => {
               </Badge>
             </GridContainer>
 
-            <Container flex row style={{ justifyContent: "space-evenly" }}>
+            <Container flex>
               <h1>{dataQuestion.titulo}</h1>
             </Container>
             <Container flex row>

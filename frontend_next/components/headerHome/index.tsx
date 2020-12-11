@@ -9,9 +9,13 @@ import {
 } from "./style";
 import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
+import { useQuestion } from "../../context/QuestionContext";
+import { useState } from "react";
 
 const Header = () => {
-  const { name, urlImage, signOut } = useAuth();
+  const { name, urlImage } = useAuth();
+  const { functionSearch } = useQuestion();
+  const [text, setText] = useState("");
 
   return (
     <Container>
@@ -42,7 +46,19 @@ const Header = () => {
       </BGTopo>
       <BGImage>
         <div>
-          <input placeholder="Pesquise aqui" />
+          <input
+            value={text}
+            onChange={(x) => {
+              setText(x.target.value);
+            }}
+            onKeyPress={(x) => {
+              console.log(x.key);
+              if (x.key === "Enter") {
+                functionSearch(text);
+              }
+            }}
+            placeholder="Pesquise aqui"
+          />
         </div>
         <Link href="/question/create">Nova Questão</Link>
       </BGImage>

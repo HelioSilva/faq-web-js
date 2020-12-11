@@ -3,6 +3,7 @@ import Footer from "../../components/footer";
 import Header from "../../components/headerHome/index";
 
 import ItemQuestion from "../../components/itemQuestion";
+import { useQuestion } from "../../context/QuestionContext";
 import api from "../../Services/api";
 import { BodyHome } from "../../styles/home/style";
 
@@ -25,16 +26,7 @@ interface iAnswers {
 }
 
 const Home = () => {
-  const [questions, setQuestions] = useState<iQuestion[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const res = await api.get("/questions");
-
-      const dados = res.data;
-      setQuestions(dados.questions);
-    })();
-  }, []);
+  const { questions } = useQuestion();
 
   return (
     <div>
