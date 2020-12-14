@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { DTOUsers, User } from "../entity/Users";
+import { DTOUsers, User } from "../entity/users";
 import CreateUser from "../services/users/createUser";
 import LoginUser from "../services/users/loginUser";
 

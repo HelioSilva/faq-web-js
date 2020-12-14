@@ -1,4 +1,4 @@
-import { DTOItemQuestion, ItemQuestion } from "../../entity/ItemQuestion";
+import { DTOItemQuestion, ItemQuestion } from "../../entity/itemQuestion";
 import ServicesAbstractQuestion from "../abstractService";
 import { getRepository } from "typeorm";
 

@@ -7,7 +7,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { Question } from "./Question";
+import { Question } from "./question";
 
 export interface DTOItemQuestion {
   text: string;

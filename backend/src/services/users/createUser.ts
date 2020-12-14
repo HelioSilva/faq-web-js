@@ -1,4 +1,4 @@
-import { DTOUsers, User } from "../../entity/Users";
+import { DTOUsers, User } from "../../entity/users";
 import { getRepository } from "typeorm";
 
 class CreateUser {

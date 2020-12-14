@@ -6,7 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { ItemQuestion } from "./ItemQuestion";
+import { ItemQuestion } from "./itemQuestion";
 
 export interface DTOQuestion {
   titulo: string;
@@ -15,7 +15,7 @@ export interface DTOQuestion {
   autor_id: string;
 }
 
-@Entity()
+@Entity("question")
 export class Question {
   @PrimaryGeneratedColumn("uuid")
   id: string;
