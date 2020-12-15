@@ -4,27 +4,51 @@ import { Container } from "../../../styles/question/style_newQuestion";
 
 import { Form } from "@unform/web";
 import Input from "../../../components/input/index";
-import Link from "next/link";
+
 import Router, { useRouter } from "next/router";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Btn from "../../../components/button";
 import api from "../../../Services/api";
-import { useAuth } from "../../../context/AuthContext";
-
-function putQuestion(titulo: string, idQuestion: string | string[]) {
-  if (titulo === "") return;
-
-  const response = api.put(`/questions/${idQuestion}`, {
-    titulo,
-  });
-  return response;
-}
+import { AxiosResponse } from "axios";
+import {
+  stateNotification,
+  useQuestion,
+} from "../../../context/QuestionContext";
 
 const newQuestion = () => {
   const [pergunta, setPergunta] = useState("padrao");
   const router = useRouter();
+  const { handleNotification } = useQuestion();
   const { question } = router.query;
+
+  const putQuestion = useCallback(
+    async (
+      titulo: string,
+      idQuestion: string | string[]
+    ): Promise<AxiosResponse> => {
+      if (titulo === "") {
+        handleNotification(stateNotification.error, "Falha ao editar questão!");
+        return;
+      }
+
+      const response = await api.put(`/questions/${idQuestion}`, {
+        titulo,
+      });
+
+      if (response.status === 200) {
+        handleNotification(
+          stateNotification.sucess,
+          "Questão atualizada com sucesso!"
+        );
+      } else {
+        handleNotification(stateNotification.error, "Falha ao editar questão!");
+      }
+
+      return response;
+    },
+    []
+  );
 
   useEffect(() => {
     (async () => {
@@ -51,7 +75,7 @@ const newQuestion = () => {
           <Form
             onSubmit={async (dataForm) => {
               const resp = await putQuestion(dataForm.titulo, question);
-              if (resp.status == 200) {
+              if (resp && resp.status == 200) {
                 Router.push("/");
               }
             }}
