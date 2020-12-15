@@ -4,28 +4,52 @@ import { Container } from "../../styles/question/style_newQuestion";
 
 import { Form } from "@unform/web";
 import Input from "../../components/input/index";
-import Link from "next/link";
 import Router from "next/router";
 
-import { useState } from "react";
 import Btn from "../../components/button";
 import api from "../../Services/api";
 import { useAuth } from "../../context/AuthContext";
-
-function postQuestion(titulo: string, username: string, userid: string) {
-  if (titulo === "") return;
-
-  const response = api.post("/questions", {
-    titulo,
-    autor_id: userid,
-    autor: username,
-    acessos: 0,
-  });
-  return response;
-}
+import { AxiosResponse } from "axios";
+import { useCallback } from "react";
+import { stateNotification, useQuestion } from "../../context/QuestionContext";
 
 const newQuestion = () => {
   const { name, id } = useAuth();
+  const { handleNotification } = useQuestion();
+
+  const postQuestion = useCallback(
+    async (
+      titulo: string,
+      username: string,
+      userid: string
+    ): Promise<AxiosResponse> => {
+      if (!titulo || !username || !userid) {
+        return;
+      }
+
+      const response = await api.post("/questions", {
+        titulo,
+        autor_id: userid,
+        autor: username,
+        acessos: 0,
+      });
+
+      if (response.status === 200) {
+        handleNotification(
+          stateNotification.sucess,
+          "Questão cadastrada com sucesso!"
+        );
+      } else {
+        handleNotification(
+          stateNotification.error,
+          "Falha ao cadastrar questão!"
+        );
+      }
+
+      return response;
+    },
+    []
+  );
 
   return (
     <div>
@@ -46,7 +70,7 @@ const newQuestion = () => {
           <Form
             onSubmit={async (dataForm) => {
               const resp = await postQuestion(dataForm.titulo, name, id);
-              if (resp.status == 200) {
+              if (resp && resp.status == 200) {
                 Router.push("/");
               }
             }}
