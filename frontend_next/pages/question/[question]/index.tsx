@@ -12,7 +12,7 @@ import {
 } from "../../../styles/question/index";
 import dynamic from "next/dynamic";
 import { ItemAnswer } from "../../../styles/question/index";
-import Link from "next/link";
+
 import { MdCreate, MdDelete } from "react-icons/md";
 import { BiArrowBack } from "react-icons/bi";
 import Container from "../../../components/_systemUI/container";
@@ -24,6 +24,10 @@ import TimeAgo from "javascript-time-ago";
 
 // Portugues BR
 import pt from "javascript-time-ago/locale/pt";
+import {
+  stateNotification,
+  useQuestion,
+} from "../../../context/QuestionContext";
 
 TimeAgo.addLocale(pt);
 const timeAgo = new TimeAgo("pt-PT");
@@ -35,6 +39,7 @@ const QuillNoSSRWrapper = dynamic(import("react-quill"), {
 
 const ViewQuestion = () => {
   const { urlImage, id } = useAuth();
+  const { functionSearch, handleNotification } = useQuestion();
   const [loading, setLoading] = useState(true);
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
     answers: [],
@@ -57,7 +62,21 @@ const ViewQuestion = () => {
   const handleEdite = (path: string) => {
     router.push(path);
   };
-  console.log(router.query);
+
+  const handleDelete = useCallback(async () => {
+    const questionData = await api.delete(`/questions/${question}`);
+
+    if (questionData.status === 200) {
+      handleNotification(
+        stateNotification.sucess,
+        "Registro deletado com sucesso!"
+      );
+      await functionSearch("");
+      router.push("/");
+    } else {
+      handleNotification(stateNotification.sucess, "Falha ao deletar!");
+    }
+  }, []);
 
   const countViewPage = useCallback(async () => {
     const res = await api.post(`/questions/${question}/view`);
@@ -131,6 +150,9 @@ const ViewQuestion = () => {
               </Badge>
               <Badge
                 variant={ColorButtom.danger}
+                fun={() => {
+                  handleDelete();
+                }}
                 disabled={actionDelete()}
                 light
               >
