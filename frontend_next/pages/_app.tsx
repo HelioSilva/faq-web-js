@@ -7,6 +7,7 @@ import { ContextAuth } from "../context/AuthContext";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import { ContextQuestion } from "../context/QuestionContext";
+import Loading from "../components/loading";
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
@@ -36,7 +37,7 @@ function MyApp({ Component, pageProps }) {
       <GlobalStyle />
       <ContextAuth>
         <ContextQuestion>
-          {loading === false ? <Component {...pageProps} /> : <h1>Teste</h1>}
+          {loading === false ? <Component {...pageProps} /> : <Loading />}
         </ContextQuestion>
       </ContextAuth>
     </>
