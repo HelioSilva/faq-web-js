@@ -57,7 +57,7 @@ const Header = () => {
                 functionSearch(text);
               }
             }}
-            placeholder="Pesquise aqui"
+            placeholder="Pesquise aqui e tecle ENTER"
           />
         </div>
         <Link href="/question/create">Nova Questão</Link>

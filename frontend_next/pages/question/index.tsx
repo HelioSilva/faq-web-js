@@ -1,13 +1,10 @@
-import { useState, useEffect } from "react";
 import Footer from "../../components/footer";
 import Header from "../../components/headerHome/index";
 
 import ItemQuestion from "../../components/itemQuestion";
 import Container from "../../components/_systemUI/container";
 import { useQuestion } from "../../context/QuestionContext";
-import api from "../../Services/api";
 import { BodyHome } from "../../styles/home/style";
-import { ReactSVG } from "react-svg";
 
 export interface iQuestion {
   id: string;

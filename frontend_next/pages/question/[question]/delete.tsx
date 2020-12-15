@@ -12,7 +12,6 @@ const newQuestion = () => {
   const { question } = router.query;
 
   useEffect(() => {
-    console.log("inicia");
     (async () => {
       const questionData = await api.delete(`/questions/${question}`);
       console.log(questionData);
