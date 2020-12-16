@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import api from "../../../Services/api";
 
-import React from "react";
 import Header from "../../../components/header";
 import { BodyHome } from "../../../styles/home/style";
 import { iQuestion } from "..";
@@ -29,23 +28,34 @@ import {
   useQuestion,
 } from "../../../context/QuestionContext";
 
-TimeAgo.addLocale(pt);
-const timeAgo = new TimeAgo("pt-PT");
-
-const QuillNoSSRWrapper = dynamic(import("react-quill"), {
-  ssr: false,
-  loading: () => <p>Loading ...</p>,
-});
-
 const ViewQuestion = () => {
+  TimeAgo.addLocale(pt);
+  const timeAgo = new TimeAgo("pt-PT");
+
   const { urlImage, id } = useAuth();
   const { functionSearch, handleNotification } = useQuestion();
   const [loading, setLoading] = useState(true);
+  const [question, setQuestion] = useState("");
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
     answers: [],
   } as iQuestion);
   const router = useRouter();
-  const { question } = router.query;
+
+  const QuillNoSSRWrapper = dynamic(import("react-quill"), {
+    ssr: false,
+    loading: () => <p>Loading ...</p>,
+  });
+
+  useEffect(() => {
+    if (
+      typeof router.query.question !== undefined &&
+      router.query.question !== ""
+    ) {
+      setQuestion(String(router.query.question));
+      countViewPage(String(router.query.question));
+      getRequestQuestion(String(router.query.question));
+    }
+  }, []);
 
   const actionDelete = () => {
     if (dataQuestion.autor_id === id && dataQuestion.answers.length === 0) {
@@ -78,24 +88,25 @@ const ViewQuestion = () => {
     }
   }, []);
 
-  const countViewPage = useCallback(async () => {
-    const res = await api.post(`/questions/${question}/view`);
-    console.log(res.status === 200 ? "View count ok" : "View count fail");
-  }, []);
-
-  const getRequestQuestion = useCallback(async () => {
-    const questionData = await api.get(`/questions/${question}`);
-
-    if (questionData.status === 200) {
-      setDataquestion(questionData.data.questions[0] as iQuestion);
+  const countViewPage = async (param: string) => {
+    console.log("count view question : " + param);
+    if (param && param !== "") {
+      const res = await api.post(`/questions/${param}/view`);
+      console.log(res.status === 200 ? "View count ok" : "View count fail");
     }
-    setLoading(false);
-  }, []);
+  };
 
-  useEffect(() => {
-    countViewPage();
-    getRequestQuestion();
-  }, []);
+  const getRequestQuestion = async (param: string) => {
+    if (param) {
+      const questionData = await api.get(`/questions/${param}`);
+      console.log("data: " + questionData);
+
+      if (questionData.status === 200) {
+        setDataquestion(questionData.data.questions[0] as iQuestion);
+      }
+      setLoading(false);
+    }
+  };
 
   const modules = {
     toolbar: false,
@@ -134,7 +145,7 @@ const ViewQuestion = () => {
               <BiArrowBack
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  router.push("/");
+                  router.back();
                 }}
               />
               <Badge
@@ -192,11 +203,6 @@ const ViewQuestion = () => {
               </Container>
             </Container>
           </div>
-          {/* <div>
-            <Link href={`/question/${dataQuestion.id}/answer/create`}>
-              Adicionar resposta
-            </Link>
-          </div> */}
         </ContentQuestion>
 
         {dataQuestion.answers.length > 0 ? (

@@ -67,7 +67,13 @@ const ContextQuestion = ({ children }) => {
     <QuestionContext.Provider value={data as dataContext}>
       {children}
 
-      <ToastContainer autoClose={2500} />
+      <ToastContainer
+        closeButton={true}
+        onClick={() => {
+          alert("doanld MCDonald");
+        }}
+        autoClose={2500}
+      />
     </QuestionContext.Provider>
   );
 };
