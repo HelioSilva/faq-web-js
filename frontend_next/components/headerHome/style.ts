@@ -128,15 +128,6 @@ export const BGImage = styled.div`
   align-items: center;
 
   div {
-    display: flex;
-    width: 600px;
-    height: 38px;
-    background: #fff;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 5px;
-    padding-left: 10px;
-
     input {
       border-style: none;
       width: 100%;

@@ -1,5 +1,4 @@
 import {
-  Container,
   MenuInicial,
   BGTopo,
   BGImage,
@@ -11,11 +10,28 @@ import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
 import { useQuestion } from "../../context/QuestionContext";
 import { useState } from "react";
+import Lottie from "react-lottie";
+import animationData from "./search.json";
+
+import Container from "../_systemUI/container";
 
 const Header = () => {
   const { name, urlImage } = useAuth();
   const { functionSearch } = useQuestion();
   const [text, setText] = useState("");
+  const [pesquisando, setPesquisando] = useState({
+    stoped: true,
+    paused: false,
+  });
+
+  const defaultOptions = {
+    loop: false,
+    autoplay: false,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   return (
     <Container>
@@ -45,21 +61,38 @@ const Header = () => {
         </MenuInicial>
       </BGTopo>
       <BGImage>
-        <div>
+        <Container
+          flex
+          row
+          bgColor={"#fff"}
+          style={{
+            padding: "5px",
+            width: "600px",
+            borderRadius: "10px",
+            marginBottom: "10px",
+          }}
+        >
           <input
             value={text}
             onChange={(x) => {
               setText(x.target.value);
             }}
-            onKeyPress={(x) => {
-              console.log(x.key);
+            onKeyPress={async (x) => {
               if (x.key === "Enter") {
-                functionSearch(text);
+                setPesquisando({ ...pesquisando, stoped: !pesquisando.stoped });
+                await functionSearch(text);
               }
             }}
             placeholder="Pesquise aqui e tecle ENTER"
           />
-        </div>
+          <Lottie
+            options={defaultOptions}
+            height={35}
+            width={35}
+            isStopped={pesquisando.stoped}
+            isPaused={pesquisando.paused}
+          />
+        </Container>
         <Link href="/question/create">Nova Questão</Link>
       </BGImage>
     </Container>
