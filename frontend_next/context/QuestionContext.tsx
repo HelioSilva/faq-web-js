@@ -19,7 +19,7 @@ interface dataContext {
 const handleNotification = (type: stateNotification, value: string) => {
   switch (type) {
     case stateNotification.sucess:
-      toast.success(value);
+      toast.success(value, { style: { background: "#477721" } });
       break;
     case stateNotification.error:
       toast.error(value);

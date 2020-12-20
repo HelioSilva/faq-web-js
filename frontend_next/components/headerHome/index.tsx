@@ -9,11 +9,13 @@ import {
 import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
 import { useQuestion } from "../../context/QuestionContext";
-import { useState } from "react";
+import React, { useState } from "react";
 import Lottie from "react-lottie";
 import animationData from "./search.json";
 
 import Container from "../_systemUI/container";
+import Navbar from "react-bootstrap/Navbar";
+import { Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
 
 const Header = () => {
   const { name, urlImage } = useAuth();
@@ -35,6 +37,21 @@ const Header = () => {
 
   return (
     <Container>
+      <>
+        <Navbar bg={"#a00"} variant={"light"}>
+          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          </Nav>
+          <Form inline>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="outline-info">Search</Button>
+          </Form>
+        </Navbar>
+      </>
+
       <BGTopo>
         <MenuInicial>
           <div>

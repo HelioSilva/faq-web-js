@@ -86,7 +86,7 @@ const ViewQuestion = () => {
     } else {
       handleNotification(stateNotification.sucess, "Falha ao deletar!");
     }
-  }, []);
+  }, [question]);
 
   const countViewPage = async (param: string) => {
     console.log("count view question : " + param);
