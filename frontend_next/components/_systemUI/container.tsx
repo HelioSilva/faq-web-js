@@ -9,6 +9,7 @@ export type propsContainer = {
   col?: boolean;
   order?: number;
   flexCenter?: boolean;
+  between?: boolean;
   pAside?: string;
   bgColor?: string;
   itemGrow?: number;

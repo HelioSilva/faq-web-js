@@ -1,29 +1,11 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  /* a {
-    text-decoration: none;
+export const TagLink = styled.a`
+  position: relative;
+  color: #efefef;
+  text-decoration: none;
 
-    &:hover {
-      color: #60c4be;
-      transition: 0.6s;
-    }
-  } */
-`;
-
-export const DivRow = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 300px;
-
-  a {
-    position: relative;
-    color: #fff;
-    text-decoration: none;
-  }
-
-  a:before {
+  :before {
     content: "";
     position: absolute;
     width: 100%;
@@ -37,11 +19,18 @@ export const DivRow = styled.div`
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
   }
-  a:hover:before {
+  :hover:before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
   }
+`;
+
+export const TitleAPP = styled.h3`
+  font-size: 1.1rem;
+  line-height: inherit;
+  white-space: nowrap;
+  color: #fff;
 `;
 
 export const Lista = styled.div`
@@ -89,24 +78,6 @@ export const ImageRaduis = styled.div`
     img {
       /* width: 30px; */
     }
-  }
-`;
-
-export const MenuInicial = styled.div`
-  width: 100%;
-  max-width: 900px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.9rem;
-
-  a {
-    color: #fff;
-  }
-
-  @media (max-width: 400px) {
-    flex-direction: column;
-    flex-wrap: wrap;
   }
 `;
 

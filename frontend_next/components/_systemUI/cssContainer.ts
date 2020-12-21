@@ -60,6 +60,14 @@ export const Container = styled.div<propsContainer>`
     `};
 
   ${(props) =>
+    props.flex === true &&
+    props.between &&
+    css`
+      justify-content: space-between;
+      align-items: center;
+    `};
+
+  ${(props) =>
     props.flexCenter === true &&
     css`
       justify-content: center;

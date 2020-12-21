@@ -1,10 +1,10 @@
 import {
-  MenuInicial,
   BGTopo,
   BGImage,
-  DivRow,
   Lista,
   ImageRaduis,
+  TagLink,
+  TitleAPP,
 } from "./style";
 import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
@@ -14,8 +14,8 @@ import Lottie from "react-lottie";
 import animationData from "./search.json";
 
 import Container from "../_systemUI/container";
-import Navbar from "react-bootstrap/Navbar";
-import { Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
+
+import GridContainer from "../_systemUI/gridContainer";
 
 const Header = () => {
   const { name, urlImage } = useAuth();
@@ -37,34 +37,15 @@ const Header = () => {
 
   return (
     <Container>
-      <>
-        <Navbar bg={"#a00"} variant={"light"}>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-info">Search</Button>
-          </Form>
-        </Navbar>
-      </>
-
       <BGTopo>
-        <MenuInicial>
-          <div>
-            <h3>
-              <Link href="/">FAQ</Link>
-            </h3>
-            <h5>
-              <Link href="/">Base de Conhecimento</Link>
-            </h5>
-          </div>
-          <DivRow>
-            <Link href="/">Home</Link>
-            <Link href="/download">Download</Link>
+        <Container width={"100%"} height={"56px"} flex between>
+          <GridContainer col={3} spacing={2}>
+            <TitleAPP>FAQ - Base de Conhecimento</TitleAPP>
+            <TagLink href="/">Home</TagLink>
+            <TagLink href="/download">Download</TagLink>
+          </GridContainer>
+
+          <GridContainer col={2} spacing={1}>
             <Lista>
               <Link href="">{name || ""}</Link>
               <div>
@@ -74,8 +55,8 @@ const Header = () => {
             <ImageRaduis>
               <img src={urlImage} />
             </ImageRaduis>
-          </DivRow>
-        </MenuInicial>
+          </GridContainer>
+        </Container>
       </BGTopo>
       <BGImage>
         <Container
