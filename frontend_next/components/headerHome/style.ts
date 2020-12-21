@@ -1,8 +1,78 @@
 import styled from "styled-components";
 
+export const Dropdown = styled.li`
+  color: #fff;
+
+  display: block;
+  float: left;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+
+  a {
+    color: #fff;
+    margin: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  :hover {
+    background: #b00b2c;
+    cursor: pointer;
+  }
+
+  :focus-within a {
+    outline: none;
+  }
+`;
+
+export const DropdownMenu = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+
+  li ul {
+    background: #b00b2c;
+    visibility: hidden;
+    opacity: 0;
+    min-width: 4rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 0.8rem;
+    left: 0;
+    display: none;
+  }
+
+  ul li {
+    display: flex;
+    flex-direction: row;
+  }
+
+  ul li a {
+    font-size: 0.8rem;
+    margin-left: 5px;
+  }
+  li:hover > ul,
+  li:focus-within > ul,
+  li ul:hover,
+  li ul:focus {
+    background: #ec0f3c;
+    visibility: visible;
+    opacity: 1;
+    display: block;
+  }
+
+  li ul li {
+    clear: both;
+    width: 100%;
+  }
+`;
+
 export const TagLink = styled.a`
   position: relative;
-  color: #efefef;
+  color: #dbdbdb;
   text-decoration: none;
 
   :before {
