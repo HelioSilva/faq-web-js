@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
 import { useQuestion } from "../../context/QuestionContext";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Lottie from "react-lottie";
 import animationData from "./search.json";
 import Container from "../_systemUI/container";
@@ -21,13 +21,17 @@ import { RiProfileFill } from "react-icons/ri";
 import { FcAnswers } from "react-icons/fc";
 
 const Header = () => {
-  const { name, urlImage } = useAuth();
-  const { functionSearch } = useQuestion();
+  const { name, urlImage, id } = useAuth();
+  const { functionSearch, functionMyQuestions } = useQuestion();
   const [text, setText] = useState("");
   const [pesquisando, setPesquisando] = useState({
     stoped: true,
     paused: false,
   });
+
+  const handleMyQuestions = useCallback(() => {
+    functionMyQuestions(id);
+  }, [id, functionMyQuestions]);
 
   const defaultOptions = {
     loop: false,
@@ -110,7 +114,13 @@ const Header = () => {
                   </Dropdown>
                   <Dropdown>
                     <BsFillQuestionCircleFill />
-                    <a href="#">Minhas questões</a>
+                    <a
+                      onClick={() => {
+                        handleMyQuestions();
+                      }}
+                    >
+                      Minhas questões
+                    </a>
                   </Dropdown>
                   <Dropdown>
                     <FcAnswers />

@@ -13,6 +13,7 @@ export enum stateNotification {
 interface dataContext {
   questions: iQuestion[];
   functionSearch(data: string): Promise<void>;
+  functionMyQuestions(data: string): Promise<void>;
   handleNotification(type: stateNotification, value: string): void;
 }
 
@@ -38,6 +39,17 @@ const ContextQuestion = ({ children }) => {
     questions: [],
   } as dataContext);
 
+  const functionMyQuestions = async (value: string) => {
+    const res = await api.get(`/questions/myquestions/${value}`);
+
+    setData({
+      questions: res.data.questions,
+      functionSearch: functionSearch,
+      handleNotification: handleNotification,
+      functionMyQuestions: functionMyQuestions,
+    });
+  };
+
   const functionSearch = async (value: string) => {
     const res =
       value !== ""
@@ -48,6 +60,7 @@ const ContextQuestion = ({ children }) => {
       questions: res.data.questions,
       functionSearch: functionSearch,
       handleNotification: handleNotification,
+      functionMyQuestions: functionMyQuestions,
     });
   };
 
@@ -59,6 +72,7 @@ const ContextQuestion = ({ children }) => {
         questions: dados.questions,
         functionSearch,
         handleNotification,
+        functionMyQuestions,
       });
     })();
   }, []);
@@ -66,7 +80,6 @@ const ContextQuestion = ({ children }) => {
   return (
     <QuestionContext.Provider value={data as dataContext}>
       {children}
-
       <ToastContainer autoClose={2500} />
     </QuestionContext.Provider>
   );
@@ -74,13 +87,11 @@ const ContextQuestion = ({ children }) => {
 
 function useQuestion(): dataContext {
   const context = useContext(QuestionContext);
-
   if (!context) {
     throw new Error(
       "useAuth só pode ser usado com o ContextQuestion por volta dos componentes"
     );
   }
-
   return context;
 }
 
