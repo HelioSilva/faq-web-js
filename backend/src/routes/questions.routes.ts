@@ -24,13 +24,48 @@ questionsRouter.get("/", async (request: Request, response: Response) => {
 });
 
 questionsRouter.get(
+  "/myquestions/:user",
+  async (request: Request, response: Response) => {
+    const repositoryQuestion = getRepository(Question);
+    const questionsAll = await repositoryQuestion.find({
+      where: {
+        autor_id: request.params.user,
+      },
+
+      order: { acessos: "DESC", createdAt: "ASC" },
+    });
+
+    response.status(200).json({
+      questions: questionsAll,
+    });
+  }
+);
+
+questionsRouter.get(
+  "/myanswers/:user",
+  async (request: Request, response: Response) => {
+    const repositoryQuestion = getRepository(Question);
+    const questionsAll = await repositoryQuestion.find({
+      where: {
+        answers: {
+          autor_id: request.params.user,
+        },
+      },
+
+      order: { acessos: "DESC", createdAt: "ASC" },
+    });
+
+    response.status(200).json({
+      questions: questionsAll,
+    });
+  }
+);
+
+questionsRouter.get(
   "/search/:text",
   async (request: Request, response: Response) => {
     const repositoryQuestion = getRepository(Question);
     const questionsAll = await repositoryQuestion.find({
-      // where: {
-      //   titulo: Like(`%${request.params.text}%`),
-      // },
       where: {
         titulo: Raw(
           (alias) =>
