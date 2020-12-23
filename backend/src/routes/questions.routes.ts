@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 import { Connection, FindOperator, FindOperatorType, Raw } from "typeorm";
 import { getRepository, Like } from "typeorm";
-import { DTOItemQuestion } from "../entity/itemQuestion";
+import { DTOItemQuestion, ItemQuestion } from "../entity/itemQuestion";
 import { DTOQuestion, Question } from "../entity/question";
 import CreateItemQuestion from "../services/questions/createItemQuestion";
 import CreateQuestion from "../services/questions/createQuestion";
@@ -45,15 +45,14 @@ questionsRouter.get(
   "/myanswers/:user",
   async (request: Request, response: Response) => {
     const repositoryQuestion = getRepository(Question);
-    const questionsAll = await repositoryQuestion.find({
-      where: {
-        answers: {
-          autor_id: request.params.user,
-        },
-      },
 
-      order: { acessos: "DESC", createdAt: "ASC" },
-    });
+    const questionsAll = await repositoryQuestion
+      .createQueryBuilder("question")
+      .leftJoinAndSelect("question.answers", "ItemQuestion")
+      .where("ItemQuestion.autor_id = :autor", {
+        autor: request.params.user,
+      })
+      .getMany();
 
     response.status(200).json({
       questions: questionsAll,

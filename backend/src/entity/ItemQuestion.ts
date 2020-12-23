@@ -6,6 +6,7 @@ import {
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinTable,
 } from "typeorm";
 import { Question } from "./question";
 
@@ -52,7 +53,12 @@ export class ItemQuestion {
   })
   updatedAt: Date;
 
-  @ManyToOne(() => Question, (item) => item.id)
+  @ManyToOne(() => Question, (item) => item.answers, {
+    cascade: true,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  @JoinTable()
   @JoinColumn({ name: "question_id" })
   question: Question;
 }

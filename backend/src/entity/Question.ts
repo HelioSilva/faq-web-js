@@ -5,6 +5,7 @@ import {
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinTable,
 } from "typeorm";
 import { ItemQuestion } from "./itemQuestion";
 
@@ -52,6 +53,9 @@ export class Question {
   })
   updatedAt: Date;
 
-  @OneToMany(() => ItemQuestion, (item) => item.question, { eager: true })
+  @OneToMany(() => ItemQuestion, (item) => item.question, {
+    eager: true,
+  })
+  @JoinTable()
   answers: ItemQuestion[];
 }
