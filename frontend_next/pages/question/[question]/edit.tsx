@@ -1,4 +1,3 @@
-import Header from "../../../components/header/index";
 import { BodyHome } from "../../../styles/home/style";
 import { Container } from "../../../styles/question/style_newQuestion";
 
@@ -13,13 +12,15 @@ import api from "../../../Services/api";
 import { AxiosResponse } from "axios";
 import {
   stateNotification,
+  useFunctionsQuestion,
   useQuestion,
 } from "../../../context/QuestionContext";
+import Menu from "../../../components/menu";
 
 const newQuestion = () => {
   const [pergunta, setPergunta] = useState("padrao");
   const router = useRouter();
-  const { handleNotification } = useQuestion();
+  const { handleNotification } = useFunctionsQuestion();
   const { question } = router.query;
 
   const putQuestion = useCallback(
@@ -57,8 +58,8 @@ const newQuestion = () => {
     })();
   }, []);
   return (
-    <div>
-      <Header />
+    <>
+      <Menu />
       <BodyHome>
         <Container>
           <h3>Editar dúvida</h3>
@@ -87,7 +88,7 @@ const newQuestion = () => {
           </Form>
         </Container>
       </BodyHome>
-    </div>
+    </>
   );
 };
 

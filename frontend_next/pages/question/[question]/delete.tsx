@@ -1,4 +1,3 @@
-import Header from "../../../components/header/index";
 import { BodyHome } from "../../../styles/home/style";
 import { Container } from "../../../styles/question/style_newQuestion";
 
@@ -6,6 +5,7 @@ import { useRouter } from "next/router";
 
 import { useEffect } from "react";
 import api from "../../../Services/api";
+import Menu from "../../../components/menu";
 
 const newQuestion = () => {
   const router = useRouter();
@@ -21,7 +21,7 @@ const newQuestion = () => {
 
   return (
     <div>
-      <Header />
+      <Menu />
       <BodyHome>
         <Container>Deletando dúvida!</Container>
       </BodyHome>

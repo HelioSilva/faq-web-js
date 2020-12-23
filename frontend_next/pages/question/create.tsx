@@ -1,4 +1,3 @@
-import Header from "../../components/header/index";
 import { BodyHome } from "../../styles/home/style";
 import { Container } from "../../styles/question/style_newQuestion";
 
@@ -11,11 +10,16 @@ import api from "../../Services/api";
 import { useAuth } from "../../context/AuthContext";
 import { AxiosResponse } from "axios";
 import { useCallback } from "react";
-import { stateNotification, useQuestion } from "../../context/QuestionContext";
+import {
+  stateNotification,
+  useFunctionsQuestion,
+  useQuestion,
+} from "../../context/QuestionContext";
+import Menu from "../../components/menu";
 
 const newQuestion = () => {
   const { name, id } = useAuth();
-  const { handleNotification } = useQuestion();
+  const { handleNotification } = useFunctionsQuestion();
 
   const postQuestion = useCallback(
     async (
@@ -53,7 +57,7 @@ const newQuestion = () => {
 
   return (
     <div>
-      <Header />
+      <Menu />
       <BodyHome>
         <Container>
           <h3>Instruções</h3>

@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import api from "../../../../Services/api";
 
 import React from "react";
-import Header from "../../../../components/header";
 import { BodyHome } from "../../../../styles/home/style";
 import { iQuestion } from "../..";
 
@@ -14,6 +13,7 @@ import { useAuth } from "../../../../context/AuthContext";
 import Btn from "../../../../components/button";
 import {
   stateNotification,
+  useFunctionsQuestion,
   useQuestion,
 } from "../../../../context/QuestionContext";
 import Container from "../../../../components/_systemUI/container";
@@ -22,6 +22,7 @@ import TimeAgo from "javascript-time-ago";
 import pt from "javascript-time-ago/locale/pt";
 import GridContainer from "../../../../components/_systemUI/gridContainer";
 import { BiArrowBack } from "react-icons/bi";
+import Menu from "../../../../components/menu";
 
 const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
@@ -37,7 +38,7 @@ const ViewQuestion = () => {
   } as iQuestion);
 
   const user = useAuth();
-  const { handleNotification } = useQuestion();
+  const { handleNotification } = useFunctionsQuestion();
 
   const [data, setData] = useState("");
   const router = useRouter();
@@ -121,7 +122,7 @@ const ViewQuestion = () => {
 
   return (
     <>
-      <Header />
+      <Menu />
       <BodyHome>
         <ContentQuestion>
           <div>

@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import api from "../../../Services/api";
 
-import Header from "../../../components/header";
 import { BodyHome } from "../../../styles/home/style";
 import { iQuestion } from "..";
 import {
@@ -25,15 +24,17 @@ import TimeAgo from "javascript-time-ago";
 import pt from "javascript-time-ago/locale/pt";
 import {
   stateNotification,
+  useFunctionsQuestion,
   useQuestion,
 } from "../../../context/QuestionContext";
+import Menu from "../../../components/menu";
 
 const ViewQuestion = () => {
   TimeAgo.addLocale(pt);
   const timeAgo = new TimeAgo("pt-PT");
 
   const { urlImage, id } = useAuth();
-  const { functionSearch, handleNotification } = useQuestion();
+  const { functionSearch, handleNotification } = useFunctionsQuestion();
   const [loading, setLoading] = useState(true);
   const [question, setQuestion] = useState("");
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
@@ -137,7 +138,7 @@ const ViewQuestion = () => {
 
   return (
     <>
-      <Header />
+      <Menu />
       <BodyHome>
         <ContentQuestion>
           <div>
