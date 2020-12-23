@@ -10,6 +10,7 @@ export type propsContainer = {
   order?: number;
   flexCenter?: boolean;
   between?: boolean;
+  padding?: number;
   pAside?: string;
   bgColor?: string;
   itemGrow?: number;

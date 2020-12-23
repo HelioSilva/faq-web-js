@@ -93,6 +93,9 @@ export const Container = styled.div<propsContainer>`
       margin: ${(props.spacing * 8) / 2}px ${props.spacing * 8}px;
     `};
 
-  /* display: grid;
-  grid-template-columns: 200px repeat(15, "auto "); */
+  ${(props) =>
+    props.padding &&
+    css`
+      padding: ${(props.padding * 8) / 2}px ${props.padding * 8}px;
+    `};
 `;
