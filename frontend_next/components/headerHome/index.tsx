@@ -12,9 +12,9 @@ const Header = () => {
     <Container>
       <Menu search />
 
-      <BGImage>
+      {/* <BGImage>
         <Link href="/question/create">Nova Questão</Link>
-      </BGImage>
+      </BGImage> */}
     </Container>
   );
 };
