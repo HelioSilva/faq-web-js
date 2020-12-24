@@ -12,6 +12,7 @@ export enum stateNotification {
 
 interface dataContext {
   questions: iQuestion[];
+  roadmap: string;
 }
 
 interface functionContext {
@@ -42,9 +43,22 @@ const FunctionContext = createContext<functionContext>({} as functionContext);
 const ContextQuestion = ({ children }) => {
   const [data, setData] = useState<dataContext>({
     questions: [],
+    roadmap: "Página principal",
   } as dataContext);
 
   const [func, setFunc] = useState<functionContext>({} as functionContext);
+
+  const functionHome = async () => {
+    const res = await api.get("/questions");
+    const dados = res.data;
+
+    if (res.data.questions) {
+      setData({
+        questions: dados.questions,
+        roadmap: "TOP 10 - Questões mais acessadas",
+      });
+    }
+  };
 
   const functionMyQuestions = async (value: string) => {
     const res = await api.get(`/questions/myquestions/${value}`);
@@ -52,6 +66,7 @@ const ContextQuestion = ({ children }) => {
     if (res.data.questions) {
       setData({
         questions: res.data.questions,
+        roadmap: "Minhas questões",
       });
     }
   };
@@ -59,29 +74,31 @@ const ContextQuestion = ({ children }) => {
   const functionMyAnswers = async (value: string) => {
     const res = await api.get(`/questions/myanswers/${value}`);
 
-    setData({
-      questions: res.data.questions,
-    });
+    if (res.data.questions) {
+      setData({
+        questions: res.data.questions,
+        roadmap: "Questões respondidas por mim",
+      });
+    }
   };
 
   const functionSearch = async (value: string) => {
-    const res =
-      value !== ""
-        ? await api.get(`/questions/search/${value}`)
-        : await api.get(`/questions`);
-
-    setData({
-      questions: res.data.questions,
-    });
+    if (value !== "") {
+      const res = await api.get(`/questions/search/${value}`);
+      if (res.data.questions) {
+        setData({
+          questions: res.data.questions,
+          roadmap: `Resultado da pesquisa por: ${value}`,
+        });
+      }
+    } else {
+      functionHome();
+    }
   };
 
   useEffect(() => {
     (async () => {
-      const res = await api.get("/questions");
-      const dados = res.data;
-      setData({
-        questions: dados.questions,
-      });
+      await functionHome();
 
       setFunc({
         functionSearch,
@@ -104,10 +121,9 @@ const ContextQuestion = ({ children }) => {
 
 function useQuestion(): dataContext {
   const context = useContext(QuestionContext);
-  const funContext = useContext(FunctionContext);
   if (!context) {
     throw new Error(
-      "useAuth só pode ser usado com o ContextQuestion por volta dos componentes"
+      "QuestionContext só pode ser usado com o ContextQuestion por volta dos componentes"
     );
   }
   return context;
@@ -117,7 +133,7 @@ function useFunctionsQuestion(): functionContext {
   const funContext = useContext(FunctionContext);
   if (!funContext) {
     throw new Error(
-      "useAuth só pode ser usado com o ContextQuestion por volta dos componentes"
+      "FunctionContext só pode ser usado com o ContextQuestion por volta dos componentes"
     );
   }
   return funContext;
