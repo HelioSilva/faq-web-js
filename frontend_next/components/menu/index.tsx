@@ -69,9 +69,10 @@ const Menu = (value: TypeMenu) => {
       flex
       between
     >
-      <GridContainer col={3} spacing={2}>
+      <GridContainer col={4} spacing={2}>
         <TitleAPP>FAQ-Base de Conhecimento</TitleAPP>
         <TagLink href="/">Home</TagLink>
+        <TagLink href="/question/create">Nova Questão</TagLink>
         <TagLink href="/download">Download</TagLink>
       </GridContainer>
 
@@ -121,7 +122,11 @@ const Menu = (value: TypeMenu) => {
 
         <DropdownMenu>
           <Dropdown>
-            <GridContainer col={2} spacing={1}>
+            <GridContainer
+              col={2}
+              spacing={0}
+              style={{ minWidth: "125px", lineHeight: "2em" }}
+            >
               <>
                 <a href="#">{name && name}</a>
               </>

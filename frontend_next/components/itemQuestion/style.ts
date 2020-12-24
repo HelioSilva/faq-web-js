@@ -44,9 +44,10 @@ export const Content = styled.div`
   color: #545454;
 
   h2 {
+    font-weight: 400;
+    text-rendering: "optimizeLegibility";
     color: #4996ce;
-    font-size: 1.3rem;
-    font-weight: 300;
+    font-size: 1.5em;
     font-family: "Arial";
     cursor: pointer;
     transition: 0.8s;

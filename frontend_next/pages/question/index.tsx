@@ -25,12 +25,25 @@ interface iAnswers {
 }
 
 const Home = () => {
-  const { questions } = useQuestion();
+  const { questions, roadmap } = useQuestion();
 
   return (
     <div>
       <Header />
       <BodyHome>
+        <h4
+          style={{
+            margin: "24px 0px",
+            color: "#535151",
+            fontWeight: 700,
+            textRendering: "optimizeLegibility",
+            fontSize: "1.1em",
+
+            overflowWrap: "break-word",
+          }}
+        >
+          {roadmap}
+        </h4>
         {questions.length > 0 ? (
           questions.map((itemDetail) => (
             <ItemQuestion
