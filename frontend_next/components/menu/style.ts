@@ -74,6 +74,7 @@ export const TagLink = styled.a`
   position: relative;
   color: #dbdbdb;
   text-decoration: none;
+  text-align: center;
 
   :before {
     content: "";
@@ -133,7 +134,8 @@ export const ImageRaduis = styled.div`
   justify-content: center;
   align-items: center;
   background: #930924;
-  max-width: 30px;
+  width: 40px;
+  height: 40px;
   padding: 1px;
   border-radius: 20px;
   cursor: pointer;
@@ -141,12 +143,11 @@ export const ImageRaduis = styled.div`
 
   img {
     width: 100%;
-    border-radius: 20px;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
   }
   :hover {
     background: #930924;
-    img {
-      /* width: 30px; */
-    }
   }
 `;

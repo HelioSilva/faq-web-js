@@ -65,11 +65,11 @@ const Menu = (value: TypeMenu) => {
       bgColor={"#C20B2E"}
       width={"100%"}
       padding={1}
-      height={"60px"}
+      height={"auto"}
       flex
       between
     >
-      <GridContainer col={4} spacing={2}>
+      <GridContainer col={4} xs={1} sm={2} md={3} spacing={2}>
         <TitleAPP>FAQ-Base de Conhecimento</TitleAPP>
         <TagLink href="/">Home</TagLink>
         <TagLink href="/question/create">Nova Questão</TagLink>
@@ -133,7 +133,9 @@ const Menu = (value: TypeMenu) => {
 
               <>
                 <ImageRaduis>
-                  <img src={urlImage} />
+                  {urlImage && (
+                    <img src={`http://localhost:3333/${urlImage}`} />
+                  )}
                 </ImageRaduis>
               </>
             </GridContainer>
@@ -141,7 +143,7 @@ const Menu = (value: TypeMenu) => {
             <ul>
               <Dropdown>
                 <RiProfileFill />
-                <a href="#">Meu perfil</a>
+                <a href="/profile">Meu perfil</a>
               </Dropdown>
               <Dropdown>
                 <BsFillQuestionCircleFill />
