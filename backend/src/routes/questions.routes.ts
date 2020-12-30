@@ -5,6 +5,7 @@ import { DTOItemQuestion, ItemQuestion } from "../entity/itemQuestion";
 import { DTOQuestion, Question } from "../entity/question";
 import CreateItemQuestion from "../services/questions/createItemQuestion";
 import CreateQuestion from "../services/questions/createQuestion";
+import UpdateItemQuestion from "../services/questions/updateItemQuestion";
 import UpdateQuestion from "../services/questions/updateQuestion";
 
 const questionsRouter = Router();
@@ -124,6 +125,53 @@ questionsRouter.post(
     const itemQuestionCreate = await classCreateItemQuestion.execute();
 
     return response.status(200).json(itemQuestionCreate);
+  }
+);
+
+questionsRouter.put(
+  "/answer/:id",
+  async (request: Request, response: Response) => {
+    const repository = getRepository(ItemQuestion);
+    const findAnswer = await repository.findOne({
+      where: {
+        id: request.params.id,
+      },
+    });
+
+    if (!findAnswer)
+      return response.status(404).json({ response: "Answer not found" });
+
+    const dados: DTOItemQuestion = request.body;
+    const classUpdateItemQuestion = new UpdateItemQuestion(
+      dados,
+      findAnswer.id
+    );
+    const itemQuestionUpdate = await classUpdateItemQuestion.execute();
+
+    return response.status(200).json(itemQuestionUpdate);
+  }
+);
+
+questionsRouter.delete(
+  "/answer/:id",
+  async (request: Request, response: Response) => {
+    const repository = getRepository(ItemQuestion);
+    const findAnswer = await repository.findOne({
+      where: {
+        id: request.params.id,
+      },
+    });
+
+    if (!findAnswer)
+      return response.status(404).json({ response: "Answer not found" });
+
+    const del = await repository.delete(findAnswer.id);
+
+    if (del.affected) {
+      return response.status(200).json({});
+    } else {
+      return response.status(500).json({ message: "erro" });
+    }
   }
 );
 
