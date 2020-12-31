@@ -16,7 +16,7 @@ const InputNext = ({ name, ...rest }) => {
     <AreaInput focus={focused} edited={preenchido}>
       <input
         autoComplete={"false"}
-        placeholder={!focused && (rest.display ? rest.display : "")}
+        // placeholder={!focused && (rest.display ? rest.display : "")}
         onFocus={() => {
           setFocus(true);
           setPreenchido(true);
@@ -30,7 +30,7 @@ const InputNext = ({ name, ...rest }) => {
         {...rest}
       />
 
-      <p>{rest.display ? rest.display : name}</p>
+      <label>{rest.display ? rest.display : name}</label>
     </AreaInput>
   );
 };

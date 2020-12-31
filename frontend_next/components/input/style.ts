@@ -8,48 +8,54 @@ interface props {
 const delay = "0.7s";
 
 const AreaInput = styled.div<props>`
-  display: flex;
   position: relative;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 1px 5px;
-  padding-top: 15px;
-  height: 40px;
+  height: 30px;
   width: 100%;
-  /* border-radius: 8px; */
-  border-bottom: 1px solid #635179;
-  transition: ${delay};
 
-  p {
-    display: none;
+  border-bottom: 1px solid #635179;
+  transition: all ${delay};
+
+  label,
+  input {
     position: absolute;
-    color: #939393;
+    top: 0;
+    left: 0;
+  }
+
+  label {
+    color: #626062;
     transition: ${"0.5s"};
+    pointer-events: none;
+    font-size: 16px;
   }
 
   input {
     width: 100%;
-    height: 100%;
+    height: 35px;
     background: none;
 
     border: none;
     color: #5d5d5d;
 
-    font-size: 13.5px;
-    transition: ${delay};
+    font-size: 14px;
+  }
+
+  input:focus ~ label {
+    top: -10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #c20b2e;
   }
 
   ${(props) => {
     return (
-      (props.focus || props.edited) &&
+      props.edited &&
       css`
-        input {
-        }
-        p {
-          display: block;
-          bottom: 15px;
-          font-size: 11px;
-          color: #13708a;
+        label {
+          top: -10px;
+          font-size: 12px;
+          font-weight: 700;
+          color: #e95956;
         }
       `
     );
