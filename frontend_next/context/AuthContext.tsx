@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Cookie from "js-cookie";
 import Router from "next/router";
-import SignService from "../Services/serviceSign";
+import SignService, { RefreshCookie } from "../Services/serviceSign";
 
 export interface dataContext {
   name: string;
@@ -11,6 +11,7 @@ export interface dataContext {
   id: string;
   signIn(data: Object): Promise<dataUserLogged>;
   signOut(): void;
+  RefreshCookie(email: string): Promise<void>;
 }
 
 export interface dataUserLogged {
@@ -31,6 +32,7 @@ const ContextAuth = ({ children }) => {
     Cookie.remove("@faqweb:user");
     Router.push("/login");
   };
+
   const functionAuth = async ({ ...params }) => {
     const respUserLogged = await SignService(params);
     if (respUserLogged.logged) {
@@ -42,6 +44,7 @@ const ContextAuth = ({ children }) => {
         id: respUserLogged.id,
         signIn: functionAuth,
         signOut: functionLogout,
+        RefreshCookie: RefreshCookie,
       });
     }
     return respUserLogged;
@@ -56,20 +59,22 @@ const ContextAuth = ({ children }) => {
         logged: cookieParsed.logged,
         name: cookieParsed.name,
         email: cookieParsed.email,
-        urlImage: cookieParsed.urlImage,
         id: cookieParsed.id,
+        urlImage: cookieParsed.urlImage,
         signIn: functionAuth,
         signOut: functionLogout,
+        RefreshCookie: RefreshCookie,
       };
     } else {
       return {
         logged: false,
         email: "",
         name: "",
-        urlImage: "/user.png",
+        urlImage: "",
         id: "",
         signIn: functionAuth,
         signOut: functionLogout,
+        RefreshCookie: RefreshCookie,
       };
     }
   });
