@@ -1,8 +1,7 @@
-import React from "react";
 import FormAnswer, { Tipo } from "../../../../components/formAnswer/create";
 
 const View = () => {
-  return <FormAnswer mode={Tipo.CREATE} />;
+  return <FormAnswer mode={Tipo.UPDATE} />;
 };
 
 export default View;

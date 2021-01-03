@@ -32,19 +32,8 @@ export const ContentQuestion = styled.div`
 `;
 
 export const ItemAnswer = styled.div`
-  margin-bottom: 28px;
+  margin-bottom: 0px;
   text-align: center;
-
-  hr {
-    width: 50%;
-    margin: 14px 0px;
-    background: #e0e0e0;
-    color: #e4e4e4;
-  }
-
-  after div {
-    margin-bottom: 200px;
-  }
 `;
 
 export const HeaderItemAnswer = styled.div`
@@ -57,5 +46,10 @@ export const HeaderItemAnswer = styled.div`
   p {
     font-size: 12px;
     flex-basis: 8;
+  }
+
+  hr {
+    text-align: center;
+    width: 50%;
   }
 `;

@@ -37,4 +37,22 @@ const SignService = async ({ ...dados }) => {
   }
 };
 
+export const RefreshCookie = async (email: string) => {
+  const resp = await (await api.get(`/users/${email}`)).data;
+
+  if (resp.status === 200) {
+    const resposta: dataUserLogged = {
+      email: resp.email,
+      name: resp.name,
+      urlImage: resp.url_image,
+      logged: true,
+      id: resp.id,
+    };
+
+    Cookie.set("@faqweb:user", JSON.stringify(resposta), {
+      expires: 2,
+    });
+  }
+};
+
 export default SignService;

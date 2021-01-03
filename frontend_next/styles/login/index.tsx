@@ -78,7 +78,7 @@ export const Content = styled.div`
   }
 
   ${AreaInput} + ${AreaInput} {
-    margin-top: 10px;
+    margin-top: 24px;
   }
 
   ${AreaInput} + button {

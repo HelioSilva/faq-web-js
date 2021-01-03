@@ -22,6 +22,7 @@ const Profile = () => {
       email,
     });
   }, []);
+
   return (
     <div>
       <Header />
@@ -39,8 +40,8 @@ const Profile = () => {
         >
           {"Meu perfil"}
         </h4>
-        <Container flex style={{ alignItems: "center" }}>
-          <Container style={{ marginRight: "21px" }} width={"200px"}>
+        <Container flex width={"100%"}>
+          <Container style={{}} width={"300px"} height={"300px"}>
             {urlImage && (
               <img
                 width={"200px"}
@@ -50,7 +51,7 @@ const Profile = () => {
               />
             )}
             <Form
-              ref={formRef}
+              style={{ width: "100%" }}
               onSubmit={async (data) => {
                 const config = {
                   headers: { "Content-Type": "multipart/form-data" },
@@ -67,9 +68,10 @@ const Profile = () => {
               </button>
             </Form>
           </Container>
-          <Container>
+          <Container flex width={"100%"}>
             <Form
               ref={formRef}
+              style={{ width: "100%" }}
               onSubmit={async (data) => {
                 const x = await api.put("/users", {
                   name: data.name,
@@ -80,10 +82,9 @@ const Profile = () => {
                 Router.push("/profile");
               }}
             >
-              <Input display="Nome" name={"name"} />
               <Input enable={false} display="Email" name={"email"} />
+              <Input display="Nome" name={"name"} />
 
-              <ImageInput name={"img"} />
               <button style={{ marginTop: "25px" }} type="submit">
                 Cadastrar
               </button>

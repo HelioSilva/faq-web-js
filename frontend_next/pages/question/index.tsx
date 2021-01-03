@@ -1,28 +1,9 @@
 import Footer from "../../components/footer";
 import Header from "../../components/headerHome/index";
-
 import ItemQuestion from "../../components/itemQuestion";
 import Container from "../../components/_systemUI/container";
 import { useQuestion } from "../../context/QuestionContext";
 import { BodyHome } from "../../styles/home/style";
-
-export interface iQuestion {
-  id: string;
-  titulo: string;
-  acessos: string;
-  autor: string;
-  autor_id: string;
-  answers: iAnswers[];
-  createdAt: string;
-  updatedAt: string;
-}
-
-interface iAnswers {
-  id: string;
-  text: string;
-  autor: string;
-  question_id: string;
-}
 
 const Home = () => {
   const { questions, roadmap } = useQuestion();

@@ -3,12 +3,12 @@ import React, { useCallback, useEffect, useState } from "react";
 import api from "../../../Services/api";
 
 import { BodyHome } from "../../../styles/home/style";
-import { iQuestion } from "..";
+import { iQuestion } from "../../../domain/entities/question";
 import {
   ContentQuestion,
   HeaderItemAnswer,
 } from "../../../styles/question/index";
-import dynamic from "next/dynamic";
+
 import { ItemAnswer } from "../../../styles/question/index";
 
 import { MdCreate, MdDelete } from "react-icons/md";
@@ -25,27 +25,27 @@ import pt from "javascript-time-ago/locale/pt";
 import {
   stateNotification,
   useFunctionsQuestion,
-  useQuestion,
 } from "../../../context/QuestionContext";
 import Menu from "../../../components/menu";
+import { FroalaView } from "../../../pattern/editorText";
 
 const ViewQuestion = () => {
   TimeAgo.addLocale(pt);
   const timeAgo = new TimeAgo("pt-PT");
 
-  const { urlImage, id } = useAuth();
-  const { functionSearch, handleNotification } = useFunctionsQuestion();
+  const { id } = useAuth();
+
+  const {
+    functionSearch,
+    handleNotification,
+    setAnswer,
+  } = useFunctionsQuestion();
   const [loading, setLoading] = useState(true);
   const [question, setQuestion] = useState("");
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
     answers: [],
   } as iQuestion);
   const router = useRouter();
-
-  const QuillNoSSRWrapper = dynamic(import("react-quill"), {
-    ssr: false,
-    loading: () => <p>Loading ...</p>,
-  });
 
   useEffect(() => {
     if (
@@ -89,6 +89,21 @@ const ViewQuestion = () => {
     }
   }, [question]);
 
+  const handleDeleteAnswer = useCallback(async (ident) => {
+    const answerData = await api.delete(`/questions/answer/${ident}`);
+
+    if (answerData.status === 200) {
+      handleNotification(
+        stateNotification.sucess,
+        "Registro deletado com sucesso!"
+      );
+      await functionSearch("");
+      router.push("/");
+    } else {
+      handleNotification(stateNotification.sucess, "Falha ao deletar!");
+    }
+  }, []);
+
   const countViewPage = async (param: string) => {
     console.log("count view question : " + param);
     if (param && param !== "") {
@@ -108,33 +123,6 @@ const ViewQuestion = () => {
       setLoading(false);
     }
   };
-
-  const modules = {
-    toolbar: false,
-    clipboard: {
-      // toggle to add extra line breaks when pasting HTML:
-      matchVisual: false,
-    },
-  };
-
-  const formats = [
-    "header",
-    "font",
-    "size",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-    "image",
-    "video",
-    "align",
-    "code-block",
-  ];
 
   return (
     <>
@@ -212,18 +200,40 @@ const ViewQuestion = () => {
               <HeaderItemAnswer>
                 <p>Resposta</p>
                 <p>Autor: {itemDetail.autor}</p>
+                <GridContainer col={2} spacing={1}>
+                  <Badge
+                    variant={ColorButtom.primary}
+                    fun={() => {
+                      setAnswer(itemDetail);
+                      console.log(router);
+                      router.push(router.asPath + "/answer/edit");
+                    }}
+                    disabled={itemDetail.autor_id !== id}
+                  >
+                    <MdCreate color={"#ffffff"} />
+                    <p>Editar</p>
+                  </Badge>
+                  <Badge
+                    variant={ColorButtom.danger}
+                    fun={async () => {
+                      await handleDeleteAnswer(itemDetail.id);
+                    }}
+                    disabled={itemDetail.autor_id !== id}
+                  >
+                    <MdDelete color={"#e4e4e4"} />
+                    <p>Deletar</p>
+                  </Badge>
+                </GridContainer>
               </HeaderItemAnswer>
-              <QuillNoSSRWrapper
-                theme="snow"
-                readOnly={true}
-                modules={modules}
-                formats={formats}
-                value={itemDetail.text}
+              <Container
                 style={{
-                  margin: 0,
-                  background: "#eeeeee",
+                  background: "#f0efef",
+                  padding: "24px 12px",
+                  marginBottom: "20px",
                 }}
-              />
+              >
+                <FroalaView model={itemDetail.text} />
+              </Container>
             </ItemAnswer>
           ))
         ) : loading == true ? (

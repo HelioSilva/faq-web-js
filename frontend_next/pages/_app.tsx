@@ -3,30 +3,37 @@ import GlobalStyle from "../styles/globals";
 import Head from "next/head";
 import Router from "next/router";
 import { ContextAuth } from "../context/AuthContext";
-import "react-quill/dist/quill.snow.css";
+
 import { useState } from "react";
 import { ContextQuestion } from "../context/QuestionContext";
 import Loading from "../components/loading";
+
+import NProgress from "nprogress";
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
 
   Router.events.on("routeChangeStart", (url) => {
     setLoading(true);
+    NProgress.start();
   });
 
   Router.events.on("routeChangeComplete", (url) => {
     setLoading(false);
+    NProgress.done();
   });
 
   Router.events.on("routeChangeError", (url) => {
     setLoading(false);
+    NProgress.done();
   });
 
   return (
     <>
       <Head>
         <title>Base de Conhecimento</title>
+        {/* Import CSS for nprogress */}
+        <link rel="stylesheet" type="text/css" href="/nprogress.css" />
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
           rel="stylesheet"

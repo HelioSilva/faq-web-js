@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 70%;
-  margin: 0 auto;
+  width: 100%;
+
   padding-top: 30px;
 
   h3 {
@@ -14,6 +14,7 @@ export const Container = styled.div`
 
   p {
     color: #768289;
+    font-size: 0.8rem;
   }
 
   form {

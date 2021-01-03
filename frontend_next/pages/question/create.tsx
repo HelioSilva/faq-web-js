@@ -13,8 +13,8 @@ import { useCallback } from "react";
 import {
   stateNotification,
   useFunctionsQuestion,
-  useQuestion,
 } from "../../context/QuestionContext";
+
 import Menu from "../../components/menu";
 
 const newQuestion = () => {
@@ -61,7 +61,6 @@ const newQuestion = () => {
       <BodyHome>
         <Container>
           <h3>Instruções</h3>
-
           <p>
             - Antes de criar um novo tópico, verifique que se não existe outro
             igual.
@@ -71,17 +70,19 @@ const newQuestion = () => {
             ..."
           </p>
 
-          <Form
-            onSubmit={async (dataForm) => {
-              const resp = await postQuestion(dataForm.titulo, name, id);
-              if (resp && resp.status == 200) {
-                Router.push("/");
-              }
-            }}
-          >
-            <Input display="Dúvida" name={"titulo"} />
-            <Btn primary width={"10%"} value={"Cadastrar"} />
-          </Form>
+          <Container style={{ width: "70%" }}>
+            <Form
+              onSubmit={async (dataForm) => {
+                const resp = await postQuestion(dataForm.titulo, name, id);
+                if (resp && resp.status == 200) {
+                  Router.push("/");
+                }
+              }}
+            >
+              <Input display="Dúvida" name={"titulo"} />
+              <Btn primary width={"10%"} value={"Cadastrar"} />
+            </Form>
+          </Container>
         </Container>
       </BodyHome>
     </div>
