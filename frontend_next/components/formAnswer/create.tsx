@@ -24,6 +24,13 @@ import { BiArrowBack } from "react-icons/bi";
 import Menu from "../../components/menu";
 import { FroalaEditor } from "../../pattern/editorText";
 
+import dynamic from "next/dynamic";
+
+import { buttonList } from "suneditor-react";
+const SunEditor = dynamic(() => import("suneditor-react"), {
+  ssr: false,
+});
+
 TimeAgo.addLocale(pt);
 const timeAgo = new TimeAgo("pt-PT");
 
@@ -138,7 +145,35 @@ const FormAnswer = (valueForm: ActionForm) => {
         </ContentQuestion>
 
         <ItemAnswer>
-          <FroalaEditor model={data} onModelChange={setData} />
+          <SunEditor
+            lang="pt_br"
+            onChange={setData}
+            defaultValue={data}
+            setOptions={{
+              mode: "classic",
+              buttonList: buttonList.complex,
+            }}
+          />
+          {/* <FroalaEditor
+            config={{
+              placeholder: "Edit Me",
+              events: {
+                "froalaEditor.image.uploaded": () => {
+                  console.log("Froala Images .............");
+                },
+                image: {
+                  loaded: function (response) {
+                    // Do something here.
+                    // this is the editor instance.
+                    console.log("IMAGE");
+                    console.log(this);
+                  },
+                },
+              },
+            }}
+            model={data}
+            onModelChange={setData}
+          /> */}
           <Btn
             primary
             value={valueForm.mode === Tipo.CREATE ? `Salvar` : `Atualizar`}

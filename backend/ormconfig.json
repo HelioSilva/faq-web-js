@@ -1,9 +1,9 @@
 {
   "type": "postgres",
-  "host": "3.91.230.251",
+  "host": "127.0.0.1",
   "port": 5432,
   "username": "postgres",
-  "password": "docker",
+  "password": "572600",
   "database": "faqweb",
   "synchronize": true,
   "logging": false,
