@@ -31,7 +31,7 @@ const Login = () => {
     <Container>
       <Aside>
         <div>
-          <h2>FAQweb</h2>
+          <h2 style={{ fontSize: 32 }}>{process.env.nomedosistema}</h2>
         </div>
         <div>
           <p>

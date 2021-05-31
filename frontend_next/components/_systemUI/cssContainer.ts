@@ -54,13 +54,6 @@ export const Container = styled.div<propsContainer>`
 
   ${(props) =>
     props.flex === true &&
-    props.wrap &&
-    css`
-      flex-wrap: wrap;
-    `};
-
-  ${(props) =>
-    props.flex === true &&
     props.between &&
     css`
       justify-content: space-between;

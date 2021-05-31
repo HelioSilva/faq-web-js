@@ -29,6 +29,12 @@ import {
 import Menu from "../../../components/menu";
 import { FroalaView } from "../../../pattern/editorText";
 
+import { buttonList } from "suneditor-react";
+import dynamic from "next/dynamic";
+const SunEditor = dynamic(() => import("suneditor-react"), {
+  ssr: false,
+});
+
 const ViewQuestion = () => {
   TimeAgo.addLocale(pt);
   const timeAgo = new TimeAgo("pt-PT");
@@ -198,8 +204,8 @@ const ViewQuestion = () => {
           dataQuestion.answers.map((itemDetail) => (
             <ItemAnswer key={itemDetail.id}>
               <HeaderItemAnswer>
-                <p>Resposta</p>
-                <p>Autor: {itemDetail.autor}</p>
+                <p>{`Resposta: ${itemDetail.autor}`}</p>
+
                 <GridContainer col={2} spacing={1}>
                   <Badge
                     variant={ColorButtom.primary}
@@ -232,7 +238,15 @@ const ViewQuestion = () => {
                   marginBottom: "20px",
                 }}
               >
-                <FroalaView model={itemDetail.text} />
+                <SunEditor
+                  lang="pt_br"
+                  defaultValue={itemDetail.text}
+                  disable={false}
+                  setOptions={{
+                    buttonList: [["print"]],
+                  }}
+                />
+                {/* <FroalaView model={itemDetail.text} /> */}
               </Container>
             </ItemAnswer>
           ))

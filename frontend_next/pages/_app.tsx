@@ -1,4 +1,4 @@
-// import "bootstrap/dist/css/bootstrap.min.css";
+// require("dotenv").config();
 import GlobalStyle from "../styles/globals";
 import Head from "next/head";
 import Router from "next/router";

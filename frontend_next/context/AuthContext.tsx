@@ -52,9 +52,9 @@ const ContextAuth = ({ children }) => {
 
   const [data, setData] = useState<dataContext>(() => {
     const cookie = Cookie.get("@faqweb:user");
+
     if (cookie) {
       const cookieParsed: dataContext = JSON.parse(cookie);
-
       return {
         logged: cookieParsed.logged,
         name: cookieParsed.name,

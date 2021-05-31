@@ -11,7 +11,7 @@ import {
   useFunctionsQuestion,
   useQuestion,
 } from "../../context/QuestionContext";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Lottie from "react-lottie";
 import animationData from "./search.json";
 
@@ -30,11 +30,15 @@ type TypeMenu = {
 const Menu = (value: TypeMenu) => {
   const router = useRouter();
   const { name, urlImage, id } = useAuth();
+  const [titulo, setTitulo] = useState("FAQ");
   const {
     functionSearch,
     functionMyQuestions,
     functionMyAnswers,
   } = useFunctionsQuestion();
+
+  const [imageUser, setImageUser] = useState("");
+  const [nameUser, setNameUser] = useState("");
   const [text, setText] = useState("");
   const [pesquisando, setPesquisando] = useState({
     stoped: true,
@@ -60,6 +64,12 @@ const Menu = (value: TypeMenu) => {
     },
   };
 
+  useEffect(() => {
+    setNameUser(name);
+    setImageUser(urlImage);
+    setTitulo(process.env.nomedosistema);
+  }, []);
+
   return (
     <Container
       bgColor={"#C20B2E"}
@@ -70,10 +80,10 @@ const Menu = (value: TypeMenu) => {
       between
     >
       <GridContainer col={4} xs={1} sm={2} md={3} spacing={2}>
-        <TitleAPP>FAQ-Base de Conhecimento</TitleAPP>
+        <TitleAPP>{titulo}</TitleAPP>
         <TagLink href="/">Home</TagLink>
         <TagLink href="/question/create">Nova Questão</TagLink>
-        <TagLink href="/download">Download</TagLink>
+        <TagLink href="/download">Downloads</TagLink>
       </GridContainer>
 
       <GridContainer
@@ -128,13 +138,14 @@ const Menu = (value: TypeMenu) => {
               style={{ minWidth: "125px", lineHeight: "2em" }}
             >
               <>
-                <a href="#">{name && name}</a>
+                {/* {name && name} */}
+                <a href="#">{nameUser}</a>
               </>
 
               <>
                 <ImageRaduis>
-                  {urlImage && (
-                    <img src={`http://localhost:3333/${urlImage}`} />
+                  {imageUser != "" && (
+                    <img src={`http://localhost:3333/${imageUser}`} />
                   )}
                 </ImageRaduis>
               </>

@@ -16,7 +16,6 @@ export type propsContainer = {
   itemGrow?: number;
   spacing?: number;
   basis?: string;
-  wrap?: boolean;
 
   width?: string;
   height?: string;
