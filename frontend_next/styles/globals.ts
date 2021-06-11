@@ -23,17 +23,14 @@ export default createGlobalStyle`
   }
 
   html{
-
-    @media(max-width: 600px) {
+    @media(max-width: 100%) {
     font-size:0.8rem;
   }
   }
 
   body{
     font-size: 1rem;
-  }
-
-  
+  }  
 
   a {
     text-decoration: none;

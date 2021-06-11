@@ -18,7 +18,7 @@ import {
 import Menu from "../../components/menu";
 
 const newQuestion = () => {
-  const { name, id } = useAuth();
+  const { name, id } = useAuth(); 
   const { handleNotification } = useFunctionsQuestion();
 
   const postQuestion = useCallback(

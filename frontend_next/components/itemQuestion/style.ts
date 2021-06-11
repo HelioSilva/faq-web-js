@@ -5,9 +5,9 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  background-color: #f3f3f3;
+  /* background-color: #f3f3f3; */
   border-radius: 12px;
-  padding: 8px;
+  padding: 4px;
 
   > div {
     display: flex;
@@ -41,18 +41,19 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  color: #545454;
+  /* color: #545454; */
 
   h2 {
     font-weight: 400;
     text-rendering: "optimizeLegibility";
-    color: #4996ce;
-    font-size: 1.5em;
+    color: #666;
+    font-size: 1.3em;
     font-family: "Arial";
     cursor: pointer;
-    transition: 0.8s;
-  }
-  h2:hover {
-    color: #c41a44;
+    transition: 0.4s;
+
+    :hover {
+      color: #c41a44;
+    }
   }
 `;

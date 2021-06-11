@@ -1,4 +1,3 @@
-// require("dotenv").config();
 import GlobalStyle from "../styles/globals";
 import Head from "next/head";
 import Router from "next/router";
@@ -11,10 +10,6 @@ import Loading from "../components/loading";
 import NProgress from "nprogress";
 
 import "suneditor/dist/css/suneditor.min.css";
-
-// import "froala-editor/css/froala_editor.pkgd.min.css";
-// import "froala-editor/css/froala_style.css";
-// import "file-loader?name=[name].[ext]!./basic.html";
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);

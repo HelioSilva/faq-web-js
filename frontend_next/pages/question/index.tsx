@@ -31,7 +31,7 @@ const Home = () => {
               id={itemDetail.id}
               key={itemDetail.id}
               titulo={itemDetail.titulo}
-              autor={itemDetail.autor}
+              autor={itemDetail.createdAt}
               autor_id={itemDetail.autor_id}
               qtdRespostas={itemDetail.answers.length}
               qtdAcesso={itemDetail.acessos}
