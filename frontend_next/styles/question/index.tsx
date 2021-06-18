@@ -33,7 +33,7 @@ export const ContentQuestion = styled.div`
 
 export const ItemAnswer = styled.div`
   margin-bottom: 0px;
-  text-align: center;
+  /* text-align: center; */
 `;
 
 export const HeaderItemAnswer = styled.div`

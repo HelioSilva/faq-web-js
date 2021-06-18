@@ -74,8 +74,8 @@ const Menu = (value: TypeMenu) => {
     <Container
       bgColor={"#C20B2E"}
       width={"100%"}
-      padding={1}
-      height={"auto"}
+      padding={0}
+      height={"48px"}
       flex
       between
     >
@@ -99,7 +99,7 @@ const Menu = (value: TypeMenu) => {
             style={{
               padding: "5px",
               width: "350px",
-              height: "40px",
+              // height: "40px",
               borderRadius: "10px",
             }}
           >
@@ -122,34 +122,32 @@ const Menu = (value: TypeMenu) => {
             />
             <Lottie
               options={defaultOptions}
-              height={35}
-              width={35}
+              height={24}
+              width={24}
               isStopped={pesquisando.stoped}
               isPaused={pesquisando.paused}
             />
           </Container>
         )}
 
-        <DropdownMenu>
+        <DropdownMenu style={{ width: "250px" }}>
           <Dropdown>
-            <GridContainer
-              col={2}
-              spacing={0}
-              style={{ minWidth: "125px", lineHeight: "2em" }}
+            <Container
+              flex
+              flexCenter
+              style={{ width: "100%", height: "22px" }}
             >
-              <>
-                {/* {name && name} */}
+              <Container flex flexCenter>
                 <a href="#">{nameUser}</a>
-              </>
-
-              <>
+              </Container>
+              <Container flex flexCenter spacing={0}>
                 <ImageRaduis>
                   {imageUser != "" && (
                     <img src={`http://localhost:3333/${imageUser}`} />
                   )}
                 </ImageRaduis>
-              </>
-            </GridContainer>
+              </Container>
+            </Container>
 
             <ul>
               <Dropdown>

@@ -34,10 +34,10 @@ export const DropdownMenu = styled.ul`
   padding-left: 0;
 
   li ul {
+    width: 13rem;
     background: #b00b2c;
     visibility: hidden;
     opacity: 0;
-    min-width: 4rem;
     position: absolute;
     transition: all 0.5s ease;
     margin-top: 0.8rem;
@@ -52,7 +52,7 @@ export const DropdownMenu = styled.ul`
 
   ul li a {
     font-size: 0.8rem;
-    margin-left: 5px;
+    padding-left: 5px;
   }
   li:hover > ul,
   li:focus-within > ul,
@@ -130,9 +130,9 @@ export const Lista = styled.div`
 `;
 
 export const ImageRaduis = styled.div`
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   background: #930924;
   width: 40px;
   height: 40px;

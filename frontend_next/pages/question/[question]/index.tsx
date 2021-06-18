@@ -243,7 +243,10 @@ const ViewQuestion = () => {
                   defaultValue={itemDetail.text}
                   disable={false}
                   setOptions={{
+                    mode: "classic",
                     buttonList: [["print"]],
+                    imageWidth: "50%",
+                    katex: "katex",
                   }}
                 />
                 {/* <FroalaView model={itemDetail.text} /> */}

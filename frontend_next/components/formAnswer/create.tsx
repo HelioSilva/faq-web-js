@@ -22,11 +22,16 @@ import pt from "javascript-time-ago/locale/pt";
 import GridContainer from "../../components/_systemUI/gridContainer";
 import { BiArrowBack } from "react-icons/bi";
 import Menu from "../../components/menu";
-import { FroalaEditor } from "../../pattern/editorText";
 
 import dynamic from "next/dynamic";
 
 import { buttonList } from "suneditor-react";
+
+//import template
+import Modelo1 from "../templates/modelo1";
+import Modelo2 from "../templates/modelo2";
+//-------------------
+
 const SunEditor = dynamic(() => import("suneditor-react"), {
   ssr: false,
 });
@@ -151,6 +156,40 @@ const FormAnswer = (valueForm: ActionForm) => {
             defaultValue={data}
             setOptions={{
               mode: "classic",
+              font: ["Roboto", "Arial"],
+              defaultStyle: "font-family:Arial; font-Size:16px",
+
+              imageWidth: "50%",
+              textStyles: [
+                {
+                  name: "Titulo H1", // Text style name
+                  style: "font-Size:21px; color:#4A86E8; font-Weight: bold;", // Style query
+                  tag: "span", // Style tag name (default: span)
+                  _class: "", // You can control the style of the tags displayed in the menu by putting a class on the button of the menu.
+                },
+              ],
+              paragraphStyles: [
+                "spaced",
+                "neon",
+                {
+                  name: "Custom",
+                  class: "__se__customClass",
+                },
+              ],
+
+              formats: [],
+              templates: [
+                {
+                  name: "Modelo 1",
+                  html: Modelo1,
+                },
+                {
+                  name: "Modelo 2",
+                  html: Modelo2,
+                },
+              ],
+
+              katex: "katex",
               buttonList: buttonList.complex,
             }}
           />
