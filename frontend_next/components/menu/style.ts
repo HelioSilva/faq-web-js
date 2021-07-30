@@ -97,11 +97,14 @@ export const TagLink = styled.a`
   }
 `;
 
-export const TitleAPP = styled.h3`
+export const TitleAPP = styled.a`
   font-size: 1.1rem;
   line-height: inherit;
   white-space: nowrap;
   color: #fff;
+  font-weight: bolder;
+
+  cursor: pointer;
 `;
 
 export const Lista = styled.div`

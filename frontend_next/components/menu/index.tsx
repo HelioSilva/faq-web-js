@@ -74,13 +74,18 @@ const Menu = (value: TypeMenu) => {
     <Container
       bgColor={"#C20B2E"}
       width={"100%"}
-      padding={0}
-      height={"48px"}
+      padding={4}
+      // height={"48px"}
       flex
       between
+      style={{
+        flexWrap: "wrap",
+        alignItems: "center",
+        justifyContent: "space-around",
+      }}
     >
       <GridContainer col={4} xs={1} sm={2} md={3} spacing={2}>
-        <TitleAPP>{titulo}</TitleAPP>
+        <TitleAPP href="/">{titulo}</TitleAPP>
         <TagLink href="/">Home</TagLink>
         <TagLink href="/question/create">Nova Questão</TagLink>
         <TagLink href="/download">Downloads</TagLink>
@@ -88,6 +93,9 @@ const Menu = (value: TypeMenu) => {
 
       <GridContainer
         col={2}
+        md={1}
+        sm={1}
+        xs={1}
         spacing={1}
         style={{ alignSelf: "center", alignItems: "center" }}
       >
