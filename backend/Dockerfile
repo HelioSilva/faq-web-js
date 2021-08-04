@@ -1,23 +1,27 @@
 # Dockerfile
 
 # base image
-FROM node:alpine
+FROM node:14.15.4-alpine3.12
 # FROM node:carbon
+
+# Enable bash in container
+RUN apk add --no-cache bash
+
+# Set USER
+USER node
 
 # install Yarn
 # RUN apk add --no-cache yarn
 
-# create & set working directory
-RUN mkdir -p /usr/src
-
-WORKDIR /usr/src
+# Diretory
+WORKDIR /home/node/app
 
 # copy source files
-COPY . /usr/src
+#COPY . /usr/src
 
 # install dependencies
-RUN npm install
+#RUN npm install
 
-EXPOSE 3333
+# EXPOSE 3333
 
-CMD npm start
+# CMD npm start
