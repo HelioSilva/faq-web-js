@@ -1,4 +1,4 @@
-import { DTOUsers, User } from "../../entity/users";
+import { DTOUsers, User } from "../../entity/Users";
 import { getRepository } from "typeorm";
 import { hash, compare } from "bcryptjs";
 

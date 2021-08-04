@@ -1,4 +1,4 @@
-import { Question } from "../entity/question";
+import { Question } from "../entity/Question";
 
 abstract class ServicesAbstractQuestion<T> {
   abstract execute(): Promise<T>;

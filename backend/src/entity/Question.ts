@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
   JoinTable,
 } from "typeorm";
-import { ItemQuestion } from "./itemQuestion";
+import { ItemQuestion } from "./ItemQuestion";
 
 export interface DTOQuestion {
   titulo: string;

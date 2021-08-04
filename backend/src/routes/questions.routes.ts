@@ -1,8 +1,8 @@
 import { Router, Request, Response } from "express";
 import { Connection, FindOperator, FindOperatorType, Raw } from "typeorm";
 import { getRepository, Like } from "typeorm";
-import { DTOItemQuestion, ItemQuestion } from "../entity/itemQuestion";
-import { DTOQuestion, Question } from "../entity/question";
+import { DTOItemQuestion, ItemQuestion } from "../entity/ItemQuestion";
+import { DTOQuestion, Question } from "../entity/Question";
 import CreateItemQuestion from "../services/questions/createItemQuestion";
 import CreateQuestion from "../services/questions/createQuestion";
 import UpdateItemQuestion from "../services/questions/updateItemQuestion";
