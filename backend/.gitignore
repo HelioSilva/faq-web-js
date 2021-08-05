@@ -7,3 +7,5 @@ temp/
 dist/
 uploads/*.*
 *-lock.json
+.docker/postgres/dbdata
+.env
