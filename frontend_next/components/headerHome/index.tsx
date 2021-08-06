@@ -1,10 +1,5 @@
-import { BGImage } from "./style";
-import Link from "next/link";
-
 import React from "react";
-
 import Container from "../_systemUI/container";
-
 import Menu from "../menu";
 
 const Header = () => {

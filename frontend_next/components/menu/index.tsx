@@ -4,6 +4,7 @@ import {
   TitleAPP,
   Dropdown,
   DropdownMenu,
+  HeaderTOP,
 } from "./style";
 import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
@@ -31,11 +32,8 @@ const Menu = (value: TypeMenu) => {
   const router = useRouter();
   const { name, urlImage, id } = useAuth();
   const [titulo, setTitulo] = useState("FAQ");
-  const {
-    functionSearch,
-    functionMyQuestions,
-    functionMyAnswers,
-  } = useFunctionsQuestion();
+  const { functionSearch, functionMyQuestions, functionMyAnswers } =
+    useFunctionsQuestion();
 
   const [imageUser, setImageUser] = useState("");
   const [nameUser, setNameUser] = useState("");
@@ -71,20 +69,16 @@ const Menu = (value: TypeMenu) => {
   }, []);
 
   return (
-    <Container
-      bgColor={"#C20B2E"}
-      width={"100%"}
-      padding={4}
-      // height={"48px"}
-      flex
-      between
-      style={{
-        flexWrap: "wrap",
-        alignItems: "center",
-        justifyContent: "space-around",
-      }}
-    >
-      <GridContainer col={4} xs={1} sm={2} md={3} spacing={2}>
+    <HeaderTOP>
+      <GridContainer
+        width={"50%"}
+        col={4}
+        xs={1}
+        sm={1}
+        md={1}
+        spacing={2}
+        style={{ justifyItems: "center" }}
+      >
         <TitleAPP href="/">{titulo}</TitleAPP>
         <TagLink href="/">Home</TagLink>
         <TagLink href="/question/create">Nova Questão</TagLink>
@@ -92,12 +86,15 @@ const Menu = (value: TypeMenu) => {
       </GridContainer>
 
       <GridContainer
+        width={"50%"}
         col={2}
         md={1}
         sm={1}
         xs={1}
         spacing={1}
-        style={{ alignSelf: "center", alignItems: "center" }}
+        style={{
+          justifyItems: "center",
+        }}
       >
         {value.search && (
           <Container
@@ -106,9 +103,8 @@ const Menu = (value: TypeMenu) => {
             bgColor={"#ffffff"}
             style={{
               padding: "5px",
-              width: "350px",
-              // height: "40px",
-              borderRadius: "10px",
+              width: "100%",
+              borderRadius: "5px",
             }}
           >
             <input
@@ -138,23 +134,38 @@ const Menu = (value: TypeMenu) => {
           </Container>
         )}
 
-        <DropdownMenu style={{ width: "250px" }}>
+        <DropdownMenu
+          style={{
+            // flex: 1,
+            // width: "100%",
+            // backgroundColor: "#0ae",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Dropdown>
             <Container
-              flex
-              flexCenter
-              style={{ width: "100%", height: "22px" }}
+              style={{
+                display: "flex",
+                flex: 1,
+                width: "150px",
+                justifyContent: "center",
+                alignItems: "center",
+                // height: "22px",
+                backgroundColor: "#ccc",
+              }}
             >
-              <Container flex flexCenter>
-                <a href="#">{nameUser}</a>
-              </Container>
-              <Container flex flexCenter spacing={0}>
-                <ImageRaduis>
-                  {imageUser != "" && (
-                    <img src={`http://localhost:3333/${imageUser}`} />
-                  )}
-                </ImageRaduis>
-              </Container>
+              {/* <Container flex flexCenter> */}
+              <a href="#">{nameUser}</a>
+              {/* </Container> */}
+              {/* <Container flex flexCenter spacing={0}> */}
+              <ImageRaduis>
+                {imageUser != "" && (
+                  <img src={`http://localhost:3333/${imageUser}`} />
+                )}
+              </ImageRaduis>
+              {/* </Container> */}
             </Container>
 
             <ul>
@@ -190,7 +201,7 @@ const Menu = (value: TypeMenu) => {
           </Dropdown>
         </DropdownMenu>
       </GridContainer>
-    </Container>
+    </HeaderTOP>
   );
 };
 

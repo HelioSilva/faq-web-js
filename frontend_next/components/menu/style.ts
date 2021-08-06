@@ -1,4 +1,20 @@
 import styled from "styled-components";
+import Container from "../_systemUI/container";
+
+export const HeaderTOP = styled.div`
+  display: flex;
+  flex-direction: row;
+  background-color: #b00b2c;
+
+  @media (max-width: 991.98px) {
+    display: flex;
+    height: 300px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #b0080b;
+  }
+`;
 
 export const Dropdown = styled.li`
   color: #fff;
