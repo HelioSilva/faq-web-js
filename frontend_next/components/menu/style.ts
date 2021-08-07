@@ -5,15 +5,26 @@ export const HeaderTOP = styled.div`
   display: flex;
   flex-direction: row;
   background-color: #b00b2c;
-
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
   @media (max-width: 991.98px) {
     display: flex;
     height: 300px;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #b0080b;
   }
+`;
+
+export const HeaderTopRigth = styled.div`
+  display: flex;
+  flex: 1;
+  width: 125px;
+  justify-content: "center";
+  align-items: center;
 `;
 
 export const Dropdown = styled.li`

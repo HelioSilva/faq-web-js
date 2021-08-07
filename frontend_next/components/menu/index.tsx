@@ -5,6 +5,7 @@ import {
   Dropdown,
   DropdownMenu,
   HeaderTOP,
+  HeaderTopRigth,
 } from "./style";
 import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
@@ -71,7 +72,7 @@ const Menu = (value: TypeMenu) => {
   return (
     <HeaderTOP>
       <GridContainer
-        width={"50%"}
+        width={"30%"}
         col={4}
         xs={1}
         sm={1}
@@ -86,87 +87,89 @@ const Menu = (value: TypeMenu) => {
       </GridContainer>
 
       <GridContainer
-        width={"50%"}
+        width={"35%"}
         col={2}
         md={1}
         sm={1}
         xs={1}
         spacing={1}
         style={{
+          // flex: 1,
+          display: "flex",
+          flexWrap: "wrap",
           justifyItems: "center",
+          alignItems: "center",
         }}
       >
         {value.search && (
           <Container
-            flex
-            row
-            bgColor={"#ffffff"}
             style={{
-              padding: "5px",
-              width: "100%",
-              borderRadius: "5px",
+              flex: 1,
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            <input
-              style={{ flex: 1, border: "0px", fontSize: "0.9rem" }}
-              value={text}
-              onChange={(x) => {
-                setText(x.target.value);
+            <Container
+              bgColor={"#ffffff"}
+              style={{
+                flex: 1,
+                display: "flex",
+                justifyContent: "center",
+                borderRadius: "5px",
+                padding: 5,
               }}
-              onKeyPress={async (x) => {
-                if (x.key === "Enter") {
-                  setPesquisando({
-                    ...pesquisando,
-                    stoped: !pesquisando.stoped,
-                  });
-                  await functionSearch(text);
-                }
-              }}
-              placeholder="Pesquise sua dúvida"
-            />
-            <Lottie
-              options={defaultOptions}
-              height={24}
-              width={24}
-              isStopped={pesquisando.stoped}
-              isPaused={pesquisando.paused}
-            />
+            >
+              <input
+                style={{
+                  flex: 1,
+                  border: "0px",
+                  fontSize: "0.9rem",
+                }}
+                value={text}
+                onChange={(x) => {
+                  setText(x.target.value);
+                }}
+                onKeyPress={async (x) => {
+                  if (x.key === "Enter") {
+                    setPesquisando({
+                      ...pesquisando,
+                      stoped: !pesquisando.stoped,
+                    });
+                    await functionSearch(text);
+                  }
+                }}
+                placeholder="Pesquise sua dúvida"
+              />
+              <Lottie
+                options={defaultOptions}
+                height={24}
+                width={24}
+                isStopped={pesquisando.stoped}
+                isPaused={pesquisando.paused}
+              />
+            </Container>
           </Container>
         )}
 
         <DropdownMenu
           style={{
-            // flex: 1,
-            // width: "100%",
-            // backgroundColor: "#0ae",
+            flex: 1,
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "flex-end",
             alignItems: "center",
           }}
         >
           <Dropdown>
-            <Container
-              style={{
-                display: "flex",
-                flex: 1,
-                width: "150px",
-                justifyContent: "center",
-                alignItems: "center",
-                // height: "22px",
-                backgroundColor: "#ccc",
-              }}
-            >
-              {/* <Container flex flexCenter> */}
-              <a href="#">{nameUser}</a>
-              {/* </Container> */}
-              {/* <Container flex flexCenter spacing={0}> */}
-              <ImageRaduis>
+            <HeaderTopRigth>
+              <ImageRaduis
+                style={{ width: "32px", height: "30px", marginRight: 5 }}
+              >
                 {imageUser != "" && (
-                  <img src={`http://localhost:3333/${imageUser}`} />
+                  <img src={`http://localhost:3000/user.png`} />
                 )}
               </ImageRaduis>
-              {/* </Container> */}
-            </Container>
+              <a href="#">{nameUser}</a>
+            </HeaderTopRigth>
 
             <ul>
               <Dropdown>

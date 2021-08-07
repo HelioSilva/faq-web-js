@@ -41,11 +41,8 @@ const ViewQuestion = () => {
 
   const { id } = useAuth();
 
-  const {
-    functionSearch,
-    handleNotification,
-    setAnswer,
-  } = useFunctionsQuestion();
+  const { functionSearch, handleNotification, setAnswer } =
+    useFunctionsQuestion();
   const [loading, setLoading] = useState(true);
   const [question, setQuestion] = useState("");
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
@@ -236,6 +233,7 @@ const ViewQuestion = () => {
                   background: "#f0efef",
                   padding: "24px 12px",
                   marginBottom: "20px",
+                  // height: "100vh",
                 }}
               >
                 <SunEditor
@@ -247,6 +245,7 @@ const ViewQuestion = () => {
                     buttonList: [["print"]],
                     imageWidth: "50%",
                     katex: "katex",
+                    height: "100%",
                   }}
                 />
                 {/* <FroalaView model={itemDetail.text} /> */}
