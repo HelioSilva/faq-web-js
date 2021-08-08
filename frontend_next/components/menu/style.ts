@@ -1,5 +1,17 @@
 import styled from "styled-components";
-import Container from "../_systemUI/container";
+
+export const BaseFLEX = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media (max-width: 991.98px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 export const HeaderTOP = styled.div`
   display: flex;
@@ -7,29 +19,44 @@ export const HeaderTOP = styled.div`
   background-color: #b00b2c;
   align-items: center;
   justify-content: space-between;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 10px;
   @media (max-width: 991.98px) {
     display: flex;
-    height: 300px;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     background-color: #b0080b;
   }
 `;
 
-export const HeaderTopRigth = styled.div`
-  display: flex;
-  flex: 1;
-  width: 125px;
-  justify-content: "center";
-  align-items: center;
+export const HeaderTopLeft = styled(BaseFLEX)`
+  > a {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  @media (max-width: 991.98px) {
+    > a {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+  }
+`;
+
+export const HeaderTopRigth = styled(BaseFLEX)`
+  > div {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  @media (max-width: 991.98px) {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
 `;
 
 export const Dropdown = styled.li`
   color: #fff;
-
   display: block;
   float: left;
   padding: 0.8rem 1.2rem;
@@ -160,9 +187,6 @@ export const Lista = styled.div`
 `;
 
 export const ImageRaduis = styled.div`
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   background: #930924;
   width: 40px;
   height: 40px;

@@ -6,19 +6,16 @@ import {
   DropdownMenu,
   HeaderTOP,
   HeaderTopRigth,
+  BaseFLEX,
+  HeaderTopLeft,
 } from "./style";
 import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
-import {
-  useFunctionsQuestion,
-  useQuestion,
-} from "../../context/QuestionContext";
+import { useFunctionsQuestion } from "../../context/QuestionContext";
 import React, { useCallback, useEffect, useState } from "react";
-import Lottie from "react-lottie";
 import animationData from "./search.json";
 
 import Container from "../_systemUI/container";
-import GridContainer from "../_systemUI/gridContainer";
 import { IoMdExit } from "react-icons/io";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 import { RiProfileFill } from "react-icons/ri";
@@ -71,139 +68,130 @@ const Menu = (value: TypeMenu) => {
 
   return (
     <HeaderTOP>
-      <GridContainer
-        width={"30%"}
-        col={4}
-        xs={1}
-        sm={1}
-        md={1}
-        spacing={2}
-        style={{ justifyItems: "center" }}
+      <HeaderTopLeft
+        style={{
+          width: "50%",
+        }}
       >
         <TitleAPP href="/">{titulo}</TitleAPP>
         <TagLink href="/">Home</TagLink>
         <TagLink href="/question/create">Nova Questão</TagLink>
         <TagLink href="/download">Downloads</TagLink>
-      </GridContainer>
+      </HeaderTopLeft>
 
-      <GridContainer
-        width={"35%"}
-        col={2}
-        md={1}
-        sm={1}
-        xs={1}
-        spacing={1}
+      <HeaderTopRigth
         style={{
-          // flex: 1,
-          display: "flex",
-          flexWrap: "wrap",
-          justifyItems: "center",
-          alignItems: "center",
+          width: "50%",
+          justifyContent: "flex-end",
         }}
       >
-        {value.search && (
-          <Container
-            style={{
-              flex: 1,
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
+        <div>
+          {value.search && (
             <Container
-              bgColor={"#ffffff"}
               style={{
                 flex: 1,
                 display: "flex",
-                justifyContent: "center",
-                borderRadius: "5px",
-                padding: 5,
+                alignItems: "center",
+                minWidth: "300px",
               }}
             >
-              <input
+              <Container
+                bgColor={"#ffffff"}
                 style={{
                   flex: 1,
-                  border: "0px",
-                  fontSize: "0.9rem",
+                  display: "flex",
+                  justifyContent: "center",
+                  borderRadius: "5px",
+                  padding: 5,
                 }}
-                value={text}
-                onChange={(x) => {
-                  setText(x.target.value);
-                }}
-                onKeyPress={async (x) => {
-                  if (x.key === "Enter") {
-                    setPesquisando({
-                      ...pesquisando,
-                      stoped: !pesquisando.stoped,
-                    });
-                    await functionSearch(text);
-                  }
-                }}
-                placeholder="Pesquise sua dúvida"
-              />
-              <Lottie
-                options={defaultOptions}
-                height={24}
-                width={24}
-                isStopped={pesquisando.stoped}
-                isPaused={pesquisando.paused}
-              />
-            </Container>
-          </Container>
-        )}
-
-        <DropdownMenu
-          style={{
-            flex: 1,
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-          }}
-        >
-          <Dropdown>
-            <HeaderTopRigth>
-              <ImageRaduis
-                style={{ width: "32px", height: "30px", marginRight: 5 }}
               >
-                {imageUser != "" && (
-                  <img src={`http://localhost:3000/user.png`} />
-                )}
-              </ImageRaduis>
-              <a href="#">{nameUser}</a>
-            </HeaderTopRigth>
+                <input
+                  style={{
+                    flex: 1,
+                    border: "0px",
+                    fontSize: "0.9rem",
+                  }}
+                  value={text}
+                  onChange={(x) => {
+                    setText(x.target.value);
+                  }}
+                  onKeyPress={async (x) => {
+                    if (x.key === "Enter") {
+                      setPesquisando({
+                        ...pesquisando,
+                        stoped: !pesquisando.stoped,
+                      });
+                      await functionSearch(text);
+                    }
+                  }}
+                  placeholder="Pesquise sua dúvida"
+                />
+                {/* <Lottie
+                  options={defaultOptions}
+                  height={24}
+                  width={24}
+                  isStopped={pesquisando.stoped}
+                  isPaused={pesquisando.paused}
+                /> */}
+              </Container>
+            </Container>
+          )}
+        </div>
+        <div>
+          <DropdownMenu>
+            <Dropdown>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                }}
+              >
+                <ImageRaduis
+                  style={{ width: "40px", height: "30px", marginRight: 5 }}
+                >
+                  {imageUser != "" && (
+                    <img src={`http://localhost:3000/user.png`} />
+                  )}
+                </ImageRaduis>
+                <a href="#">{nameUser}</a>
+              </div>
 
-            <ul>
-              <Dropdown>
-                <RiProfileFill />
-                <a href="/profile">Meu perfil</a>
-              </Dropdown>
-              <Dropdown>
-                <BsFillQuestionCircleFill />
-                <a
-                  onClick={() => {
-                    handleMyQuestions();
-                  }}
-                >
-                  Minhas questões
-                </a>
-              </Dropdown>
-              <Dropdown>
-                <FcAnswers />
-                <a
-                  onClick={() => {
-                    handleMyAnswers();
-                  }}
-                >
-                  Minhas respostas
-                </a>
-              </Dropdown>
-              <Dropdown>
-                <IoMdExit />
-                <Link href={"/logout"}>Sair</Link>
-              </Dropdown>
-            </ul>
-          </Dropdown>
-        </DropdownMenu>
-      </GridContainer>
+              <ul>
+                <Dropdown>
+                  <RiProfileFill />
+                  <a href="/profile">Meu perfil</a>
+                </Dropdown>
+                <Dropdown>
+                  <BsFillQuestionCircleFill />
+                  <a
+                    onClick={() => {
+                      handleMyQuestions();
+                    }}
+                  >
+                    Minhas questões
+                  </a>
+                </Dropdown>
+                <Dropdown>
+                  <FcAnswers />
+                  <a
+                    onClick={() => {
+                      handleMyAnswers();
+                    }}
+                  >
+                    Minhas respostas
+                  </a>
+                </Dropdown>
+                <Dropdown>
+                  <IoMdExit />
+                  <Link href={"/logout"}>Sair</Link>
+                </Dropdown>
+              </ul>
+            </Dropdown>
+          </DropdownMenu>
+        </div>
+      </HeaderTopRigth>
     </HeaderTOP>
   );
 };
