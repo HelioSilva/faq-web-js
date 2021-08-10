@@ -177,6 +177,7 @@ const FormAnswer = (valueForm: ActionForm) => {
                   class: "__se__customClass",
                 },
               ],
+              colorList: ["#000", "#4a86e8"],
 
               formats: [],
               templates: [
