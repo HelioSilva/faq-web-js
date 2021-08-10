@@ -44,16 +44,5 @@ export const Content = styled.div`
   /* color: #545454; */
 
   h2 {
-    font-weight: 400;
-    text-rendering: "optimizeLegibility";
-    color: #666;
-    font-size: 1.3em;
-    font-family: "Arial";
-    cursor: pointer;
-    transition: 0.4s;
-
-    :hover {
-      color: #c41a44;
-    }
   }
 `;

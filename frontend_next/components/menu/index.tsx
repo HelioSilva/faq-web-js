@@ -102,7 +102,7 @@ const Menu = (value: TypeMenu) => {
                   display: "flex",
                   justifyContent: "center",
                   borderRadius: "5px",
-                  padding: 5,
+                  padding: 8,
                 }}
               >
                 <input
@@ -110,6 +110,7 @@ const Menu = (value: TypeMenu) => {
                     flex: 1,
                     border: "0px",
                     fontSize: "0.9rem",
+                    color: "#858383",
                   }}
                   value={text}
                   onChange={(x) => {

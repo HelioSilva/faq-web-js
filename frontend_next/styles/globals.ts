@@ -23,13 +23,14 @@ export default createGlobalStyle`
   }
 
   html{
-    @media(max-width: 100%) {
+    /* @media(max-width: 100%) {
     font-size:0.8rem;
-  }
+    } */
   }
 
   body{
-    font-size: 1rem;
+    /* font-size: 1rem; */
+    font-size: 100%
   }  
 
   a {
@@ -38,7 +39,7 @@ export default createGlobalStyle`
   
   body{
     background:#fafafa;
-    font-size:16px;
+    /* font-size:16px; */
     
     -webkit-font-smoothing: antialiased;
   }

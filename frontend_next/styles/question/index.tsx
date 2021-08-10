@@ -39,8 +39,8 @@ export const ItemAnswer = styled.div`
 export const HeaderItemAnswer = styled.div`
   display: flex;
   justify-content: space-between;
-  background: #938c8f;
-  color: #fff;
+  /* background: #8f2050; */
+  color: #3d3d3d;
   padding: 8px 4px;
 
   p {

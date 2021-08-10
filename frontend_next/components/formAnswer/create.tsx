@@ -158,6 +158,7 @@ const FormAnswer = (valueForm: ActionForm) => {
               mode: "classic",
               font: ["Roboto", "Arial"],
               defaultStyle: "font-family:Arial; font-Size:16px",
+              height: "80vh",
 
               imageWidth: "50%",
               textStyles: [
@@ -193,26 +194,6 @@ const FormAnswer = (valueForm: ActionForm) => {
               buttonList: buttonList.complex,
             }}
           />
-          {/* <FroalaEditor
-            config={{
-              placeholder: "Edit Me",
-              events: {
-                "froalaEditor.image.uploaded": () => {
-                  console.log("Froala Images .............");
-                },
-                image: {
-                  loaded: function (response) {
-                    // Do something here.
-                    // this is the editor instance.
-                    console.log("IMAGE");
-                    console.log(this);
-                  },
-                },
-              },
-            }}
-            model={data}
-            onModelChange={setData}
-          /> */}
           <Btn
             primary
             value={valueForm.mode === Tipo.CREATE ? `Salvar` : `Atualizar`}

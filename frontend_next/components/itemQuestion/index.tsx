@@ -6,6 +6,7 @@ import TimeAgo from "javascript-time-ago";
 
 // Portugues BR
 import pt from "javascript-time-ago/locale/pt";
+import { Title_h1 } from "../Typography";
 
 interface Question {
   qtdAcesso: string;
@@ -22,12 +23,12 @@ const ItemQuestion = (props: Question) => {
   const timeAgo = new TimeAgo("pt-PT");
   return (
     <Container>
-      <div>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <QtdAcesso qtd={props.qtdAcesso} />
         <Content>
           <div>
             <Link href={props.url}>
-              <h2>{`${props.titulo}`}</h2>
+              <Title_h1>{`${props.titulo}`}</Title_h1>
             </Link>
             <p
               style={{
@@ -41,15 +42,6 @@ const ItemQuestion = (props: Question) => {
               <span>{`${timeAgo.format(new Date(props.autor))}`}</span>
             </p>
           </div>
-          {/* <DivFlexRow>
-            <p>
-              <span>{props.qtdRespostas}</span>
-              {props.qtdRespostas > 1 ? ` respostas` : ` resposta`}
-            </p>
-            <p>
-              Autor: <span>{props.autor}</span>
-            </p>
-          </DivFlexRow> */}
         </Content>
       </div>
     </Container>

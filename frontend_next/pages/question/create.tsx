@@ -18,26 +18,26 @@ import {
 import Menu from "../../components/menu";
 
 const newQuestion = () => {
-  const { name, id } = useAuth(); 
+  const { name, id } = useAuth();
   const { handleNotification } = useFunctionsQuestion();
 
-  const postQuestion = useCallback(
-    async (
-      titulo: string,
-      username: string,
-      userid: string
-    ): Promise<AxiosResponse> => {
-      if (!titulo || !username || !userid) {
-        return;
-      }
+  const postQuestion = async (
+    titulo: string,
+    username: string,
+    userid: string
+  ): Promise<AxiosResponse> => {
+    if (!titulo || !username || !userid) {
+      return;
+    }
 
-      const response = await api.post("/questions", {
-        titulo,
-        autor_id: userid,
-        autor: username,
-        acessos: 0,
-      });
+    const response = await api.post("/questions", {
+      titulo,
+      autor_id: userid,
+      autor: username,
+      acessos: 0,
+    });
 
+    try {
       if (response.status === 200) {
         handleNotification(
           stateNotification.sucess,
@@ -49,17 +49,25 @@ const newQuestion = () => {
           "Falha ao cadastrar questão!"
         );
       }
+    } catch (error) {
+      console.log(error);
+    }
 
-      return response;
-    },
-    []
-  );
+    return response;
+  };
 
   return (
     <div>
       <Menu />
       <BodyHome>
-        <Container>
+        <Container
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <h3>Instruções</h3>
           <p>
             - Antes de criar um novo tópico, verifique que se não existe outro

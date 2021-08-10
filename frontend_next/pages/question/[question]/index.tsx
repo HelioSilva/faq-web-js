@@ -230,8 +230,8 @@ const ViewQuestion = () => {
               </HeaderItemAnswer>
               <Container
                 style={{
-                  background: "#f0efef",
-                  padding: "24px 12px",
+                  // background: "#f0efef",
+                  // padding: "24px 12px",
                   marginBottom: "20px",
                   // height: "100vh",
                 }}
@@ -239,7 +239,8 @@ const ViewQuestion = () => {
                 <SunEditor
                   lang="pt_br"
                   defaultValue={itemDetail.text}
-                  disable={false}
+                  disableToolbar={false}
+                  readOnly={true}
                   setOptions={{
                     mode: "classic",
                     buttonList: [["print"]],
@@ -248,7 +249,6 @@ const ViewQuestion = () => {
                     height: "100%",
                   }}
                 />
-                {/* <FroalaView model={itemDetail.text} /> */}
               </Container>
             </ItemAnswer>
           ))
