@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.production
-    entrypoint: ./.docker/entrypoint.sh
+    entrypoint: ./.docker/entrypoint.production.sh
     container_name: front-nextjs-faq
     ports:
       - 80:3000
