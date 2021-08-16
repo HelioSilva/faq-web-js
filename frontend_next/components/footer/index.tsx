@@ -7,12 +7,12 @@ const Footer = () => {
       col={3}
       spacing={2}
       style={{
-        height: "32vh",
-        background: "#313131",
-        padding: "10px",
+        height: "50vh",
+        padding: "15px 10px 10px 10px",
+        background: "#864141",
       }}
     >
-      <Container flex col flexCenter>
+      {/* <Container flex col flexCenter>
         <h3>Desenvolvedores</h3>
         <p>Helio Silva</p>
         <p>Ronald Santos</p>
@@ -24,7 +24,7 @@ const Footer = () => {
       <Container flex col flexCenter>
         <h3>Redes sociais</h3>
         <p>Linkedin, Github, Instagran e outros</p>
-      </Container>
+      </Container> */}
     </GridContainer>
   );
 };

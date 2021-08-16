@@ -15,6 +15,7 @@ interface dataContext {
   questions: iQuestion[];
   answerSelect: iAnswers;
   roadmap: string;
+  amountQuestions: number;
 }
 
 interface functionContext {
@@ -48,6 +49,7 @@ const ContextQuestion = ({ children }) => {
     questions: [],
     answerSelect: {},
     roadmap: "Página principal",
+    amountQuestions: 0,
   } as dataContext);
 
   const [func, setFunc] = useState<functionContext>({} as functionContext);
@@ -64,6 +66,7 @@ const ContextQuestion = ({ children }) => {
         questions: dados.questions,
         answerSelect: {} as iAnswers,
         roadmap: "TOP 10 - Questões mais acessadas",
+        amountQuestions: dados.questions.length,
       });
     }
   };
@@ -76,6 +79,7 @@ const ContextQuestion = ({ children }) => {
         questions: res.data.questions,
         answerSelect: {} as iAnswers,
         roadmap: "Minhas questões",
+        amountQuestions: res.data.questions.length,
       });
     }
   };
@@ -88,6 +92,7 @@ const ContextQuestion = ({ children }) => {
         questions: res.data.questions,
         answerSelect: {} as iAnswers,
         roadmap: "Questões respondidas por mim",
+        amountQuestions: res.data.questions.length,
       });
     }
   };
@@ -103,6 +108,7 @@ const ContextQuestion = ({ children }) => {
           questions: res.data.questions,
           answerSelect: {} as iAnswers,
           roadmap: `Resultado da pesquisa por: ${value}`,
+          amountQuestions: res.data.questions.length,
         });
       }
     } else {

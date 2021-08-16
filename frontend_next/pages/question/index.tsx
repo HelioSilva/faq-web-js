@@ -6,7 +6,7 @@ import { useQuestion } from "../../context/QuestionContext";
 import { BodyHome } from "../../styles/home/style";
 
 const Home = () => {
-  const { questions, roadmap } = useQuestion();
+  const { questions, roadmap, amountQuestions } = useQuestion();
 
   return (
     <div>
@@ -14,7 +14,7 @@ const Home = () => {
       <BodyHome>
         <h4
           style={{
-            margin: "24px 0px",
+            margin: "2px 0px",
             color: "#535151",
             fontWeight: 700,
             textRendering: "optimizeLegibility",
@@ -25,6 +25,18 @@ const Home = () => {
         >
           {roadmap}
         </h4>
+        <p
+          style={{
+            paddingBottom: "18px",
+            color: "#9b9b9b",
+            fontSize: "0.9em",
+            fontWeight: 400,
+            overflowWrap: "break-word",
+          }}
+        >
+          {amountQuestions} artigos encontrados
+        </p>
+
         {questions.length > 0 ? (
           questions.map((itemDetail) => (
             <ItemQuestion
