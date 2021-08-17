@@ -25,8 +25,6 @@ import Menu from "../../components/menu";
 
 import dynamic from "next/dynamic";
 
-import { buttonList } from "suneditor-react";
-
 //import template
 import Modelo1 from "../templates/modelo1";
 import Modelo2 from "../templates/modelo2";
@@ -35,6 +33,61 @@ import Modelo2 from "../templates/modelo2";
 const SunEditor = dynamic(() => import("suneditor-react"), {
   ssr: false,
 });
+
+const buttonList = [
+  ["undo", "redo"],
+  ["font", "fontSize", "formatBlock"],
+  ["bold", "underline", "italic", "strike", "subscript", "superscript"],
+  ["removeFormat"],
+  "/",
+  ["fontColor", "hiliteColor"],
+  ["outdent", "indent"],
+  ["align", "horizontalRule", "list", "table"],
+  ["link", "image", "video"],
+  ["fullScreen", "showBlocks", "codeView"],
+  ["preview", "print"],
+  ["save", "template"],
+];
+
+// @ts-ignore
+// const NamedExport = dynamic(() =>
+//   import("suneditor-react").then((module) => module.buttonList)
+// );
+
+// const SunEditor: React.ComponentType<any> = dynamic(
+//   async () => {
+//     const values = await Promise.all([
+//       import("suneditor-react"), // must be first import since we are doing values[0] in return
+//     ]);
+//     return values[0];
+//   },
+//   {
+//     ssr: false,
+//   }
+// );
+
+// const DynamicComponent = dynamic(() =>
+//   import("suneditor-react").then((mod) => mod)
+// );
+
+// const SunEditor1: React.ComponentType<any> = dynamic(
+//   async () => {
+//     const values = await Promise.all([
+//       import("suneditor-react"), // must be first import since we are doing values[0] in return
+//     ]);
+//     return values[0].;
+//   },
+//   {
+//     ssr: false,
+//   }
+// );
+
+// import { buttonList } from "suneditor-react";
+
+// const SunEditor = dynamic(() => import("suneditor-react"), {
+
+//   ssr: false,
+// });
 
 TimeAgo.addLocale(pt);
 const timeAgo = new TimeAgo("pt-PT");
@@ -192,7 +245,7 @@ const FormAnswer = (valueForm: ActionForm) => {
               ],
 
               katex: "katex",
-              buttonList: buttonList.complex,
+              buttonList: buttonList,
             }}
           />
           <Btn
