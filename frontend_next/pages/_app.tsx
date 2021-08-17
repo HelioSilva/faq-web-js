@@ -40,6 +40,10 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        ></meta>
       </Head>
       <GlobalStyle />
       <ContextAuth>
