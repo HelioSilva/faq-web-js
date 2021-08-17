@@ -240,7 +240,7 @@ const ViewQuestion = () => {
                   lang="pt_br"
                   defaultValue={itemDetail.text}
                   disableToolbar={false}
-                  readOnly={true}
+                  // readOnly={true}
                   setOptions={{
                     mode: "classic",
                     buttonList: [["print"]],
