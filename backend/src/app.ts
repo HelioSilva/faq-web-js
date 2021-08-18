@@ -11,7 +11,6 @@ import { createConnection, getConnectionOptions } from "typeorm";
 
 const app = express();
 
-app.use(cors());
 app.use(
   express.json({
     limit: "128mb",
@@ -19,5 +18,7 @@ app.use(
 );
 app.use(routes);
 app.use("/uploads", express.static("uploads"));
+
+app.use(cors());
 
 export default app;

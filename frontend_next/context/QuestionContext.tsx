@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import NProgress from "nprogress";
+import Axios from "axios";
 
 export enum stateNotification {
   sucess,
@@ -57,6 +58,7 @@ const ContextQuestion = ({ children }) => {
   const functionHome = async () => {
     NProgress.start();
     NProgress.set(0.4);
+    // const resGIT = await api.get("https://api.github.com/repos/HelioSilva");
     const res = await api.get("/questions");
     NProgress.done();
     const dados = res.data;
