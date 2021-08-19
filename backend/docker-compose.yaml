@@ -23,7 +23,7 @@ services:
     restart: always
     tty: true
     volumes:
-      - ./postgres/dbdata/.:/var/lib/postgresql/data
+      - ./postgres/dbdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=572600
       - POSTGRES_DB=faqweb
