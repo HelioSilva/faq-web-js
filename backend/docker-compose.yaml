@@ -2,31 +2,64 @@ version: "3"
 
 services:
   app:
-    build: .
-    entrypoint: ./.docker/entrypoint.sh
+    build:
+      context: ./server_api
+      dockerfile: Dockerfile
+    entrypoint: .docker/entrypoint.sh
     container_name: back-express-faq
     ports:
       - 3333:3333
     volumes:
-      - .:/home/node/app
+      - ./server_api:/home/node/app
     depends_on:
       - db
     networks:
-      - postgres-compose-network
+      - local-network
   db:
-    build: ./.docker/postgres
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
     container_name: db-postgres-faq
     restart: always
     tty: true
     volumes:
-      - ./.docker/postgres/dbdata:/var/lib/postgresql/data
+      - ./postgres/dbdata/.:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=572600
       - POSTGRES_DB=faqweb
     ports:
       - 5432:5432
     networks:
-      - postgres-compose-network
+      - local-network
+  nginx:
+    image: nginx:1.15-alpine
+    restart: unless-stopped
+    volumes:
+      - ./nginx/data/nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    ports:
+      - "80:80"
+      - "443:443"
+    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+    depends_on:
+      - db
+      - app
+    networks:
+      - local-network
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    depends_on:
+      - db
+      - app
+    networks:
+      - local-network
+
   # pgadmin:
   #     image: dpage/pgadmin4
   #     container_name: pgadmin
@@ -42,5 +75,5 @@ services:
   #     - postgres-compose-network
 
 networks:
-  postgres-compose-network:
+  local-network:
     driver: bridge
