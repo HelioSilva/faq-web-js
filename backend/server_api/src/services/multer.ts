@@ -11,36 +11,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const fileFilterImg = (req: any, file: any, cb: any) => {
-  if (
-    file.mimetype === "image/jpg" ||
-    file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/png"
-  ) {
-    cb(null, true);
-  } else {
-    cb(new Error("Image uploaded is not of type jpg/jpeg or png"), false);
-  }
-};
-
-const fileFilterPDF = (req: any, file: any, cb: any) => {
-  if (
-    file.mimetype === "application/pdf" ||
-    file.mimetype === "application/x-download"
-  ) {
-    cb(null, true);
-  } else {
-    cb(new Error("Image uploaded is not of type pdf"), false);
-  }
-};
-
 export let upload = multer({
   storage: storage,
-  fileFilter: fileFilterImg,
-  limits: { fileSize: 2 * 1024 * 1024 },
-});
-
-export let uploadPDF = multer({
-  storage: storage,
-  fileFilter: fileFilterPDF,
+  // limits: { fileSize: 2 * 1024 * 1024 },
 });

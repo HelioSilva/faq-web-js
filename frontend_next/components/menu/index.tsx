@@ -153,7 +153,7 @@ const Menu = (value: TypeMenu) => {
                   style={{ width: "40px", height: "30px", marginRight: 5 }}
                 >
                   {imageUser != "" && (
-                    <img src={`http://localhost:3000/user.png`} />
+                    <img src={urlImage ? urlImage : "/user.png"} />
                   )}
                 </ImageRaduis>
                 <a href="#">{nameUser}</a>

@@ -61,17 +61,17 @@ services:
       - local-network
 
   # pgadmin:
-  #     image: dpage/pgadmin4
-  #     container_name: pgadmin
-  #     tty: true
-  #     environment:
-  #         - PGADMIN_DEFAULT_EMAIL=admin@user.com
-  #         - PGADMIN_DEFAULT_PASSWORD=123456
-  #     ports:
-  #         - 9090:80
-  #     depends_on:
+  #   image: dpage/pgadmin4
+  #   container_name: pgadmin
+  #   tty: true
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=admin@user.com
+  #     - PGADMIN_DEFAULT_PASSWORD=123456
+  #   ports:
+  #     - 9090:80
+  #   depends_on:
   #     - db
-  #     networks:
+  #   networks:
   #     - postgres-compose-network
 
 networks:

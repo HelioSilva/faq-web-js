@@ -5,7 +5,7 @@ build/
 tmp/
 temp/
 dist/
-uploads/*.*
+uploads/
 *-lock.json
 dbdata
 .env

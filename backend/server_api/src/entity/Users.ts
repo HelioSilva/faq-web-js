@@ -7,6 +7,7 @@ import {
   Index,
   CreateDateColumn,
   UpdateDateColumn,
+  AfterUpdate,
 } from "typeorm";
 
 import { hash } from "bcryptjs";

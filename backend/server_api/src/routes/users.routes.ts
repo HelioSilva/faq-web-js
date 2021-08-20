@@ -1,7 +1,9 @@
 import { Router, Request, Response, request, NextFunction } from "express";
 import { getRepository } from "typeorm";
 import { DTOUsers, User } from "../entity/Users";
+import { saveS3 } from "../services/awsS3/awsS3";
 import { upload } from "../services/multer";
+import AlterUser from "../services/users/alterUser";
 import CreateUser from "../services/users/createUser";
 import LoginUser from "../services/users/loginUser";
 
@@ -39,7 +41,11 @@ usersRouter.post(
     const classCreateUser = new CreateUser(dados);
 
     if (request.file && request.file.path) {
-      dados.url_image = request.file.path;
+      const fileCloud = await saveS3(
+        request.file.path,
+        request.file.mimetype.toString()
+      );
+      dados.url_image = fileCloud.Location ? fileCloud.Location : "/user.png";
     }
 
     try {
@@ -53,44 +59,25 @@ usersRouter.post(
 
 usersRouter.put(
   "/",
-  (request: Request, resp: Response, next: NextFunction) => {
-    console.info("Retorno antes", request.body);
-    next();
-  },
   upload.single("img"),
-  (request: Request, resp: Response, next: NextFunction) => {
-    console.info("retorno depois", request.body);
-    next();
-  },
   async (request: Request, response: Response) => {
     const dados: DTOUsers = request.body;
-    const repository = getRepository(User);
-    const findUser = await repository.findOne({
-      where: {
-        email: dados.email,
-      },
-    });
 
-    if (!findUser) {
-      response.status(404).json({ response: "User not found" });
-    } else {
-      try {
-        if (request.file && request.file.path) {
-          dados.url_image = request.file.path;
-        }
+    const classAlterUser = new AlterUser(dados);
 
-        console.log(findUser);
-        const resp = await repository.update(findUser.id, {
-          ...dados,
-        });
-        console.log(resp);
+    if (request.file && request.file.path) {
+      const fileCloud = await saveS3(
+        request.file.path,
+        request.file.mimetype.toString()
+      );
+      dados.url_image = fileCloud.Location ? fileCloud.Location : "/user.png";
+    }
 
-        response
-          .status(200)
-          .json({ updated: true, message: "Dados atualizados com sucesso!" });
-      } catch (e) {
-        response.status(200).json({ updated: false, message: e.detail });
-      }
+    try {
+      const UserUpdated = await classAlterUser.execute();
+      response.status(200).json({ created: true, message: UserUpdated });
+    } catch (e) {
+      response.status(200).json({ created: false, message: e.detail });
     }
   }
 );
