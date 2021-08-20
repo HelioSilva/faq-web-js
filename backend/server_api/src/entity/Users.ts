@@ -15,6 +15,7 @@ import { hash } from "bcryptjs";
 export interface DTOUsers {
   email: string;
   password: string;
+  name: string;
   url_image?: string;
 }
 

@@ -5,7 +5,10 @@ build/
 tmp/
 temp/
 dist/
-uploads/
+
 *-lock.json
 dbdata
 .env
+
+uploads/*
+!uploads/.gitkeep 
