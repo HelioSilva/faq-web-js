@@ -1,4 +1,3 @@
-import GlobalStyle from "../styles/globals";
 import Head from "next/head";
 import Router from "next/router";
 import { ContextAuth } from "../context/AuthContext";
@@ -9,6 +8,7 @@ import Loading from "../components/loading";
 
 import NProgress from "nprogress";
 
+import GlobalStyle from "../styles/globals";
 import "suneditor/dist/css/suneditor.min.css";
 
 function MyApp({ Component, pageProps }) {

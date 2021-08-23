@@ -5,13 +5,14 @@ import {
   MensagemUser,
 } from "../../styles/signup/index";
 import { Form } from "@unform/web";
-import Input from "../../components/input/index";
 import Link from "next/link";
 import Router from "next/router";
 
 import api from "../../Services/api";
 import React, { useEffect, useState } from "react";
 import GoogleLogin, { GoogleLoginResponse } from "react-google-login";
+import { TextField } from "unform-material-ui";
+import Button from "@material-ui/core/Button";
 
 const Login = () => {
   const [mensagem, setMensagem] = useState("");
@@ -48,10 +49,40 @@ const Login = () => {
               await requestSignup(d);
             }}
           >
-            <Input display="Nome" name={"name"} />
+            <TextField
+              margin="normal"
+              required
+              name={"email"}
+              label="Email"
+              fullWidth={true}
+            />
+            <TextField
+              margin="normal"
+              required
+              name={"name"}
+              label="Nome"
+              fullWidth={true}
+            />
+            <TextField
+              margin="normal"
+              required
+              name={"password"}
+              label="Senha"
+              type={"password"}
+              fullWidth={true}
+            />
+            {/* <Input display="Nome" name={"name"} />
             <Input display="Email" name={"email"} />
-            <Input display=" Senha" name={"password"} type="password" />
-            <button type="submit">Cadastrar</button>
+            <Input display=" Senha" name={"password"} type="password" /> */}
+            <Button
+              style={{ marginTop: 15 }}
+              fullWidth={true}
+              type="submit"
+              color="secondary"
+              variant="contained"
+            >
+              Cadastrar
+            </Button>
           </Form>
 
           <hr />
@@ -59,7 +90,9 @@ const Login = () => {
           <hr />
 
           <p>
-            <Link href={"/login"}>Login</Link>
+            <Link href={"/login"}>
+              <Button variant="text">Login</Button>
+            </Link>
           </p>
           <GoogleLogin
             clientId="816612335723-1gs7rj050q5ir09krrpgp59rpjdjdrv8.apps.googleusercontent.com"

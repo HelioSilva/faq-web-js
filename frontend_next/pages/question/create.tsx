@@ -2,20 +2,20 @@ import { BodyHome } from "../../styles/home/style";
 import { Container } from "../../styles/question/style_newQuestion";
 
 import { Form } from "@unform/web";
-import Input from "../../components/input/index";
 import Router from "next/router";
 
-import Btn from "../../components/button";
 import api from "../../Services/api";
 import { useAuth } from "../../context/AuthContext";
 import { AxiosResponse } from "axios";
-import { useCallback } from "react";
 import {
   stateNotification,
   useFunctionsQuestion,
 } from "../../context/QuestionContext";
 
 import Menu from "../../components/menu";
+
+import { TextField } from "unform-material-ui";
+import { Button, Grid, Typography } from "@material-ui/core";
 
 const newQuestion = () => {
   const { name, id } = useAuth();
@@ -87,8 +87,26 @@ const newQuestion = () => {
                 }
               }}
             >
-              <Input display="Dúvida" name={"titulo"} />
-              <Btn primary width={"10%"} value={"Cadastrar"} />
+              <TextField
+                margin="none"
+                required
+                label="Dúvida"
+                name={"titulo"}
+                fullWidth={true}
+              />
+              <Grid container justifyContent="center" alignItems="center">
+                <Button
+                  style={{ marginTop: 15 }}
+                  type="submit"
+                  color="secondary"
+                  variant="contained"
+                >
+                  Cadastrar Dúvida
+                </Button>
+              </Grid>
+
+              {/* <Input display="Dúvida" name={"titulo"} />
+              <Btn primary width={"10%"} value={"Cadastrar"} /> */}
             </Form>
           </Container>
         </Container>

@@ -66,8 +66,12 @@ const Profile = () => {
                 fd.append("password", data.password);
 
                 const x = await api.put("/users", fd, {
-                  headers: { "Content-Type": "multipart/form-data" },
+                  headers: {
+                    "Content-Type": "multipart/form-data",
+                  },
                 });
+
+                console.log(x);
 
                 await RefreshCookie(email);
                 Router.push("/profile");

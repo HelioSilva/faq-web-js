@@ -13,6 +13,9 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 
 import { TextField } from "unform-material-ui";
+import { Button, Typography } from "@material-ui/core";
+
+import Box from "@material-ui/core/Box";
 
 const Login = () => {
   const [mensagem, setMensagem] = useState("");
@@ -47,23 +50,39 @@ const Login = () => {
           <h2>Acesso ao Sistema</h2>
 
           <Form
+            noValidate
+            autoComplete={"off"}
             onSubmit={async (dataForm) => {
-              console.log(dataForm);
               await requestLogin(dataForm);
             }}
           >
-            <TextField
-              name={"email"}
-              label="Email"
-              // variant="standard"
-            />
-            <TextField
-              label="Senha"
-              name={"password"}
-              type="password"
-              // variant="standard"
-            />
-            <button type="submit">Acessar</button>
+            <Box paddingY={0}>
+              <TextField
+                margin="normal"
+                required
+                name={"email"}
+                label="Email"
+                fullWidth={true}
+              />
+              <TextField
+                margin="none"
+                required
+                label="Senha"
+                name={"password"}
+                type="password"
+                fullWidth={true}
+              />
+            </Box>
+
+            <Button
+              style={{ marginTop: 15 }}
+              fullWidth={true}
+              type="submit"
+              color="secondary"
+              variant="contained"
+            >
+              Acessar
+            </Button>
           </Form>
 
           <hr />
@@ -71,7 +90,9 @@ const Login = () => {
           <hr />
 
           <p>
-            <Link href={"/signup"}>Cadastre-se</Link>
+            <Link href={"/signup"}>
+              <Button variant="text">Cadastre-se</Button>
+            </Link>
           </p>
           <GoogleLogin
             clientId="816612335723-1gs7rj050q5ir09krrpgp59rpjdjdrv8.apps.googleusercontent.com"

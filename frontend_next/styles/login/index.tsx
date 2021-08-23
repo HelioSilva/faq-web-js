@@ -89,13 +89,13 @@ export const Content = styled.div`
     width: 100%;
   }
 
-  button {
+  /* button {
     background-color: #c20b2e;
     border: none;
     padding: 10px 25px;
     border-radius: 25px;
     color: #fff;
-  }
+  } */
 
   hr {
     margin-top: 30px;
