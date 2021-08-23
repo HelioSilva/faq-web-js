@@ -1,0 +1,10 @@
+#Criar imagens com tags
+ 
+    docker build -t heliosilva88/server-api-faq:tag .
+
+
+    docker tag image_id  heliosilva88/server-api-faq:tag
+
+#Enviar imagem para para o DockerHub
+
+    docker push heliosilva88/server-api-faq:1.2

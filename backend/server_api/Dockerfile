@@ -8,7 +8,7 @@ FROM node:14.15.4-alpine3.12
 RUN apk add --no-cache bash
 
 # Set USER
-USER node
+#USER node
 
 # install Yarn
 # RUN apk add --no-cache yarn
@@ -17,7 +17,7 @@ USER node
 WORKDIR /home/node/app
 
 # copy source files
-#COPY . /usr/src
+COPY . /home/node/app
 
 # install dependencies
 #RUN npm install
