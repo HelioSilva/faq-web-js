@@ -5,13 +5,14 @@ import {
   MensagemUser,
 } from "../../styles/login/index";
 import { Form } from "@unform/web";
-import Input from "../../components/input/index";
 import Link from "next/link";
 import Router from "next/router";
 
 import { GoogleLogin, GoogleLoginResponse } from "react-google-login";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
+
+import { TextField } from "unform-material-ui";
 
 const Login = () => {
   const [mensagem, setMensagem] = useState("");
@@ -47,11 +48,21 @@ const Login = () => {
 
           <Form
             onSubmit={async (dataForm) => {
+              console.log(dataForm);
               await requestLogin(dataForm);
             }}
           >
-            <Input display="Email" name={"email"} />
-            <Input display=" Senha" name={"password"} type="password" />
+            <TextField
+              name={"email"}
+              label="Email"
+              // variant="standard"
+            />
+            <TextField
+              label="Senha"
+              name={"password"}
+              type="password"
+              // variant="standard"
+            />
             <button type="submit">Acessar</button>
           </Form>
 

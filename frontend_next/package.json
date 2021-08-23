@@ -8,10 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.4",
+    "@types/material-ui": "^0.21.9",
     "@unform/core": "^2.1.3",
     "@unform/web": "^2.1.3",
     "axios": "^0.20.0",
-    "bootstrap": "^4.5.3",
     "dotenv": "^10.0.0",
     "fs": "^0.0.1-security",
     "javascript-time-ago": "^2.3.3",
@@ -19,9 +22,7 @@
     "next": "^9.5.3",
     "nprogress": "^0.2.0",
     "react": "^16.13.1",
-    "react-bootstrap": "^1.4.0",
     "react-dom": "^16.13.1",
-    "react-froala-wysiwyg": "3.1.0",
     "react-google-login": "^5.1.21",
     "react-icons": "^3.11.0",
     "react-lottie": "^1.2.3",
@@ -30,7 +31,8 @@
     "react-undraw": "^2.0.2",
     "styled-components": "^5.2.0",
     "suneditor": "^2.39.0",
-    "suneditor-react": "^3.1.1"
+    "suneditor-react": "^3.1.1",
+    "unform-material-ui": "^1.0.5"
   },
   "devDependencies": {
     "@types/node": "^14.11.2",

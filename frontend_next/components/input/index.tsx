@@ -1,37 +1,30 @@
 import { useField } from "@unform/core";
-import React, { useEffect, useRef, useState } from "react";
-import AreaInput from "./style";
+import React, { FC, useEffect, useRef, useState } from "react";
+// import InputMaterialUI, {
+//   BaseTextFieldProps,
+
+//   StandardTextFieldProps,
+// } from "@material-ui/core/TextField";
+import { TextField } from "unform-material-ui";
 
 const InputNext = ({ name, ...rest }) => {
-  const [focused, setFocus] = useState(false);
-  const [preenchido, setPreenchido] = useState(false);
   const inputRef = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
 
+  // useEffect(() => {
+  //   registerField({ name: fieldName, ref: inputRef.current, path: "value" });
+  // }, [fieldName, registerField]);
+
   useEffect(() => {
-    registerField({ name: fieldName, ref: inputRef.current, path: "value" });
+    registerField({
+      name: fieldName,
+      ref: inputRef,
+      path: "value",
+    });
   }, [fieldName, registerField]);
 
   return (
-    <AreaInput focus={focused} edited={preenchido}>
-      <input
-        autoComplete={"false"}
-        // placeholder={!focused && (rest.display ? rest.display : "")}
-        onFocus={() => {
-          setFocus(true);
-          setPreenchido(true);
-        }}
-        onBlur={() => {
-          setFocus(false);
-          setPreenchido(inputRef.current.value != "");
-        }}
-        ref={inputRef}
-        defaultValue={defaultValue}
-        {...rest}
-      />
-
-      <label>{rest.display ? rest.display : name}</label>
-    </AreaInput>
+    <TextField name={name} ref={inputRef} variant={"standard"} {...rest} />
   );
 };
 
