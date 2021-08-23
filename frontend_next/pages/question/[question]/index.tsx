@@ -27,9 +27,6 @@ import {
   useFunctionsQuestion,
 } from "../../../context/QuestionContext";
 import Menu from "../../../components/menu";
-import { FroalaView } from "../../../pattern/editorText";
-
-import { buttonList } from "suneditor-react";
 import dynamic from "next/dynamic";
 const SunEditor = dynamic(() => import("suneditor-react"), {
   ssr: false,
@@ -41,8 +38,11 @@ const ViewQuestion = () => {
 
   const { id } = useAuth();
 
-  const { functionSearch, handleNotification, setAnswer } =
-    useFunctionsQuestion();
+  const {
+    functionSearch,
+    handleNotification,
+    setAnswer,
+  } = useFunctionsQuestion();
   const [loading, setLoading] = useState(true);
   const [question, setQuestion] = useState("");
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
