@@ -11,6 +11,8 @@ import NProgress from "nprogress";
 import GlobalStyle from "../styles/globals";
 import "suneditor/dist/css/suneditor.min.css";
 
+import type { NextWebVitalsMetric } from "next/app";
+
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
 
@@ -53,6 +55,10 @@ function MyApp({ Component, pageProps }) {
       </ContextAuth>
     </>
   );
+}
+
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  console.log(metric);
 }
 
 export default MyApp;
