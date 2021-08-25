@@ -1,16 +1,9 @@
+import dynamic from "next/dynamic";
 import Container from "../_systemUI/container";
-import Lottie from "react-lottie";
-import animationData from "./loading.json";
+
+const DynamicComponent = dynamic(() => import("./lottie"));
 
 const Loading = () => {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
   return (
     <Container
       flex
@@ -20,14 +13,8 @@ const Loading = () => {
       flexCenter
       style={{ color: "#ccc", alignSelf: "center" }}
     >
-      <Lottie
-        options={defaultOptions}
-        height={400}
-        width={400}
-        isStopped={true}
-        isPaused={false}
-      />
       <div>
+        <DynamicComponent />
         <p>Carregando dados...</p>
       </div>
     </Container>
