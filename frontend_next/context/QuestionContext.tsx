@@ -5,7 +5,6 @@ import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import NProgress from "nprogress";
-import Axios from "axios";
 
 export enum stateNotification {
   sucess,
@@ -23,6 +22,7 @@ interface functionContext {
   functionSearch(data: string): Promise<void>;
   functionMyQuestions(data: string): Promise<void>;
   functionMyAnswers(data: string): Promise<void>;
+  functionHome(): Promise<void>;
   handleNotification(type: stateNotification, value: string): void;
   setAnswer(value: iAnswers): void;
 }
@@ -58,7 +58,6 @@ const ContextQuestion = ({ children }) => {
   const functionHome = async () => {
     NProgress.start();
     NProgress.set(0.4);
-    // const resGIT = await api.get("https://api.github.com/repos/HelioSilva");
     const res = await api.get("/questions");
     NProgress.done();
     const dados = res.data;
@@ -67,7 +66,7 @@ const ContextQuestion = ({ children }) => {
       setData({
         questions: dados.questions,
         answerSelect: {} as iAnswers,
-        roadmap: "TOP 10 - Questões mais acessadas",
+        roadmap: "TOP 10 - Artigos mais acessados",
         amountQuestions: dados.questions.length,
       });
     }
@@ -80,7 +79,7 @@ const ContextQuestion = ({ children }) => {
       setData({
         questions: res.data.questions,
         answerSelect: {} as iAnswers,
-        roadmap: "Minhas questões",
+        roadmap: "Artigos criados por mim",
         amountQuestions: res.data.questions.length,
       });
     }
@@ -93,7 +92,7 @@ const ContextQuestion = ({ children }) => {
       setData({
         questions: res.data.questions,
         answerSelect: {} as iAnswers,
-        roadmap: "Questões respondidas por mim",
+        roadmap: "Artigos respondidos por mim",
         amountQuestions: res.data.questions.length,
       });
     }
@@ -134,6 +133,7 @@ const ContextQuestion = ({ children }) => {
         functionSearch,
         handleNotification,
         functionMyQuestions,
+        functionHome,
         functionMyAnswers,
         setAnswer,
       });

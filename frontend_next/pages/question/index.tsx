@@ -1,15 +1,19 @@
 import Footer from "../../components/footer";
 import Header from "../../components/headerHome/index";
-import ItemQuestion from "../../components/itemQuestion";
-import Container from "../../components/_systemUI/container";
 import { useQuestion } from "../../context/QuestionContext";
 import { BodyHome } from "../../styles/home/style";
+
+import dynamic from "next/dynamic";
+
+const PatternItemQuestion = dynamic(
+  () => import("../../pattern/ItemQuestionsMAP")
+);
 
 const Home = () => {
   const { questions, roadmap, amountQuestions } = useQuestion();
 
   return (
-    <div>
+    <main>
       <Header />
       <BodyHome>
         <h4
@@ -37,32 +41,10 @@ const Home = () => {
           {amountQuestions} artigos encontrados
         </p>
 
-        {questions.length > 0 ? (
-          questions.map((itemDetail) => (
-            <ItemQuestion
-              id={itemDetail.id}
-              key={itemDetail.id}
-              titulo={itemDetail.titulo}
-              autor={itemDetail.createdAt}
-              autor_id={itemDetail.autor_id}
-              qtdRespostas={itemDetail.answers.length}
-              qtdAcesso={itemDetail.acessos}
-              url={`/question/${itemDetail.id}/`}
-            />
-          ))
-        ) : (
-          <Container flex col flexCenter>
-            <img
-              src={"/blog.svg"}
-              style={{ height: 300, width: 300 }}
-              alt="website logo"
-            />
-            <h5 style={{ color: "#ccc" }}>Nenhuma questão encontrada</h5>
-          </Container>
-        )}
+        <PatternItemQuestion />
       </BodyHome>
       <Footer />
-    </div>
+    </main>
   );
 };
 

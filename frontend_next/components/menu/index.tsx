@@ -6,20 +6,18 @@ import {
   DropdownMenu,
   HeaderTOP,
   HeaderTopRigth,
-  BaseFLEX,
   HeaderTopLeft,
 } from "./style";
 import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
 import { useFunctionsQuestion } from "../../context/QuestionContext";
 import React, { useCallback, useEffect, useState } from "react";
-import animationData from "./search.json";
 
 import Container from "../_systemUI/container";
 import { IoMdExit } from "react-icons/io";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 import { RiProfileFill } from "react-icons/ri";
-import { FcAnswers } from "react-icons/fc";
+import { FcAnswers, FcMediumPriority } from "react-icons/fc";
 import { useRouter } from "next/router";
 
 type TypeMenu = {
@@ -30,8 +28,12 @@ const Menu = (value: TypeMenu) => {
   const router = useRouter();
   const { name, urlImage, id } = useAuth();
   const [titulo, setTitulo] = useState("FAQ");
-  const { functionSearch, functionMyQuestions, functionMyAnswers } =
-    useFunctionsQuestion();
+  const {
+    functionSearch,
+    functionMyQuestions,
+    functionMyAnswers,
+    functionHome,
+  } = useFunctionsQuestion();
 
   const [imageUser, setImageUser] = useState("");
   const [nameUser, setNameUser] = useState("");
@@ -40,6 +42,11 @@ const Menu = (value: TypeMenu) => {
     stoped: true,
     paused: false,
   });
+
+  const handleHome = useCallback(async () => {
+    await functionHome();
+    router.push("/");
+  }, [functionHome]);
 
   const handleMyQuestions = useCallback(async () => {
     await functionMyQuestions(id);
@@ -50,15 +57,6 @@ const Menu = (value: TypeMenu) => {
     await functionMyAnswers(id);
     router.push("/");
   }, [id, functionMyAnswers]);
-
-  const defaultOptions = {
-    loop: false,
-    autoplay: false,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
 
   useEffect(() => {
     setNameUser(name);
@@ -74,7 +72,14 @@ const Menu = (value: TypeMenu) => {
         }}
       >
         <TitleAPP href="/">{titulo}</TitleAPP>
-        <TagLink href="/">Home</TagLink>
+        <TagLink
+          href="#"
+          onClick={() => {
+            handleHome();
+          }}
+        >
+          Home
+        </TagLink>
         <TagLink href="/question/create">Nova Questão</TagLink>
         <TagLink href="/download">Downloads</TagLink>
       </HeaderTopLeft>
@@ -127,13 +132,6 @@ const Menu = (value: TypeMenu) => {
                   }}
                   placeholder="Pesquise sua dúvida"
                 />
-                {/* <Lottie
-                  options={defaultOptions}
-                  height={24}
-                  width={24}
-                  isStopped={pesquisando.stoped}
-                  isPaused={pesquisando.paused}
-                /> */}
               </Container>
             </Container>
           )}
@@ -171,7 +169,7 @@ const Menu = (value: TypeMenu) => {
                       handleMyQuestions();
                     }}
                   >
-                    Minhas questões
+                    Meus artigos
                   </a>
                 </Dropdown>
                 <Dropdown>
@@ -183,6 +181,10 @@ const Menu = (value: TypeMenu) => {
                   >
                     Minhas respostas
                   </a>
+                </Dropdown>
+                <Dropdown>
+                  <FcMediumPriority />
+                  <a onClick={() => {}}>Artigos sem resposta</a>
                 </Dropdown>
                 <Dropdown>
                   <IoMdExit />

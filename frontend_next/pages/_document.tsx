@@ -1,4 +1,4 @@
-import Document, { DocumentContext, Head } from "next/document";
+import Document, { DocumentContext, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import { ServerStyleSheets } from "@material-ui/styles";
 import React from "react";
@@ -26,6 +26,8 @@ export default class MyDocument extends Document {
             {initialProps.styles}
             {materialSheets.getStyleElement()}
             {styledComponentsSheet.getStyleElement()}
+
+            <NextScript />
           </React.Fragment>
         ),
       };
