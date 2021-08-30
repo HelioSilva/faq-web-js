@@ -9,13 +9,13 @@ import { iQuestion } from "../../domain/entities/question";
 
 import { ContentQuestion, ItemAnswer } from "../../styles/question/index";
 import { useAuth } from "../../context/AuthContext";
-import Btn from "../../components/button";
 import {
   stateNotification,
   useFunctionsQuestion,
   useQuestion,
 } from "../../context/QuestionContext";
 import Container from "../../components/_systemUI/container";
+import ContainerMaterialUI from "@material-ui/core/Container";
 import TimeAgo from "javascript-time-ago";
 // Portugues BR
 import pt from "javascript-time-ago/locale/pt";
@@ -28,7 +28,10 @@ import dynamic from "next/dynamic";
 //import template
 import Modelo1 from "../templates/modelo1";
 import Modelo2 from "../templates/modelo2";
+import { Button } from "@material-ui/core";
 //-------------------
+
+import SaveIcon from "@material-ui/icons/Save";
 
 const SunEditor = dynamic(() => import("suneditor-react"), {
   ssr: false,
@@ -49,46 +52,6 @@ const buttonList = [
   ["save", "template"],
 ];
 
-// @ts-ignore
-// const NamedExport = dynamic(() =>
-//   import("suneditor-react").then((module) => module.buttonList)
-// );
-
-// const SunEditor: React.ComponentType<any> = dynamic(
-//   async () => {
-//     const values = await Promise.all([
-//       import("suneditor-react"), // must be first import since we are doing values[0] in return
-//     ]);
-//     return values[0];
-//   },
-//   {
-//     ssr: false,
-//   }
-// );
-
-// const DynamicComponent = dynamic(() =>
-//   import("suneditor-react").then((mod) => mod)
-// );
-
-// const SunEditor1: React.ComponentType<any> = dynamic(
-//   async () => {
-//     const values = await Promise.all([
-//       import("suneditor-react"), // must be first import since we are doing values[0] in return
-//     ]);
-//     return values[0].;
-//   },
-//   {
-//     ssr: false,
-//   }
-// );
-
-// import { buttonList } from "suneditor-react";
-
-// const SunEditor = dynamic(() => import("suneditor-react"), {
-
-//   ssr: false,
-// });
-
 TimeAgo.addLocale(pt);
 const timeAgo = new TimeAgo("pt-PT");
 
@@ -102,6 +65,8 @@ type ActionForm = {
 };
 
 const FormAnswer = (valueForm: ActionForm) => {
+  const [requestProgress, setRequestProgress] = useState(false);
+
   const [dataQuestion, setDataquestion] = useState<iQuestion>({
     answers: [],
   } as iQuestion);
@@ -116,44 +81,53 @@ const FormAnswer = (valueForm: ActionForm) => {
   const router = useRouter();
   const { question } = router.query;
 
-  const submitAPI = useCallback(async (texto: string) => {
-    if (texto === "") return;
+  const submitAPI = useCallback(
+    async (texto: string) => {
+      setRequestProgress(true);
+      if (texto === "") return;
 
-    if (valueForm.mode === Tipo.CREATE) {
-      const response = await api.post(`/questions/${question}/answer`, {
-        text: texto,
-        autor: user.name,
-        autor_id: user.id,
-      });
-      if (response.status === 200) {
-        handleNotification(
-          stateNotification.sucess,
-          "Resposta adicionada com sucesso!"
-        );
-      } else {
-        handleNotification(
-          stateNotification.error,
-          "Resposta não enviada com sucesso!"
-        );
+      if (valueForm.mode === Tipo.CREATE) {
+        const response = await api.post(`/questions/${question}/answer`, {
+          text: texto,
+          autor: user.name,
+          autor_id: user.id,
+        });
+        if (response.status === 200) {
+          handleNotification(
+            stateNotification.sucess,
+            "Resposta adicionada com sucesso!"
+          );
+        } else {
+          handleNotification(
+            stateNotification.error,
+            "Resposta não enviada com sucesso!"
+          );
+        }
       }
-    }
 
-    if (valueForm.mode === Tipo.UPDATE) {
-      const response = await api.put(`/questions/answer/${answerSelect.id}`, {
-        text: texto,
-      });
-      if (response.status === 200) {
-        handleNotification(
-          stateNotification.sucess,
-          "Resposta atualizada com sucesso!"
-        );
-      } else {
-        handleNotification(stateNotification.error, "Resposta não atualizada!");
+      if (valueForm.mode === Tipo.UPDATE) {
+        const response = await api.put(`/questions/answer/${answerSelect.id}`, {
+          text: texto,
+        });
+        if (response.status === 200) {
+          handleNotification(
+            stateNotification.sucess,
+            "Resposta atualizada com sucesso!"
+          );
+        } else {
+          handleNotification(
+            stateNotification.error,
+            "Resposta não atualizada!"
+          );
+        }
       }
-    }
 
-    router.push(`/question/${question}`);
-  }, []);
+      setRequestProgress(false);
+
+      router.push(`/question/${question}`);
+    },
+    [requestProgress]
+  );
 
   const getRequestQuestion = useCallback(async () => {
     const questionData = await api.get(`/questions/${question}`);
@@ -248,14 +222,22 @@ const FormAnswer = (valueForm: ActionForm) => {
               buttonList: buttonList,
             }}
           />
-          <Btn
-            primary
-            value={valueForm.mode === Tipo.CREATE ? `Salvar` : `Atualizar`}
-            width="250px"
-            onClick={async () => {
-              await submitAPI(data);
-            }}
-          />
+          <ContainerMaterialUI maxWidth="xs">
+            <Button
+              startIcon={<SaveIcon />}
+              fullWidth={true}
+              disabled={requestProgress}
+              color="secondary"
+              variant="contained"
+              onClick={() => {
+                submitAPI(data);
+              }}
+            >
+              {valueForm.mode === Tipo.CREATE ? `Salvar` : `Atualizar`}
+            </Button>
+          </ContainerMaterialUI>
+
+          <p>s</p>
         </ItemAnswer>
       </BodyHome>
     </>
