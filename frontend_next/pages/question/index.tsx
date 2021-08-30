@@ -4,13 +4,25 @@ import { useQuestion } from "../../context/QuestionContext";
 import { BodyHome } from "../../styles/home/style";
 
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
+import { Box } from "@material-ui/core";
 
 const PatternItemQuestion = dynamic(
-  () => import("../../pattern/ItemQuestionsMAP")
+  () => import("../../pattern/ItemQuestionsMAP"),
+  {
+    loading: () => (
+      <Box flex justifyContent="center" alignItems="center">
+        <p>Carregando!</p>
+      </Box>
+    ),
+  }
 );
 
 const Home = () => {
-  const { questions, roadmap, amountQuestions } = useQuestion();
+  useEffect(() => {
+    console.log("reRender");
+  });
+  const { roadmap, amountQuestions } = useQuestion();
 
   return (
     <main>

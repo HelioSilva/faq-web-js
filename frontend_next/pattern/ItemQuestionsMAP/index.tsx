@@ -22,7 +22,14 @@ const PatternItemQuestion = () => {
           />
         ))
       ) : (
-        <Container>
+        <Container
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <img
             src={"/blog.svg"}
             style={{ height: 300, width: 300 }}

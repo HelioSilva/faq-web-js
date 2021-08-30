@@ -28,8 +28,9 @@ import {
 } from "../../../context/QuestionContext";
 import Menu from "../../../components/menu";
 import dynamic from "next/dynamic";
-const SunEditor = dynamic(() => import("suneditor-react"), {
-  ssr: false,
+
+const PatternItemAnswer = dynamic(() => import("../../../pattern/itemAnswer"), {
+  loading: () => <p>Carregando Artigo</p>,
 });
 
 const ViewQuestion = () => {
@@ -118,12 +119,10 @@ const ViewQuestion = () => {
   const getRequestQuestion = async (param: string) => {
     if (param) {
       const questionData = await api.get(`/questions/${param}`);
-      console.log("data: " + questionData);
 
       if (questionData.status === 200) {
         setDataquestion(questionData.data.questions[0] as iQuestion);
       }
-      setLoading(false);
     }
   };
 
@@ -236,19 +235,7 @@ const ViewQuestion = () => {
                   // height: "100vh",
                 }}
               >
-                <SunEditor
-                  lang="pt_br"
-                  defaultValue={itemDetail.text}
-                  disableToolbar={false}
-                  // readOnly={true}
-                  setOptions={{
-                    mode: "classic",
-                    buttonList: [["print"]],
-                    imageWidth: "50%",
-                    katex: "katex",
-                    height: "100%",
-                  }}
-                />
+                <PatternItemAnswer defaultValue={itemDetail.text} />
               </Container>
             </ItemAnswer>
           ))
